@@ -33,10 +33,10 @@ export interface AuctionMetricsPayload {
 
 export interface TrendingNFTCollectionPayload {
   success: boolean;
-  data: Datum[];
+  data: DatumTrendingNFTCollectionPayload[];
 }
 
-export interface Datum {
+export interface DatumTrendingNFTCollectionPayload {
   _id: string;
   volume: number;
   lastTimeFrameVolume: number;

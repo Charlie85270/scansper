@@ -1,5 +1,5 @@
 import React from "react";
-import CasperChart from "../../shared/CasperChart/CasperChart";
+import CasperPriceChart from "../../shared/Chart/CasperPriceChart/CasperPriceChart";
 import {
   FiHome,
   FiBriefcase,
@@ -75,7 +75,7 @@ const AppNavBar = () => {
             </div>
           </div>
           <div className="px-6">
-            <CasperChart />
+            <CasperPriceChart />
           </div>
           <div className="mt-6 ">
             <div>

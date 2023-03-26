@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { formatNumber, MOTE_VALUE } from "../../../../utils/Utils";
 import { AiFillCheckCircle } from "react-icons/ai";
+import classnames from "classnames";
 interface Props {
   image?: string;
   title: string;
@@ -22,16 +23,29 @@ const NFTCollectionCard = ({
 }: Props) => {
   const price = floor ? formatNumber(Number(floor) / MOTE_VALUE) : "NA";
 
+  const [isImgLoaded, setIsImageLoaded] = useState(false);
+  const imageOnLoad = () => {
+    setIsImageLoaded(true);
+  };
+
   return (
     <a target="_blank" href={href}>
-      <div className="relative flex flex-col justify-between w-full pb-2 space-y-2 bg-white shadow-lg flex-nowrap hover:shadow-xl hover:opacity-70 rounded-3xl">
+      <div className="relative flex flex-col justify-between w-full pb-2 bg-white rounded-md shadow-lg flex-nowrap hover:shadow-xl hover:opacity-70">
         <img
+          onLoad={imageOnLoad}
           src={image || "/defaultNFT.png"}
           alt="img"
-          className="rounded-t-3xl"
+          className={classnames({ hidden: !isImgLoaded }, "rounded-t-md h-72")}
         />
 
-        <div className="flex-col justify-between w-full px-4">
+        <div
+          className={classnames(
+            { hidden: isImgLoaded },
+            "w-full bg-gray-200 rounded-t-3xl h-72 animate-pulse m-0"
+          )}
+        ></div>
+
+        <div className="flex-col justify-between w-full px-4 pt-2">
           <div className="flex items-center mb-2 space-x-2 text-lg text-gray-800">
             <span>{title}</span>
             {verified && <AiFillCheckCircle className="text-blue-400" />}
@@ -66,4 +80,11 @@ const NFTCollectionCard = ({
     </a>
   );
 };
+
+export const NFTCollectionCardSkeleton = () => {
+  return (
+    <div className="relative flex flex-col justify-between w-full pb-2 space-y-2 bg-gray-200 shadow-lg h-96 animate-pulse flex-nowrap hover:shadow-xl hover:opacity-70 rounded-3xl"></div>
+  );
+};
+
 export default NFTCollectionCard;

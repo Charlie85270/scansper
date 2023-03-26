@@ -7,7 +7,7 @@ interface Props {
 
 const Card = ({ title, children }: Props) => {
   return (
-    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 bg-white shadow rounded-3xl">
+    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 bg-white rounded-md shadow">
       <span className="text-gray-400">{title}</span>
       {children}
     </div>

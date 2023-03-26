@@ -7,6 +7,8 @@ import {
   SupplyInformationsPayload,
   TrendingNFTCollectionPayload,
 } from "../types";
+import { CoinCommunityPayload } from "../types/coinGeckoTypes";
+import { DeploysPayload } from "../types/deploys";
 import fetch from "./request";
 
 export const v1Prefix = "/v1";
@@ -16,6 +18,7 @@ const coingecko_url = "https://api.coingecko.com/api/v3/";
 const casper_token_id = "casper-network";
 const make_api_url = "https://event-store-api-clarity-mainnet.make.services/";
 const friendly_market_url = "https://nft-api.friendly.market/api/v1/";
+const casper_holders_url = "https://data.casperholders.com/";
 
 export const sendRequest = (config: QueryConfig) => {
   return fetch(qs.stringifyUrl({ url: config.url, query: config.query }), {
@@ -57,5 +60,26 @@ export const getTrandingNFTCollections =
 export const getStatusInfos = (): Promise<StatusInfoPayload> => {
   return sendRequest({
     url: `${make_api_url}rpc/info_get_status`,
+  });
+};
+
+export const getDeploys = (
+  page: number,
+  limit: number = 10
+): Promise<DeploysPayload> => {
+  return sendRequest({
+    url: `${make_api_url}extended-deploys?page=${page}&limit=${limit}&fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getCoinCommunityData = (): Promise<CoinCommunityPayload> => {
+  return sendRequest({
+    url: `${coingecko_url}coins/${casper_token_id}?tickers=false&market_data=false&developer_data=true&sparkline=false`,
+  });
+};
+
+export const getCountLast14daysDeploys = () => {
+  return sendRequest({
+    url: `${casper_holders_url}full_stats`,
   });
 };

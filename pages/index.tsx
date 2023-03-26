@@ -6,14 +6,17 @@ import IconCard, {
 } from "../components/shared/Card/IconCard/IconCard";
 import { AiOutlineBarChart, AiOutlineLineChart } from "react-icons/ai";
 import { formatNumber, MOTE_VALUE } from "../utils/Utils";
-import { FiDatabase, FiPercent, FiCheckSquare } from "react-icons/fi";
-import LinearNFTCollection from "../components/shared/NFTCollection/LinearNFTCollection";
+import { FiDatabase, FiPercent, FiCheckSquare, FiHeart } from "react-icons/fi";
+import LinearNFTCollection from "../components/layout/NFTCollection/LinearNFTCollection";
 import { useGetCasperSupplyInfo } from "../hooks/useGetCasperSupplyInfo";
 import { useGetAuctionMetrics } from "../hooks/useGetAuctionMetrics";
 import { useGetHistoryCasperPrice } from "../hooks/useGetHistoryCasperPrice";
 import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
-import Link from "next/link";
-import LinkButton from "../components/shared/Link/LinkButton";
+import SeeMoreBloc from "../components/shared/SeeMoreBloc/SeeMoreBloc";
+import { useGetCoinCommunityData } from "../hooks/useGetCoinCommunityData";
+import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard";
+import DeploysList from "../components/layout/DeploysList/DeploysList";
+import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
 
 export const IndexPage = () => {
   // Queries
@@ -21,6 +24,7 @@ export const IndexPage = () => {
   const queryAuction = useGetAuctionMetrics();
   const price = useGetHistoryCasperPrice(1);
   const statusInfos = useGetStatusInfos();
+  const community = useGetCoinCommunityData();
 
   const totalStaked =
     Number(Number(queryAuction.data?.total_active_era_stake || 0).toFixed(0)) /
@@ -46,6 +50,9 @@ export const IndexPage = () => {
 
   const percentCirculatingSupply = (100 * circulatingSupply) / totalSupply;
   const percentStaked = (100 * totalStaked) / totalSupply;
+
+  const sentimentUp = community?.data?.sentiment_votes_up_percentage || 0;
+  const sentimentDown = community?.data?.sentiment_votes_down_percentage || 0;
   const items = [
     {
       color: totalColor,
@@ -109,6 +116,7 @@ export const IndexPage = () => {
       title="casper.explrorer is an explorer for the Casper Network blockchain"
       desc="Retrieve data, follow the network usages and much more"
     >
+      {/* Blockchain DATA */}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12">
         {options.map(option => {
           return (
@@ -124,6 +132,15 @@ export const IndexPage = () => {
             </div>
           );
         })}
+        <div className="sm:col-span-1 md:col-span-2">
+          <SentimentCard
+            icon={FiHeart}
+            title="Community Sentiment"
+            down={sentimentDown}
+            up={sentimentUp}
+          />
+        </div>
+
         {items.map(item => {
           return (
             <div className="sm:col-span-3 lg:col-span-4">
@@ -139,18 +156,23 @@ export const IndexPage = () => {
         })}
       </div>
 
-      <div className="">
-        <div className="flex items-center justify-between w-full py-8">
-          <p className="w-1/2 text-2xl text-gray-800">
-            Trending NFT Collections
-          </p>
-          <LinkButton
-            title="See all"
-            href="https://www.friendly.market/"
-            target="_blank"
-          ></LinkButton>
-        </div>
+      {/* NFT COLLECTION */}
+
+      <SeeMoreBloc
+        href="https://www.friendly.market/"
+        title="Trending NFT Collections"
+      >
         <LinearNFTCollection />
+      </SeeMoreBloc>
+      <div className="items-start 2xl:space-x-4 2xl:flex">
+        <div className="sm:w-full 2xl:w-5/6">
+          <SeeMoreBloc href="/deploys" title="Latest deploys">
+            <DeploysList />
+          </SeeMoreBloc>
+        </div>
+        <div className="mt-6 2xl:mt-24 sm:w-full 2xl:w-1/4 lg:block">
+          <TodayDeploysStatsChart />
+        </div>
       </div>
     </AppLayout>
   );

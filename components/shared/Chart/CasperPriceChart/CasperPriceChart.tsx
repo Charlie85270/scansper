@@ -1,10 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { useQueryClient } from "react-query";
-import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
+import { useGetHistoryCasperPrice } from "../../../../hooks/useGetHistoryCasperPrice";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const CasperChart = () => {
+const CasperPriceChart = () => {
   // Queries
   const query = useGetHistoryCasperPrice(1);
   if (!query.data) {
@@ -31,7 +30,6 @@ const CasperChart = () => {
       type: "line",
       height: 20,
       width: 400,
-
       toolbar: {
         show: false,
       },
@@ -86,7 +84,7 @@ const CasperChart = () => {
 
   const isNegative = percent < 0;
   return (
-    <div id="chart" className="p-4 rounded-3xl bg-bgApp h-45">
+    <div id="chart" className="p-4 rounded-md bg-bgApp h-45">
       <div className="flex items-center space-x-2 text-lg">
         <img src="/cspr.png" alt="casper logo" className="w-8" />
         <span className="text-gray-900">Casper</span>
@@ -128,4 +126,4 @@ const CasperChart = () => {
     </div>
   );
 };
-export default CasperChart;
+export default CasperPriceChart;

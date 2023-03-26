@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AppHeader = () => {
+const Header = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
@@ -12,9 +12,9 @@ const AppHeader = () => {
               <svg
                 fill="none"
                 className="relative w-5 h-5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -32,7 +32,7 @@ const AppHeader = () => {
               value={searchText}
               onChange={e => setSearchText(e.target.value)}
               type="text"
-              className="block w-full h-12 py-1.5 pl-10 pr-4 leading-normal rounded-xl focus:border-transparent focus:outline-none ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input"
+              className="block w-full h-12 py-1.5 pl-10 pr-4 leading-normal rounded-md focus:border-transparent focus:outline-none ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input"
               placeholder="Search"
             />
           </div>
@@ -42,7 +42,7 @@ const AppHeader = () => {
           disabled={!searchText}
           className={`${
             !searchText ? "opacity-50" : ""
-          } w-24 h-10 px-4 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-600 rounded-lg shadow-md hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}
+          } w-24 h-10 px-4 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}
         >
           Search
         </button>
@@ -50,4 +50,4 @@ const AppHeader = () => {
     </header>
   );
 };
-export default AppHeader;
+export default Header;
