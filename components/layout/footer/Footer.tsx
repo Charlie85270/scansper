@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Footer = () => {
+const Footer = () => {
   const confluxLink = "https://confluxnetwork.org/en/";
   const confluxForumLink = "https://forum.conflux.fun/";
   const confluxScanLink = "https://confluxscan.io/";
@@ -75,3 +75,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

@@ -65,7 +65,7 @@ const TodayDeploysStatsChart = () => {
   };
 
   return (
-    <Card title="Last 24h deploys">
+    <Card title="Last 24h deploys (UTC)">
       <div
         id="chart"
         className="flex-col items-center justify-center w-full mx-auto"

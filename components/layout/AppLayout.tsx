@@ -1,8 +1,8 @@
 import Meta from "../shared/Meta";
 import Header from "./Header/Header";
-import { Footer } from "./Footer/Footer";
 import React from "react";
 import NavBar from "./NavBar/NavBar";
+import Footer from "./Footer/Footer";
 
 interface Props {
   title: string;

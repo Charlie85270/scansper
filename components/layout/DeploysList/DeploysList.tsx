@@ -44,7 +44,7 @@ const DeploysList = () => {
     "Deploy Hash",
     "Method",
     "Block",
-    "Caller",
+    "Account",
     "Amount",
     "Fees",
   ];
@@ -86,7 +86,7 @@ const DeploysList = () => {
       </Link>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-base text-gray-800">
+          <span className="text-gray-800 text-md">
             {formatNumber(Number(item.amount) / MOTE_VALUE)}
           </span>
           <img
@@ -101,7 +101,7 @@ const DeploysList = () => {
       </div>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-base text-gray-800">
+          <span className="text-gray-800 text-md">
             {formatNumber(Number(item.cost) / MOTE_VALUE)}
           </span>
           <img
