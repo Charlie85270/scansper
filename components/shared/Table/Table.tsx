@@ -15,7 +15,7 @@ const Table = ({ header, rows }: TableProps) => {
             return (
               <th
                 scope="col"
-                className="px-5 py-3 font-normal text-left text-gray-500 bg-white border-b border-gray-200 text-md"
+                className="px-5 py-5 font-semibold text-left text-gray-700 bg-white border-b border-gray-200 text-md"
               >
                 {head}
               </th>
@@ -29,7 +29,7 @@ const Table = ({ header, rows }: TableProps) => {
             <tr>
               {row.map(r => {
                 return (
-                  <td className="px-5 py-3 text-lg bg-white border-b border-gray-200">
+                  <td className="px-5 py-3 text-base bg-white border-b border-gray-200">
                     {r}
                   </td>
                 );

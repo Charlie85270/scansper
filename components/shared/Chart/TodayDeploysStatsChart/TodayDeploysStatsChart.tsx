@@ -52,7 +52,7 @@ const TodayDeploysStatsChart = () => {
     plotOptions: {
       pie: {
         donut: {
-          size: "70%",
+          size: "72%",
           labels: {
             show: true,
             total: {

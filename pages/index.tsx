@@ -6,8 +6,8 @@ import IconCard, {
 } from "../components/shared/Card/IconCard/IconCard";
 import { AiOutlineBarChart, AiOutlineLineChart } from "react-icons/ai";
 import { formatNumber, MOTE_VALUE } from "../utils/Utils";
-import { FiDatabase, FiPercent, FiCheckSquare, FiHeart } from "react-icons/fi";
-import LinearNFTCollection from "../components/layout/NFTCollection/LinearNFTCollection";
+import { FiDatabase, FiPercent, FiHeart } from "react-icons/fi";
+import LinearNFTCollection from "../components/shared/NFTCollection/LinearNFTCollection";
 import { useGetCasperSupplyInfo } from "../hooks/useGetCasperSupplyInfo";
 import { useGetAuctionMetrics } from "../hooks/useGetAuctionMetrics";
 import { useGetHistoryCasperPrice } from "../hooks/useGetHistoryCasperPrice";
@@ -16,7 +16,7 @@ import SeeMoreBloc from "../components/shared/SeeMoreBloc/SeeMoreBloc";
 import { TbGavel } from "react-icons/tb";
 import { useGetCoinCommunityData } from "../hooks/useGetCoinCommunityData";
 import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard";
-import DeploysList from "../components/layout/DeploysList/DeploysList";
+import DeploysList from "../components/shared/DeploysList/DeploysList";
 import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
 
 export const IndexPage = () => {

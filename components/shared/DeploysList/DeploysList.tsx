@@ -5,15 +5,16 @@ import { BiTransfer } from "react-icons/bi";
 import { FiLock, FiUnlock } from "react-icons/fi";
 import { useGetDeploys } from "../../../hooks/useGetDeploys";
 import { getExecutionTypeById } from "../../../types/deploys";
+import { GoFileCode } from "react-icons/go";
 import {
   formatNumber,
   getRelativeTime,
   MOTE_VALUE,
   truncateString,
 } from "../../../utils/Utils";
-import { NFTCollectionCardSkeleton } from "../../shared/Card/NFTCollectionCard/NFTCollectionCard";
-import ErrorMessage from "../../shared/ErrorMessage/ErrorMessage";
-import Table from "../../shared/Table/Table";
+import { NFTCollectionCardSkeleton } from "../Card/NFTCollectionCard/NFTCollectionCard";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Table from "../Table/Table";
 
 const DeploysList = () => {
   const [page, setPage] = useState(1);
@@ -24,7 +25,7 @@ const DeploysList = () => {
   // Loading statex
   if (deploysQuery.isLoading) {
     return (
-      <div className="flex pb-4 space-x-4 overflow-x-scroll overflow-y-hidden flex-nowrap">
+      <div className="flex pb-4 space-x-4 overflow-y-hidden flex-nowrap">
         {[0, 1, 2, 3].map(_ => (
           <div className="flex-none w-72 h-96">
             <NFTCollectionCardSkeleton />
@@ -149,6 +150,8 @@ const getNodeFromMethod = method => {
     case "undelegate":
       Icon = FiUnlock;
       break;
+    case "WASM deploy":
+      Icon = FiUnlock;
     default:
       break;
   }

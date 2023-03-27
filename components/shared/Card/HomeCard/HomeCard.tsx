@@ -64,7 +64,7 @@ const HomeCard = ({ title, value, percent, color }: Props) => {
     <Card title={title}>
       <div className="flex-col justify-between space-y-2">
         <div className="flex items-end justify-between space-x-12">
-          <span className="text-3xl text-gray-900">{formatNumber(value)}</span>
+          <span className="text-2xl text-gray-900">{formatNumber(value)}</span>
           {percent && (
             <span className="text-gray-400">{percent.toFixed(2)}%</span>
           )}

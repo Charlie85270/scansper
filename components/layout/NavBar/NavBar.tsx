@@ -23,6 +23,11 @@ const NavBar = () => {
       icon: FiHome,
     },
     {
+      label: "Validators",
+      link: "/validators",
+      icon: TbGavel,
+    },
+    {
       label: "Deploys",
       link: "/deploys",
       icon: FiServer,
@@ -32,11 +37,7 @@ const NavBar = () => {
       link: "/account",
       icon: FiBriefcase,
     },
-    {
-      label: "Validators",
-      link: "/validators",
-      icon: TbGavel,
-    },
+
     {
       label: "Blocks",
       link: "/blocks",
@@ -70,7 +71,7 @@ const NavBar = () => {
                   fill="#ff2d2e"
                 ></path>
               </svg>
-              <span className="text-3xl font-light text-gray-900">
+              <span className="text-2xl font-light text-gray-900">
                 Casper.scan
               </span>
             </div>
@@ -88,7 +89,7 @@ const NavBar = () => {
                         isActive(link.link)
                           ? "text-gray-900 bg-bgApp font-semibold"
                           : ""
-                      } px-6 hover:bg-bgApp text-lg`}
+                      } px-6 hover:bg-bgApp text-md`}
                     >
                       <div className="flex items-center justify-start w-full p-4 my-2 space-x-4 rounded-md text-md">
                         <span className="text-left">{link.icon({})}</span>

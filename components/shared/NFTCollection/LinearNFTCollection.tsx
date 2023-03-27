@@ -3,8 +3,8 @@ import React from "react";
 import { useGetTrandingNFTCollections } from "../../../hooks/useGetTrandingNFTCollections";
 import NFTCollectionCard, {
   NFTCollectionCardSkeleton,
-} from "../../shared/Card/NFTCollectionCard/NFTCollectionCard";
-import ErrorMessage from "../../shared/ErrorMessage/ErrorMessage";
+} from "../Card/NFTCollectionCard/NFTCollectionCard";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const LinearNFTCollection = () => {
   const queryNFT = useGetTrandingNFTCollections();

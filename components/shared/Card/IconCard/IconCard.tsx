@@ -29,7 +29,7 @@ const IconCard = ({
           {icon({ className: "w-6 h-6 opacity-10" })}
         </div>
         <div className="flex-col">
-          <span className="flex items-end text-3xl text-gray-900">
+          <span className="flex items-end text-2xl text-gray-800">
             {value}
             <span className="text-sm text-gray-500"> {currency}</span>
           </span>

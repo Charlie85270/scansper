@@ -83,3 +83,9 @@ export const getCountLast14daysDeploys = () => {
     url: `${casper_holders_url}full_stats`,
   });
 };
+
+export const getAllValidators = eraId => {
+  return sendRequest({
+    url: `${make_api_url}validators?page=1&limit=100&era_id=${eraId}&fields=account_info,average_performance`,
+  });
+};

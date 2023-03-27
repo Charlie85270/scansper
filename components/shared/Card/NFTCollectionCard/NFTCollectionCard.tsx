@@ -51,7 +51,7 @@ const NFTCollectionCard = ({
             {verified && <AiFillCheckCircle className="text-blue-400" />}
           </div>
           <div className="flex-col">
-            <span className="flex items-center justify-between text-3xl text-gray-900">
+            <span className="flex items-center justify-between text-2xl text-gray-900">
               <span className="text-sm text-gray-500">Floor price</span>
               <span className="text-sm text-gray-500">
                 <span className="flex items-center space-x-2">
