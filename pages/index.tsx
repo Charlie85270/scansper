@@ -43,6 +43,11 @@ export const IndexPage = () => {
     price.data?.market_caps[price.data?.market_caps.length - 1][1] || 0;
   const percentMarketCap = (lastMarketCap / marketCap) * 100 - 100;
 
+  const volumes = price.data?.total_volumes[0][1] || 0;
+  const lastVolumes =
+    price.data?.total_volumes[price.data?.total_volumes.length - 1][1] || 0;
+  const percentVolumes = (lastVolumes / volumes) * 100 - 100;
+
   const totalColor = "#feba48";
   const circulatingColor = "#4ee6a4";
   const stakedColor = "#3e9efa";
@@ -78,10 +83,10 @@ export const IndexPage = () => {
   const options: IconCardProps[] = [
     {
       title: "Volume (24h)",
-      value: formatNumber(9498584),
+      value: formatNumber(Number(volumes.toFixed(0))),
       currency: "$",
       icon: AiOutlineBarChart,
-      changes: -0.99,
+      changes: percentVolumes,
     },
     {
       title: "MarketCap (24h)",
