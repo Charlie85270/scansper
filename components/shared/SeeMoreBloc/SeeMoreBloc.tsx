@@ -7,7 +7,7 @@ const SeeMoreBloc = ({ title, href, children }) => {
       <div className="flex items-center justify-between w-full pb-4">
         <p className="w-1/2 text-2xl text-gray-800">{title}</p>
         {href && (
-          <LinkButton title="See all" href={href} target="_blank"></LinkButton>
+          <LinkButton title="See all" href={href} target="_self"></LinkButton>
         )}
       </div>
       {children}

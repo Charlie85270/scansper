@@ -13,6 +13,7 @@ import { useGetAuctionMetrics } from "../hooks/useGetAuctionMetrics";
 import { useGetHistoryCasperPrice } from "../hooks/useGetHistoryCasperPrice";
 import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
 import SeeMoreBloc from "../components/shared/SeeMoreBloc/SeeMoreBloc";
+import { TbGavel } from "react-icons/tb";
 import { useGetCoinCommunityData } from "../hooks/useGetCoinCommunityData";
 import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard";
 import DeploysList from "../components/layout/DeploysList/DeploysList";
@@ -106,7 +107,7 @@ export const IndexPage = () => {
       title: "Active validators",
       value: activeValidators,
       currency: "",
-      icon: FiCheckSquare,
+      icon: TbGavel,
       description: `${totalValidators} actives bids`,
     },
   ];

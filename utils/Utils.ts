@@ -36,7 +36,7 @@ export const isToday = someDate => {
 };
 
 export const DeployColors = {
-  transfer: "#06d6a0",
-  storedContractByHash: "#118ab2",
-  moduleBytes: "#ffd166",
+  transfer: "#118ab2",
+  storedContractByHash: "#8E8ab2",
+  moduleBytes: "#9Ad166",
 };

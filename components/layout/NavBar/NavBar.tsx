@@ -9,6 +9,7 @@ import {
   FiSun,
   FiMoon,
 } from "react-icons/fi";
+import { TbGavel } from "react-icons/tb";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,6 +23,11 @@ const NavBar = () => {
       icon: FiHome,
     },
     {
+      label: "Deploys",
+      link: "/deploys",
+      icon: FiServer,
+    },
+    {
       label: "My account",
       link: "/account",
       icon: FiBriefcase,
@@ -29,17 +35,12 @@ const NavBar = () => {
     {
       label: "Validators",
       link: "/validators",
-      icon: FiLayers,
+      icon: TbGavel,
     },
     {
       label: "Blocks",
       link: "/blocks",
       icon: FiCodepen,
-    },
-    {
-      label: "Deploys",
-      link: "/deploys",
-      icon: FiServer,
     },
   ];
 
