@@ -29,7 +29,7 @@ const CasperPriceChart = () => {
     chart: {
       type: "line",
       height: 20,
-      width: 400,
+      width: 300,
       toolbar: {
         show: false,
       },
@@ -112,7 +112,9 @@ const CasperPriceChart = () => {
             />
           </svg>
           <div className="flex items-end space-x-2">
-            <span className="text-2xl text-gray-900">{price.toFixed(4)}$</span>
+            <span className="text-xl text-gray-900">
+              {lastPrice.toFixed(4)}$
+            </span>
             <span
               className={`${
                 isNegative ? "text-red-400" : "text-green-400"

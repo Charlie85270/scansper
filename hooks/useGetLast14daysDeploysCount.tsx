@@ -6,7 +6,7 @@ export const useGetLast14daysDeploysCount = () =>
     {
       count: number;
       day: string;
-      type?: "storedContractByHash" | "trasnfer" | "moduleBytes";
+      type?: "storedContractByHash" | "transfer" | "moduleBytes";
     }[],
     Error
   >("lastDeploys", getCountLast14daysDeploys);

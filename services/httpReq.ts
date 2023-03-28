@@ -8,8 +8,10 @@ import {
   TrendingNFTCollectionPayload,
 } from "../types";
 import { CoinCommunityPayload } from "../types/coinGeckoTypes";
+import { ValidatorsPayload } from "../types/validators";
 import { DeploysPayload } from "../types/deploys";
 import fetch from "./request";
+import { ValidatorPayload } from "../types/validator";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
@@ -84,8 +86,14 @@ export const getCountLast14daysDeploys = () => {
   });
 };
 
-export const getAllValidators = eraId => {
+export const getAllValidators = (eraId): Promise<ValidatorsPayload> => {
   return sendRequest({
     url: `${make_api_url}validators?page=1&limit=100&era_id=${eraId}&fields=account_info,average_performance`,
+  });
+};
+
+export const getValidator = (publicKey: string): Promise<ValidatorPayload> => {
+  return sendRequest({
+    url: `${make_api_url}auction-validators/${publicKey}?fields=account_info,average_performance`,
   });
 };

@@ -6,6 +6,8 @@ import { FiLock, FiUnlock } from "react-icons/fi";
 import { useGetDeploys } from "../../../hooks/useGetDeploys";
 import { getExecutionTypeById } from "../../../types/deploys";
 import { GoFileCode } from "react-icons/go";
+import { GiWarPick } from "react-icons/gi";
+
 import {
   formatNumber,
   getRelativeTime,
@@ -119,7 +121,7 @@ const DeploysList = () => {
   });
 
   return (
-    <div className="flex overflow-x-scroll overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
+    <div className="flex overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
       <Table rows={rows} header={headers} />
     </div>
   );
@@ -140,6 +142,7 @@ const DeployStatus = props => {
 };
 
 const getNodeFromMethod = method => {
+  console.log(method);
   let Icon = BiTransfer;
   switch (method) {
     case "transfer":
@@ -151,7 +154,11 @@ const getNodeFromMethod = method => {
       Icon = FiUnlock;
       break;
     case "WASM deploy":
-      Icon = FiUnlock;
+      Icon = GoFileCode;
+      break;
+    case "mint":
+      Icon = GiWarPick;
+      break;
     default:
       break;
   }

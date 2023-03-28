@@ -83,14 +83,14 @@ export const IndexPage = () => {
   const options: IconCardProps[] = [
     {
       title: "Volume (24h)",
-      value: formatNumber(Number(volumes.toFixed(0))),
+      value: formatNumber(Number(lastVolumes.toFixed(0))),
       currency: "$",
       icon: AiOutlineBarChart,
       changes: percentVolumes,
     },
     {
       title: "MarketCap (24h)",
-      value: formatNumber(Number(marketCap.toFixed(0))),
+      value: formatNumber(Number(lastMarketCap.toFixed(0))),
       currency: "$",
       icon: AiOutlineLineChart,
       changes: percentMarketCap,

@@ -1,5 +1,6 @@
 import React from "react";
 import AppLayout from "../../components/layout/AppLayout";
+import ValidatorsList from "../../components/shared/ValidatorsList/ValidatorsList";
 import { useGetAllValidators } from "../../hooks/useGetAllValidators";
 import { useGetStatusInfos } from "../../hooks/useGetStatusInfos";
 
@@ -14,7 +15,7 @@ export const IndexPage = () => {
       title="Casper Network Validators list"
       desc="Find the best validators to stake you CSPR tokens"
     >
-      <p>{validators.data?.data?.length}</p>
+      <ValidatorsList />
     </AppLayout>
   );
 };

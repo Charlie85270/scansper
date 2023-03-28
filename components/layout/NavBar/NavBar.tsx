@@ -3,7 +3,6 @@ import CasperPriceChart from "../../shared/Chart/CasperPriceChart/CasperPriceCha
 import {
   FiHome,
   FiBriefcase,
-  FiLayers,
   FiCodepen,
   FiServer,
   FiSun,
@@ -79,19 +78,17 @@ const NavBar = () => {
           <div className="px-6">
             <CasperPriceChart />
           </div>
-          <div className="mt-6 ">
+          <div className="mt-4">
             <div>
               {links.map(link => {
                 return (
                   <Link href={link.link} className="relative">
                     <div
                       className={`${
-                        isActive(link.link)
-                          ? "text-gray-900 bg-bgApp font-semibold"
-                          : ""
-                      } px-6 hover:bg-bgApp text-md`}
+                        isActive(link.link) ? "text-gray-900 bg-bgApp" : ""
+                      } px-6 hover:bg-bgApp text-base`}
                     >
-                      <div className="flex items-center justify-start w-full p-4 my-2 space-x-4 rounded-md text-md">
+                      <div className="flex items-center justify-start w-full p-4 space-x-4 rounded-md text-md">
                         <span className="text-left">{link.icon({})}</span>
                         <span>{link.label}</span>
                       </div>
