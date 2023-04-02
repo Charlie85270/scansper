@@ -11,7 +11,11 @@ import { CoinCommunityPayload } from "../types/coinGeckoTypes";
 import { ValidatorsPayload } from "../types/validators";
 import { DeploysPayload } from "../types/deploys";
 import fetch from "./request";
-import { ValidatorPayload } from "../types/validator";
+import {
+  DelegatorsPayload,
+  RewardsValidatorsPayload,
+  ValidatorPayload,
+} from "../types/validator";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
@@ -95,5 +99,31 @@ export const getAllValidators = (eraId): Promise<ValidatorsPayload> => {
 export const getValidator = (publicKey: string): Promise<ValidatorPayload> => {
   return sendRequest({
     url: `${make_api_url}auction-validators/${publicKey}?fields=account_info,average_performance`,
+  });
+};
+
+export const getValidatorTotalRewards = (
+  publicKey: string
+): Promise<RewardsValidatorsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}validators/${publicKey}/total-rewards`,
+  });
+};
+export const getValidatorTotalDelegatorsRewards = (
+  publicKey: string
+): Promise<RewardsValidatorsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}validators/${publicKey}/total-delegator-rewards`,
+  });
+};
+
+export const getValidatorsListByDelegator = (
+  publicKey: string,
+  page?: number
+): Promise<DelegatorsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}auction-validators/${publicKey}/delegations?page=${
+      page || 1
+    }&limit=10&fields=account_info`,
   });
 };

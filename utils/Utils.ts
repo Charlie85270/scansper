@@ -39,4 +39,21 @@ export const DeployColors = {
   transfer: "#118ab2",
   storedContractByHash: "#8E8ab2",
   moduleBytes: "#9Ad166",
+  storedVersionedContractByHash: "#E3H348",
+};
+
+export const getPerfColor = (percent: number) => {
+  if (percent > 99.5) {
+    return "#16a34a";
+  }
+  if (percent > 98) {
+    return "#84cc16";
+  }
+  if (percent > 97) {
+    return "#a3e635";
+  }
+  if (percent > 96) {
+    return "#facc15";
+  }
+  return "#ea580c";
 };

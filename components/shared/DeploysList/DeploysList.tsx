@@ -14,7 +14,6 @@ import {
   MOTE_VALUE,
   truncateString,
 } from "../../../utils/Utils";
-import { NFTCollectionCardSkeleton } from "../Card/NFTCollectionCard/NFTCollectionCard";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Table from "../Table/Table";
 
@@ -23,19 +22,6 @@ const DeploysList = () => {
   const limit = 10;
   const deploysQuery = useGetDeploys(page, limit);
   const items = deploysQuery.data?.data;
-
-  // Loading statex
-  if (deploysQuery.isLoading) {
-    return (
-      <div className="flex pb-4 space-x-4 overflow-y-hidden flex-nowrap">
-        {[0, 1, 2, 3].map(_ => (
-          <div className="flex-none w-72 h-96">
-            <NFTCollectionCardSkeleton />
-          </div>
-        ))}
-      </div>
-    );
-  }
 
   // Error state
   if (deploysQuery.error || !items) {
@@ -122,7 +108,12 @@ const DeploysList = () => {
 
   return (
     <div className="flex overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
-      <Table rows={rows} header={headers} />
+      <Table
+        totalItems={rows.length}
+        isLoading={deploysQuery.isFetching}
+        rows={rows}
+        header={headers}
+      />
     </div>
   );
 };
@@ -142,7 +133,6 @@ const DeployStatus = props => {
 };
 
 const getNodeFromMethod = method => {
-  console.log(method);
   let Icon = BiTransfer;
   switch (method) {
     case "transfer":

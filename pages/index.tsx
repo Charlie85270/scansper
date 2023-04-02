@@ -97,7 +97,7 @@ export const IndexPage = () => {
     },
     {
       title: "APY",
-      value: 10.54,
+      value: (totalStaked * 8) / Number(totalSupply),
       currency: "%",
       icon: FiPercent,
     },

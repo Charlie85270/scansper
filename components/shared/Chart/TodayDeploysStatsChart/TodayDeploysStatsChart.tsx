@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useGetLast14daysDeploysCount } from "../../../../hooks/useGetLast14daysDeploysCount";
 import { DeployColors, isToday } from "../../../../utils/Utils";
 import Card from "../../Card/Card";
+import Loader from "../../Loader/Loader";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const TodayDeploysStatsChart = () => {
@@ -10,6 +11,9 @@ const TodayDeploysStatsChart = () => {
   const query = useGetLast14daysDeploysCount();
   if (!query.data) {
     return null;
+  }
+  if (query.isFetching) {
+    return <Loader />;
   }
 
   // We want today stats
@@ -19,6 +23,7 @@ const TodayDeploysStatsChart = () => {
     )
     .sort((a, b) => b.count - a.count);
 
+  console.log(stats);
   const config: ApexCharts.ApexOptions = {
     series: stats.map(stat => stat.count),
     labels: stats.map(stat => stat.type || ""),
@@ -70,12 +75,15 @@ const TodayDeploysStatsChart = () => {
         id="chart"
         className="flex-col items-center justify-center w-full mx-auto"
       >
-        <Chart
-          options={config}
-          series={config.series}
-          type="donut"
-          height={300}
-        />
+        {stats && (
+          <Chart
+            options={config}
+            series={config.series}
+            type="donut"
+            height={300}
+          />
+        )}
+
         <div className="flex-col mt-4">
           {stats.sort().map(stat => {
             return (

@@ -1,8 +1,13 @@
 import classNames from "classnames";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiUsers } from "react-icons/fi";
-import { formatNumber, MOTE_VALUE, truncateString } from "../../../utils/Utils";
+import {
+  formatNumber,
+  getPerfColor,
+  MOTE_VALUE,
+  truncateString,
+} from "../../../utils/Utils";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Table from "../Table/Table";
 import { useGetStatusInfos } from "../../../hooks/useGetStatusInfos";
@@ -33,28 +38,12 @@ const ValidatorsList = () => {
     "Performance",
   ];
 
-  const getPerformancecolor = (percent: number) => {
-    if (percent > 99.5) {
-      return "#16a34a";
-    }
-    if (percent > 98) {
-      return "#84cc16";
-    }
-    if (percent > 97) {
-      return "#a3e635";
-    }
-    if (percent > 96) {
-      return "#facc15";
-    }
-    return "#ea580c";
-  };
-
   const rows = validators.data?.data?.map(item => {
     return [
       <span className="flex items-center space-x-2 text-sm">{item.rank}</span>,
       <Link
         className="flex items-center space-x-4 hover:underline"
-        href={`/validator/${item.public_key}`}
+        href={`/validator/${item.public_key}?tab=delegators`}
       >
         <img
           className="w-8 h-8 rounded-full"
@@ -102,16 +91,16 @@ const ValidatorsList = () => {
 
       <div>
         <span className="text-sm text-gray-400">
-          {item.average_performance.average_score.toFixed(2)}%{" "}
+          {item?.average_performance?.average_score?.toFixed(2)}%{" "}
         </span>
 
         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
           <div
             className="h-2.5 rounded-full"
             style={{
-              width: `${item.average_performance.average_score}%`,
-              backgroundColor: getPerformancecolor(
-                item.average_performance.average_score
+              width: `${item.average_performance?.average_score}%`,
+              backgroundColor: getPerfColor(
+                item.average_performance?.average_score
               ),
             }}
           ></div>
@@ -124,6 +113,7 @@ const ValidatorsList = () => {
     <div>
       <div className="flex overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
         <Table
+          totalItems={rows?.length || 1}
           isLoading={statusInfos.isFetching || validators.isFetching}
           rows={rows || []}
           header={headers}

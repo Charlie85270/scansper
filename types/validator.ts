@@ -111,3 +111,27 @@ export interface AveragePerformance {
   public_key: string;
   average_score: number;
 }
+
+export interface RewardsValidatorsPayload {
+  data: string;
+}
+
+export interface DelegatorsPayload {
+  data: DelegatorData[];
+  pageCount: number;
+  itemCount: number;
+  pages: Page[];
+}
+
+export interface DelegatorData {
+  public_key: string;
+  stake: string;
+  bonding_purse: string;
+  validator_public_key: string;
+  account_info: null;
+}
+
+export interface Page {
+  number: number;
+  url: string;
+}
