@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
 import { useGetValidatorsListByDelegator } from "../../../hooks/useGetValidatorsListByDelegator";
 import { formatNumber, MOTE_VALUE, truncateString } from "../../../utils/Utils";
 import Table from "../Table/Table";
@@ -9,6 +10,8 @@ const DelegatorsByValidatorsList = () => {
   const { push, query } = useRouter();
   const { id } = query;
   const { page } = query;
+  const price = useGetHistoryCasperPrice(1);
+  const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
 
   const queryValidator = useGetValidatorsListByDelegator(
     id?.toString() || "",
@@ -54,6 +57,16 @@ const DelegatorsByValidatorsList = () => {
             alt="cspr"
           />
         </span>
+        <span className="text-xs text-gray-400">
+          {formatNumber(
+            Number(
+              Number((Number(item?.stake) / MOTE_VALUE) * casperPrice).toFixed(
+                0
+              )
+            )
+          )}
+          $
+        </span>
       </div>,
     ];
   });
@@ -61,7 +74,7 @@ const DelegatorsByValidatorsList = () => {
     <Table
       showTotalItems
       totalItems={queryValidator.data?.itemCount || 1}
-      pageSize={10}
+      pageSize={12}
       showPagination
       currentPage={Number(page) || 1}
       onPageChange={page => {

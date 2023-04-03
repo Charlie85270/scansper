@@ -127,8 +127,8 @@ const Pager = ({
             onClick={() => onChangePage && onChangePage(page)}
             type="button"
             className={classNames(
-              { "text-gray-900": pager.currentPage === page },
-              "w-full px-4 py-2 text-base bg-white border-t border-b hover:bg-gray-100 "
+              { "text-gray-900 bg-gray-100": pager.currentPage === page },
+              "w-full px-4 py-2 text-base border-t border-b hover:bg-gray-100 "
             )}
           >
             {page}

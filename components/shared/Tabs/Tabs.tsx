@@ -16,24 +16,23 @@ const Tabs = ({ tabs, tabsContent }: PropsTabs) => {
 
   return (
     <div className="justify-start text-base font-medium text-left text-gray-500">
-      <ul className="flex flex-wrap -mb-px">
+      <ul className="flex flex-wrap w-full -mb-px border-b">
         {tabs.map(iTab => {
           return (
             <li
-              className="mr-2"
+              className="mr-2 hover:cursor-pointer"
+              role="link"
               onClick={() => {
                 push({ query: { ...query, tab: iTab.id } }, undefined, {
                   shallow: true,
                 });
               }}
             >
-              <a
-                href="#"
+              <p
                 className={classNames(
                   {
-                    "border-gray-700  border-b-2 text-gray-700":
-                      iTab.id === tab,
-                    "hover:border-b-2 hover:text-gray-700 hover:border-gray-700 border-b":
+                    "border-gray-700 border-b-2 text-gray-700": iTab.id === tab,
+                    "hover:border-b-2 hover:text-gray-700  hover:border-gray-700":
                       iTab.id !== tab,
                   },
 
@@ -42,7 +41,7 @@ const Tabs = ({ tabs, tabsContent }: PropsTabs) => {
                 aria-current="page"
               >
                 {iTab.title}
-              </a>
+              </p>
             </li>
           );
         })}

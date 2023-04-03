@@ -15,11 +15,11 @@ export const truncateString = (string: string, number: number) => {
 
 export const getRelativeTime = timestamp => {
   const rtf = new Intl.RelativeTimeFormat("en", {
-    numeric: "always",
+    numeric: "auto",
     style: "short",
   });
 
-  const daysDifference = Math.round(
+  let daysDifference = Math.round(
     (timestamp.getTime() - new Date().getTime()) / DAY_MILLISECONDS
   );
 

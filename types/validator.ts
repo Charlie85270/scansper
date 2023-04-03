@@ -135,3 +135,50 @@ export interface Page {
   number: number;
   url: string;
 }
+
+export interface RewardsDelegatorPayload {
+  data: RewardsData[];
+  pageCount: number;
+  itemCount: number;
+  pages: Page[];
+}
+
+export interface RewardsData {
+  eraId: number;
+  publicKey: string;
+  amount: string;
+  timestamp: Date;
+  currency_amount: number;
+  rate: number;
+  current_currency_amount: number;
+}
+
+export interface Page {
+  number: number;
+  url: string;
+}
+
+export interface BlocksValidatorPayload {
+  data: BlocksData[];
+  pageCount: number;
+  itemCount: number;
+  pages: Page[];
+}
+
+export interface BlocksData {
+  blockHash: string;
+  parentHash: string;
+  timestamp: Date;
+  eraId: number;
+  proposer: string;
+  state: string;
+  deployCount: number;
+  transferCount: number;
+  height: number;
+  blockHeight: number;
+}
+
+export interface Page {
+  number: number;
+  url: string;
+}

@@ -12,7 +12,9 @@ import { ValidatorsPayload } from "../types/validators";
 import { DeploysPayload } from "../types/deploys";
 import fetch from "./request";
 import {
+  BlocksValidatorPayload,
   DelegatorsPayload,
+  RewardsDelegatorPayload,
   RewardsValidatorsPayload,
   ValidatorPayload,
 } from "../types/validator";
@@ -124,6 +126,28 @@ export const getValidatorsListByDelegator = (
   return sendRequest({
     url: `${make_api_url}auction-validators/${publicKey}/delegations?page=${
       page || 1
-    }&limit=10&fields=account_info`,
+    }&limit=12&fields=account_info`,
+  });
+};
+
+export const getRewardsByDelegator = (
+  publicKey: string,
+  page?: number
+): Promise<RewardsDelegatorPayload> => {
+  return sendRequest({
+    url: `${make_api_url}validators/${publicKey}/rewards?page=${
+      page || 1
+    }&limit=12&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getBlocksByValidator = (
+  publicKey: string,
+  page?: number
+): Promise<BlocksValidatorPayload> => {
+  return sendRequest({
+    url: `${make_api_url}validators/${publicKey}/blocks?page=${
+      page || 1
+    }&limit=12`,
   });
 };

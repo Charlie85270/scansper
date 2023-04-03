@@ -107,7 +107,7 @@ const DeploysList = () => {
   });
 
   return (
-    <div className="flex overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
+    <div className="w-full overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
       <Table
         totalItems={rows.length}
         isLoading={deploysQuery.isFetching}

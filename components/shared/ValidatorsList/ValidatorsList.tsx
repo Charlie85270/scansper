@@ -111,7 +111,7 @@ const ValidatorsList = () => {
 
   return (
     <div>
-      <div className="flex overflow-y-hidden bg-white rounded-md shadow flex-nowrap">
+      <div className="w-full overflow-y-hidden bg-white rounded-md shadow">
         <Table
           totalItems={rows?.length || 1}
           isLoading={statusInfos.isFetching || validators.isFetching}

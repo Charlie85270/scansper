@@ -5,7 +5,7 @@ import Pager from "./Pager";
 
 interface TableProps {
   header: string[];
-  rows: React.ReactNode[][];
+  rows: JSX.Element[][] | undefined;
   isLoading?: boolean;
   showPagination?: boolean;
   onPageChange?: (page: number) => void;
