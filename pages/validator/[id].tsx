@@ -99,7 +99,7 @@ const Valiator = () => {
   };
   return (
     <AppLayout
-      title="Casper Network Validators list"
+      title="Casper Network validator"
       desc="Find the best validators to stake you CSPR tokens"
     >
       <div className="">

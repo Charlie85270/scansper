@@ -2,12 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useGetBlockssByValidator } from "../../../hooks/useGetBlocksByValidator";
-import {
-  formatNumber,
-  getRelativeTime,
-  MOTE_VALUE,
-  truncateString,
-} from "../../../utils/Utils";
+import { getRelativeTime, truncateString } from "../../../utils/Utils";
 import Table from "../Table/Table";
 
 const BlocksByValidatorsList = () => {

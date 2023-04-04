@@ -19,6 +19,14 @@ import {
   ValidatorPayload,
 } from "../types/validator";
 
+import {
+  BalancePayload,
+  DelegationsDetailsPayload,
+  ItemFromHashAccountPayload,
+  TotalRewardAccountPayload,
+  UndelegateTokensPayload,
+} from "../types/account";
+
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
 
@@ -111,6 +119,13 @@ export const getValidatorTotalRewards = (
     url: `${make_api_url}validators/${publicKey}/total-rewards`,
   });
 };
+export const getDelegatorsTotalRewards = (
+  publicKey: string
+): Promise<RewardsValidatorsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}delegators/${publicKey}/total-rewards`,
+  });
+};
 export const getValidatorTotalDelegatorsRewards = (
   publicKey: string
 ): Promise<RewardsValidatorsPayload> => {
@@ -149,5 +164,48 @@ export const getBlocksByValidator = (
     url: `${make_api_url}validators/${publicKey}/blocks?page=${
       page || 1
     }&limit=12`,
+  });
+};
+
+export const getTotalRewardsByAccount = (
+  publicKey: string
+): Promise<TotalRewardAccountPayload> => {
+  return sendRequest({
+    url: `${make_api_url}delegators/${publicKey}/total-rewards`,
+  });
+};
+
+export const getDelegationDetailsByAccount = (
+  publicKey: string
+): Promise<DelegationsDetailsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${publicKey}/delegations?page=1&limit=-1&fields=account_info`,
+  });
+};
+
+export const getTokenUndelegateByAccount = (
+  publicKey: string,
+  eraId: number
+): Promise<UndelegateTokensPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${publicKey}/tokens-in-undelegation/${eraId}`,
+  });
+};
+
+export const getItemFromHashAccount = (
+  state_root_hash: string,
+  accountHash: string
+): Promise<ItemFromHashAccountPayload> => {
+  return sendRequest({
+    url: `${make_api_url}rpc/state_get_item?state_root_hash=${state_root_hash}&key=${accountHash}`,
+  });
+};
+
+export const getBalanceFromUref = (
+  state_root_hash: string,
+  purse_uref: string
+): Promise<BalancePayload> => {
+  return sendRequest({
+    url: `${make_api_url}rpc/state_get_balance?state_root_hash=${state_root_hash}&purse_uref=${purse_uref}`,
   });
 };
