@@ -9,7 +9,6 @@ export const IndexPage = () => {
   const era = statusInfos.data?.result.last_added_block_info.era_id || 0;
   const validators = useGetAllValidators(era);
 
-  console.log(validators);
   return (
     <AppLayout
       title="Casper Network Validators list"

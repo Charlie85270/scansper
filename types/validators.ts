@@ -146,3 +146,35 @@ export interface Page {
   number: number;
   url: string;
 }
+
+export interface DelegationsPayload {
+  data: Delegation[];
+  pageCount: number;
+  itemCount: number;
+  pages: Page[];
+}
+
+export interface Delegation {
+  public_key: string;
+  stake: string;
+  bonding_purse: string;
+  validator_public_key: string;
+  validator: Validator;
+}
+
+export interface Validator {
+  era_id: number;
+  public_key: string;
+  is_active: boolean;
+  fee: number;
+  delegators_number: number;
+  self_stake: string;
+  bid_amount: string;
+  total_stake: string;
+  delegator_stake: string;
+  self_share: string;
+  network_share: string;
+  rank: number;
+  account_info: AccountInfo;
+  average_performance: null;
+}

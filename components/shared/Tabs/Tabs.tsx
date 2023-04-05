@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import React from "react";
-import { useState } from "react";
 
 interface PropsTabs {
   tabs: { id: string; title: string }[];
@@ -9,7 +8,7 @@ interface PropsTabs {
   resetUrlOnchange?: boolean;
 }
 
-const Tabs = ({ tabs, tabsContent }: PropsTabs) => {
+const Tabs = ({ tabs, tabsContent, resetUrlOnchange }: PropsTabs) => {
   const { push, query } = useRouter();
   const { tab } = query;
   const currentIndex = tabs.findIndex(i => i.id === tab);
@@ -23,9 +22,19 @@ const Tabs = ({ tabs, tabsContent }: PropsTabs) => {
               className="mr-2 hover:cursor-pointer"
               role="link"
               onClick={() => {
-                push({ query: { ...query, tab: iTab.id } }, undefined, {
-                  shallow: true,
-                });
+                push(
+                  {
+                    query: {
+                      ...query,
+                      tab: iTab.id,
+                      page: resetUrlOnchange ? 1 : query.page,
+                    },
+                  },
+                  undefined,
+                  {
+                    shallow: true,
+                  }
+                );
               }}
             >
               <p

@@ -3,4 +3,4 @@ import { getAuctionMetrics } from "../services/httpReq";
 import { AuctionMetricsPayload } from "../types";
 
 export const useGetAuctionMetrics = () =>
-  useQuery<AuctionMetricsPayload, Error>("metrics", getAuctionMetrics);
+  useQuery<AuctionMetricsPayload, Error>("metrics-auction", getAuctionMetrics);

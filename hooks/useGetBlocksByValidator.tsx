@@ -7,7 +7,7 @@ import { BlocksValidatorPayload } from "../types/validator";
 
 export const useGetBlockssByValidator = (publicKey: string, page?: number) =>
   useQuery<BlocksValidatorPayload, Error>(
-    "blocksByValidator",
+    `blocksByValidator-${publicKey}`,
     () => getBlocksByValidator(publicKey, page),
     {
       refetchOnWindowFocus: false,

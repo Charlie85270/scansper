@@ -8,7 +8,7 @@ import {
   TrendingNFTCollectionPayload,
 } from "../types";
 import { CoinCommunityPayload } from "../types/coinGeckoTypes";
-import { ValidatorsPayload } from "../types/validators";
+import { DelegationsPayload, ValidatorsPayload } from "../types/validators";
 import { DeploysPayload } from "../types/deploys";
 import fetch from "./request";
 import {
@@ -18,18 +18,22 @@ import {
   RewardsValidatorsPayload,
   ValidatorPayload,
 } from "../types/validator";
-
+import { TransfersPayload } from "../types/transfers";
 import {
   BalancePayload,
   DelegationsDetailsPayload,
   ItemFromHashAccountPayload,
+  NFTByAccountPayload,
+  RewardsPayload,
   TotalRewardAccountPayload,
   UndelegateTokensPayload,
 } from "../types/account";
+import { FriendlyNFTByAccount } from "../types/nft";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
 
+export const pageSize = 12;
 const coingecko_url = "https://api.coingecko.com/api/v3/";
 const casper_token_id = "casper-network";
 const make_api_url = "https://event-store-api-clarity-mainnet.make.services/";
@@ -81,7 +85,7 @@ export const getStatusInfos = (): Promise<StatusInfoPayload> => {
 
 export const getDeploys = (
   page: number,
-  limit: number = 10
+  limit: number = pageSize
 ): Promise<DeploysPayload> => {
   return sendRequest({
     url: `${make_api_url}extended-deploys?page=${page}&limit=${limit}&fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
@@ -141,7 +145,18 @@ export const getValidatorsListByDelegator = (
   return sendRequest({
     url: `${make_api_url}auction-validators/${publicKey}/delegations?page=${
       page || 1
-    }&limit=12&fields=account_info`,
+    }&limit=${pageSize}&fields=account_info`,
+  });
+};
+
+export const getDelegationsListByAccount = (
+  publicKey: string,
+  page?: number
+): Promise<DelegationsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${publicKey}/delegations?page=${
+      page || 1
+    }&limit=${pageSize}&fields=account_info,validator`,
   });
 };
 
@@ -152,7 +167,7 @@ export const getRewardsByDelegator = (
   return sendRequest({
     url: `${make_api_url}validators/${publicKey}/rewards?page=${
       page || 1
-    }&limit=12&with_amounts_in_currency_id=1`,
+    }&limit=${pageSize}&with_amounts_in_currency_id=1`,
   });
 };
 
@@ -163,7 +178,7 @@ export const getBlocksByValidator = (
   return sendRequest({
     url: `${make_api_url}validators/${publicKey}/blocks?page=${
       page || 1
-    }&limit=12`,
+    }&limit=${pageSize}`,
   });
 };
 
@@ -207,5 +222,62 @@ export const getBalanceFromUref = (
 ): Promise<BalancePayload> => {
   return sendRequest({
     url: `${make_api_url}rpc/state_get_balance?state_root_hash=${state_root_hash}&purse_uref=${purse_uref}`,
+  });
+};
+
+export const getDeploysByAccount = (
+  publicKey: string,
+  page?: number
+): Promise<DeploysPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${publicKey}/extended-deploys?page=${
+      page || 1
+    }&limit=${pageSize}&fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getTransfersByAccount = (
+  publicKey: string,
+  page?: number
+): Promise<TransfersPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${publicKey}/transfers?page=${
+      page || 1
+    }&limit=${pageSize}&with_extended_info=1&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getRewardsByAccount = (
+  publicKey: string,
+  page?: number
+): Promise<RewardsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}delegators/${publicKey}/rewards?page=${
+      page || 1
+    }&limit=${pageSize}&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getCasperLiveNFTByAccount = (
+  accountHash: string,
+  page?: number
+): Promise<NFTByAccountPayload> => {
+  return sendRequest({
+    url: `${make_api_url}accounts/${accountHash}/nft-tokens?page=${
+      page || 1
+    }&limit=${pageSize}&fields=contract_package`,
+  });
+};
+
+export const getFriendlyMarketNFTByAccount = (
+  accountHash,
+  page
+): Promise<FriendlyNFTByAccount> => {
+  return sendRequest({
+    url: `${friendly_market_url}nft/owner/owned/null/${accountHash}?limit=${
+      pageSize * page
+    }&skip=${
+      (page - 1) * pageSize
+    }&filter=[]&sortBy=undefined&price=[null,null]&collections=[]&search=undefined&paymentToken=undefined&attributes=undefined`,
   });
 };

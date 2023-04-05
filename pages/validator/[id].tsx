@@ -17,7 +17,12 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 import { TbWorld } from "react-icons/tb";
 import dynamic from "next/dynamic";
-import { formatNumber, getPerfColor, MOTE_VALUE } from "../../utils/Utils";
+import {
+  formatNumber,
+  getAvatarUrl,
+  getPerfColor,
+  MOTE_VALUE,
+} from "../../utils/Utils";
 import { useGetHistoryCasperPrice } from "../../hooks/useGetHistoryCasperPrice";
 import { useGetValidatorTotalRewards } from "../../hooks/useGetValidatorTotalRewards";
 import { useGetValidatorTotalDelegatorsRewards } from "../../hooks/useGetValidatorTotalDelegatorsRewards";
@@ -117,9 +122,7 @@ const Valiator = () => {
                             .png_1024 ||
                           validator?.account_info?.info.owner.branding.logo
                             .png_256 ||
-                          `https://avatars.dicebear.com/api/identicon/:${
-                            validator?.public_key.slice(13) ?? ""
-                          }.svg`
+                          getAvatarUrl(validator?.public_key || "")
                         }
                       />
                       <div>
@@ -376,7 +379,11 @@ const Valiator = () => {
               </div>
 
               <div className="w-full pt-4 mt-4 border-t">
-                <Tabs tabsContent={tabsContent} tabs={tabsTitle} />
+                <Tabs
+                  tabsContent={tabsContent}
+                  resetUrlOnchange
+                  tabs={tabsTitle}
+                />
               </div>
             </div>
           </Card>

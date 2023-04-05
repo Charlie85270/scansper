@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FiUsers } from "react-icons/fi";
 import {
   formatNumber,
+  getAvatarUrl,
   getPerfColor,
   MOTE_VALUE,
   truncateString,
@@ -16,7 +17,6 @@ import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPric
 
 const ValidatorsList = () => {
   const statusInfos = useGetStatusInfos();
-  const [isLoading, setIsLoading] = useState(true);
   const era = statusInfos.data?.result.last_added_block_info.era_id || 0;
   const validators = useGetAllValidators(era);
   const price = useGetHistoryCasperPrice(1);
@@ -46,12 +46,11 @@ const ValidatorsList = () => {
         href={`/validator/${item.public_key}?tab=delegators`}
       >
         <img
-          className="w-8 h-8 rounded-full"
+          className="w-8 h-8 rounded-lg"
           src={
             item.account_info?.info.owner.branding.logo.png_256 ||
-            `https://avatars.dicebear.com/api/identicon/:${
-              item?.public_key.slice(13) ?? ""
-            }.svg`
+            item.account_info?.info.owner.branding.logo.png_1024 ||
+            getAvatarUrl(item.public_key)
           }
         />
         <div className="">

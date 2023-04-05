@@ -7,7 +7,7 @@ export const useGetValidatorsListByDelegator = (
   page?: number
 ) =>
   useQuery<DelegatorsPayload, Error>(
-    "delegatorsByValidator",
+    `delegatorsByValidator-${publicKey}`,
     () => getValidatorsListByDelegator(publicKey, page),
     {
       refetchOnWindowFocus: false,

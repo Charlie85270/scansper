@@ -4,7 +4,7 @@ import { RewardsValidatorsPayload } from "../types/validator";
 
 export const useGetValidatorTotalDelegatorsRewards = publicKey =>
   useQuery<RewardsValidatorsPayload, Error>(
-    "delegatorsRewards",
+    `delegatorsRewards-${publicKey}`,
     () => getValidatorTotalDelegatorsRewards(publicKey),
     {
       enabled: Boolean(publicKey),

@@ -18,6 +18,7 @@ import { useGetCoinCommunityData } from "../hooks/useGetCoinCommunityData";
 import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard";
 import DeploysList from "../components/shared/DeploysList/DeploysList";
 import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
+import Card from "../components/shared/Card/Card";
 
 export const IndexPage = () => {
   // Queries
@@ -28,8 +29,9 @@ export const IndexPage = () => {
   const community = useGetCoinCommunityData();
 
   const totalStaked =
-    Number(Number(queryAuction.data?.total_active_era_stake || 0).toFixed(0)) /
-    MOTE_VALUE;
+    Number(
+      Number(Number(queryAuction.data?.total_active_era_stake)).toFixed(0)
+    ) / MOTE_VALUE;
 
   const blockHeight =
     statusInfos.data?.result.last_added_block_info.height || 0;
@@ -173,7 +175,9 @@ export const IndexPage = () => {
       <div className="items-start 2xl:space-x-4 2xl:flex">
         <div className="sm:w-full 2xl:w-5/6">
           <SeeMoreBloc href="/deploys" title="Latest deploys">
-            <DeploysList />
+            <Card>
+              <DeploysList />
+            </Card>
           </SeeMoreBloc>
         </div>
         <div className="mt-6 2xl:mt-24 sm:w-full 2xl:w-1/4 lg:block">

@@ -4,7 +4,7 @@ import { TotalRewardAccountPayload } from "../types/account";
 
 export const useGetTotalRewardsByAccount = id =>
   useQuery<TotalRewardAccountPayload, Error>(
-    `rewards-${id}`,
+    `rewards-by-account-${id}`,
     () => getTotalRewardsByAccount(id),
     {
       refetchOnWindowFocus: false,

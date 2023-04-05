@@ -7,7 +7,7 @@ import { ItemFromHashAccountPayload } from "../types/account";
 
 export const useGetItemFromHashAccount = (state_root_hash, account_hash) =>
   useQuery<ItemFromHashAccountPayload, Error>(
-    `itemHash-${state_root_hash}`,
+    `itemHash-${account_hash}`,
     () => getItemFromHashAccount(state_root_hash, account_hash),
     {
       refetchOnWindowFocus: false,

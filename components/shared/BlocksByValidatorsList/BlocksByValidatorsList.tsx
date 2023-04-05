@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useGetBlockssByValidator } from "../../../hooks/useGetBlocksByValidator";
-import { getRelativeTime, truncateString } from "../../../utils/Utils";
+import { getRelativeDateTime, truncateString } from "../../../utils/Utils";
 import Table from "../Table/Table";
 
 const BlocksByValidatorsList = () => {
@@ -25,7 +25,7 @@ const BlocksByValidatorsList = () => {
       <p className="text-gray-500 ">{item.blockHeight}</p>,
       <p className="text-gray-500 ">{item.eraId}</p>,
 
-      <span> {getRelativeTime(new Date(item.timestamp))}</span>,
+      <span> {getRelativeDateTime({ date1: new Date(item.timestamp) })}</span>,
       <p className="text-gray-500 ">{item.deployCount}</p>,
       <Link
         className="text-blue-500 hover:text-blue-900"
@@ -36,20 +36,22 @@ const BlocksByValidatorsList = () => {
     ];
   });
   return (
-    <Table
-      showTotalItems
-      totalItems={queryBlocks.data?.itemCount || 1}
-      pageSize={12}
-      showPagination
-      currentPage={Number(page) || 1}
-      onPageChange={page => {
-        push({ query: { ...query, page } }, undefined, {
-          shallow: true,
-        });
-      }}
-      rows={rows}
-      header={headers}
-    />
+    <div className="w-full overflow-y-hidden flex-nowrap">
+      <Table
+        showTotalItems
+        totalItems={queryBlocks.data?.itemCount || 1}
+        pageSize={12}
+        showPagination
+        currentPage={Number(page) || 1}
+        onPageChange={page => {
+          push({ query: { ...query, page } }, undefined, {
+            shallow: true,
+          });
+        }}
+        rows={rows}
+        header={headers}
+      />
+    </div>
   );
 };
 

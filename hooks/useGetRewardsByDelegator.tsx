@@ -4,7 +4,7 @@ import { RewardsDelegatorPayload } from "../types/validator";
 
 export const useGetRewardsByDelegator = (publicKey: string, page?: number) =>
   useQuery<RewardsDelegatorPayload, Error>(
-    "rewardsByValidator",
+    `rewardsByValidator-${publicKey}`,
     () => getRewardsByDelegator(publicKey, page),
     {
       refetchOnWindowFocus: false,
