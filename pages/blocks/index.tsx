@@ -7,9 +7,9 @@ export const BlocksPage = () => {
   return (
     <AppLayout
       title="Casper Network deploys list"
-      desc="Get all informations about transactions, deploys, staking, mint on Casper network"
+      desc="Get all informations about transactions, deploys, blocks, staking, mint on Casper network"
     >
-      <Card titleSize="large" title="Blocks">
+      <Card titleSize="large" title="Latest blocks">
         <BlocksList />
       </Card>
     </AppLayout>

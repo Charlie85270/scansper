@@ -68,7 +68,7 @@ const BlocksList = ({ pubicKey, isAccount }: DeployListProps) => {
 
       <Link
         className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
-        href={`/account/${item.proposer}?tab=deploys`}
+        href={`/validator/${item.proposer}?tab=delegators`}
       >
         <img
           className="w-6 h-6 rounded-lg"
