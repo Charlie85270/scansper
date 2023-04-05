@@ -19,6 +19,7 @@ const Tabs = ({ tabs, tabsContent, resetUrlOnchange }: PropsTabs) => {
         {tabs.map(iTab => {
           return (
             <li
+              key={iTab.id}
               className="mr-2 hover:cursor-pointer"
               role="link"
               onClick={() => {

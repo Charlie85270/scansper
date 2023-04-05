@@ -31,11 +31,11 @@ const NavBar = () => {
       link: "/deploys",
       icon: FiServer,
     },
-    {
-      label: "My account",
-      link: "/account",
-      icon: FiBriefcase,
-    },
+    // {
+    //   label: "My account",
+    //   link: "/account",
+    //   icon: FiBriefcase,
+    // },
 
     {
       label: "Blocks",

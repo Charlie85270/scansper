@@ -34,6 +34,7 @@ const Table = ({
             {header.map(head => {
               return (
                 <th
+                  key={head}
                   scope="col"
                   className="px-5 py-5 font-semibold text-left text-gray-700 bg-white border-b border-gray-200 text-md"
                 >
@@ -54,9 +55,9 @@ const Table = ({
               </td>
             </tr>
           ) : (
-            rows?.map(row => {
+            rows?.map((row, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   {row.map(r => {
                     return (
                       <td className="px-5 py-3 text-base bg-white border-b border-gray-200">

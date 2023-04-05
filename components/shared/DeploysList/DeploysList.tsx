@@ -29,7 +29,7 @@ interface DeployListProps {
 
 const DeploysList = ({ pubicKey, isAccount }: DeployListProps) => {
   const { push, query } = useRouter();
-  const { id } = query;
+
   const { page } = query;
 
   const deploysQuery = isAccount

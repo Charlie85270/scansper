@@ -109,7 +109,11 @@ const Valiator = () => {
     >
       <div className="">
         <div className="w-full mb-4">
-          <Card>
+          <Card
+            title="Delegator details"
+            backLabel="Back to validtors"
+            backLink="/validators"
+          >
             <div className="p-2">
               <div className="items-center justify-between md:space-x-8 lg:space-x-16 md:items-start md:flex">
                 <div className="w-full md:w-2/6">

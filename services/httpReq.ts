@@ -28,7 +28,9 @@ import {
   TotalRewardAccountPayload,
   UndelegateTokensPayload,
 } from "../types/account";
+import { BlocksPayload } from "../types/blocks";
 import { FriendlyNFTByAccount } from "../types/nft";
+import { DeployPayload } from "../types/deploy";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
@@ -279,5 +281,23 @@ export const getFriendlyMarketNFTByAccount = (
     }&skip=${
       (page - 1) * pageSize
     }&filter=[]&sortBy=undefined&price=[null,null]&collections=[]&search=undefined&paymentToken=undefined&attributes=undefined`,
+  });
+};
+
+export const getDeployDetails = (id: string): Promise<DeployPayload> => {
+  return sendRequest({
+    url: `${make_api_url}extended-deploys/${id}?fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getDeployRaw = (id: string): Promise<any> => {
+  return sendRequest({
+    url: `${make_api_url}raw-processed-deploys/${id}`,
+  });
+};
+
+export const getBlocks = (page?: number): Promise<BlocksPayload> => {
+  return sendRequest({
+    url: `${make_api_url}blocks?page=${page}&limit=${pageSize}`,
   });
 };

@@ -109,15 +109,13 @@ const ValidatorsList = () => {
   });
 
   return (
-    <div>
-      <div className="w-full overflow-y-hidden bg-white rounded-md shadow">
-        <Table
-          totalItems={rows?.length || 1}
-          isLoading={statusInfos.isFetching || validators.isFetching}
-          rows={rows || []}
-          header={headers}
-        />
-      </div>
+    <div className="w-full overflow-y-hidden">
+      <Table
+        totalItems={rows?.length || 1}
+        isLoading={statusInfos.isFetching || validators.isFetching}
+        rows={rows || []}
+        header={headers}
+      />
     </div>
   );
 };

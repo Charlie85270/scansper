@@ -227,7 +227,7 @@ export const getPublicKeyName = (
       del => del.publicKey === publicKey
     );
     if (isDelegatorKnow) {
-      name = isDelegatorKnow.name || "";
+      name = isDelegatorKnow.name || publicKey;
     }
   }
   return name;
