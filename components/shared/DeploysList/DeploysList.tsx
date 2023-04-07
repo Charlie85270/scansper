@@ -82,7 +82,7 @@ const DeploysList = ({
       <div>{getNodeFromMethod(method)}</div>,
       <Link
         className="text-blue-500 hover:text-blue-900"
-        href={`/block/${item.deploy_hash}?tab=deploys`}
+        href={`/block/${item.block_hash}?tab=deploys`}
       >
         {truncateString(item.block_hash, 10)}
       </Link>,

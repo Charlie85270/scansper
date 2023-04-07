@@ -111,7 +111,7 @@ const Valiator = () => {
       <div className="">
         <div className="w-full mb-4">
           <Card
-            title="Delegator details"
+            title="Validator details"
             backLabel="Back to validators"
             backLink="/validators"
           >

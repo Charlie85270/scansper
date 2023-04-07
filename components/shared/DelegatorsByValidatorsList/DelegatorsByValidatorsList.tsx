@@ -74,20 +74,22 @@ const DelegatorsByValidatorsList = () => {
     ];
   });
   return (
-    <Table
-      showTotalItems
-      totalItems={queryValidator.data?.itemCount || 0}
-      pageSize={12}
-      showPagination
-      currentPage={Number(page) || 1}
-      onPageChange={page => {
-        push({ query: { ...query, page } }, undefined, {
-          shallow: true,
-        });
-      }}
-      rows={rows}
-      header={headers}
-    />
+    <div className="w-full overflow-y-hidden flex-nowrap">
+      <Table
+        showTotalItems
+        totalItems={queryValidator.data?.itemCount || 0}
+        pageSize={12}
+        showPagination
+        currentPage={Number(page) || 1}
+        onPageChange={page => {
+          push({ query: { ...query, page } }, undefined, {
+            shallow: true,
+          });
+        }}
+        rows={rows}
+        header={headers}
+      />
+    </div>
   );
 };
 
