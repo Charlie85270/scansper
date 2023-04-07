@@ -29,7 +29,7 @@ const BlocksByValidatorsList = () => {
       <p className="text-gray-500 ">{item.deployCount}</p>,
       <Link
         className="text-blue-500 hover:text-blue-900"
-        href={`/block/${item.blockHash}`}
+        href={`/block/${item.blockHash}?tab=deploys`}
       >
         {truncateString(item.blockHash, 10)}
       </Link>,
@@ -39,7 +39,7 @@ const BlocksByValidatorsList = () => {
     <div className="w-full overflow-y-hidden flex-nowrap">
       <Table
         showTotalItems
-        totalItems={queryBlocks.data?.itemCount || 1}
+        totalItems={queryBlocks.data?.itemCount || 0}
         pageSize={12}
         showPagination
         currentPage={Number(page) || 1}

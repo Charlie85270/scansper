@@ -1,6 +1,9 @@
 import classNames from "classnames";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+const Map = dynamic(() => import("react-map-gl"), { ssr: false });
+
 import { FiUsers } from "react-icons/fi";
 import {
   formatNumber,
@@ -14,6 +17,8 @@ import Table from "../Table/Table";
 import { useGetStatusInfos } from "../../../hooks/useGetStatusInfos";
 import { useGetAllValidators } from "../../../hooks/useGetAllValidators";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
+import { Marker, Popup } from "react-map-gl";
+import { Datum } from "../../../types/validators";
 
 const ValidatorsList = () => {
   const statusInfos = useGetStatusInfos();
@@ -21,7 +26,7 @@ const ValidatorsList = () => {
   const validators = useGetAllValidators(era);
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
-
+  const [popupInfo, setPopupInfo] = useState<Datum>();
   // Error state
   if (validators.error && !validators.isLoading) {
     return <ErrorMessage />;
@@ -108,14 +113,121 @@ const ValidatorsList = () => {
     ];
   });
 
+  const getLocation = (t?: Datum) => {
+    if (!t) {
+      return undefined;
+    }
+    if (
+      !t.account_info?.info.nodes[0]?.location.longitude &&
+      !t.account_info?.info.owner?.location.longitude
+    ) {
+      return undefined;
+    }
+
+    return {
+      long:
+        t.account_info?.info.nodes[0]?.location.longitude ||
+        t.account_info?.info.owner?.location.longitude,
+      lat:
+        t.account_info?.info.nodes[0]?.location.latitude ||
+        t.account_info?.info.owner?.location.latitude,
+    };
+  };
+
+  const pins = validators.data?.data
+    .filter(t => getLocation(t))
+    .map(val => {
+      return (
+        <Marker
+          longitude={getLocation(val)?.long}
+          latitude={getLocation(val)?.lat}
+          onClick={e => {
+            console.log(getLocation(val)?.long);
+            console.log(getLocation(val)?.lat);
+            // If we let the click event propagates to the map, it will immediately close the popup
+            // with `closeOnClick: true`
+            e.originalEvent.stopPropagation();
+            setPopupInfo(val);
+          }}
+          anchor="bottom"
+        >
+          <img
+            className="w-6 rounded-full"
+            src={
+              val.account_info?.info.owner.branding.logo.png_256 ||
+              val.account_info?.info.owner.branding.logo.png_1024 ||
+              getAvatarUrl(val.public_key)
+            }
+          />
+        </Marker>
+      );
+    });
+
   return (
-    <div className="w-full overflow-y-hidden">
-      <Table
-        totalItems={rows?.length || 1}
-        isLoading={statusInfos.isFetching || validators.isFetching}
-        rows={rows || []}
-        header={headers}
-      />
+    <div className="relative overflow-hidden rounded-lg">
+      <Map
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
+        initialViewState={{
+          longitude: 8.22,
+          latitude: 46.8,
+          zoom: 1,
+        }}
+        mapStyle="mapbox://styles/crabiller/ck95juxij2kf71iqbdoi5v00w"
+        style={{ width: "100%", height: 300 }}
+      >
+        {pins}
+        {popupInfo && (
+          <Popup
+            anchor="bottom"
+            closeButton={false}
+            longitude={getLocation(popupInfo)?.long || 1}
+            latitude={getLocation(popupInfo)?.lat || 1}
+            onClose={() => setPopupInfo(undefined)}
+          >
+            <Link
+              className="flex-col items-start space-x-4 hover:underline"
+              href={`/validator/${popupInfo.public_key}?tab=delegators`}
+            >
+              <div className="flex items-center space-x-4">
+                <img
+                  className="w-8 h-8 rounded-lg"
+                  src={
+                    popupInfo.account_info?.info.owner.branding.logo.png_256 ||
+                    popupInfo.account_info?.info.owner.branding.logo.png_1024 ||
+                    getAvatarUrl(popupInfo.public_key)
+                  }
+                />
+                <div className="">
+                  <p className="text-sm text-gray-800">
+                    {popupInfo.account_info?.info.owner.name}
+                  </p>
+                  {popupInfo?.account_info?.info.owner.location.country && (
+                    <div className="flex items-center space-x-2 text-gray-400">
+                      <img
+                        className="w-4 h-4"
+                        src={`https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${popupInfo?.account_info?.info.owner.location.country.toLocaleLowerCase()}.svg`}
+                      />
+                      <span>
+                        {popupInfo?.account_info?.info.owner.location.country},
+                        {popupInfo?.account_info?.info.owner.location.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Link>
+          </Popup>
+        )}
+      </Map>
+
+      <div className="w-full overflow-y-hidden">
+        <Table
+          totalItems={rows?.length || 0}
+          isLoading={statusInfos.isFetching || validators.isFetching}
+          rows={rows || []}
+          header={headers}
+        />
+      </div>
     </div>
   );
 };

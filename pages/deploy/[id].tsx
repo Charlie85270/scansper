@@ -18,6 +18,7 @@ import { getExecutionTypeById } from "../../types/deploys";
 import classNames from "classnames";
 import { useGetDeployRaw } from "../../hooks/useGetDeployRaw";
 import dynamic from "next/dynamic";
+import { getNodeFromMethod } from "../../components/shared/DeploysList/DeploysList";
 const DynamicReactJson = dynamic(import("react-json-view"), { ssr: false });
 
 const Deploy = () => {
@@ -63,7 +64,7 @@ const Deploy = () => {
                 <p className="text-gray-400 text-md">Block hash</p>
                 <Link
                   className="flex items-center space-x-2 text-lg text-blue-500 truncate hover:text-blue-900"
-                  href={`/block/${data?.block_hash}`}
+                  href={`/block/${data?.block_hash}?tab=deploys`}
                 >
                   {data?.block_hash}
                 </Link>
@@ -93,12 +94,15 @@ const Deploy = () => {
                 <p className="text-gray-400 text-md">Action</p>
                 {data?.contract_package ? (
                   <div className="flex space-x-2">
-                    <span>{method}</span>
+                    {getNodeFromMethod(method)}
                     <Link
                       className="flex-col items-center space-x-2 text-blue-500 hover:text-blue-900"
-                      href={`/contract-package/${data?.contract_package}`}
+                      href={`/contract-package/${data?.contract_package.contract_package_hash}?tab=deploys`}
                     >
-                      <span>with Auction System Contract</span>
+                      <span>
+                        with {data.contract_package.contract_name} System
+                        Contract
+                      </span>
                     </Link>
                   </div>
                 ) : (

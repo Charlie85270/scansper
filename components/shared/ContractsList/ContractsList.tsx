@@ -1,7 +1,8 @@
+import classNames from "classnames";
 import Link from "next/link";
 import React, { useContext, useEffect } from "react";
+
 import {
-  formatNumber,
   getAvatarUrl,
   getPublicKeyName,
   getRelativeDateTime,
@@ -12,62 +13,59 @@ import Table from "../Table/Table";
 import { useRouter } from "next/router";
 import { pageSize } from "../../../services/httpReq";
 import AppContext from "../../../AppContext";
-import { useGetBlocks } from "../../../hooks/useGetBlocks";
+import { useGetContracts } from "../../../hooks/useGetContracts";
 
-interface DeployListProps {
-  pubicKey?: string;
-  isAccount?: boolean;
-}
-
-const BlocksList = ({ pubicKey, isAccount }: DeployListProps) => {
+const ContractsList = () => {
   const { push, query } = useRouter();
-
   const { page } = query;
-
-  const blocksQuery = useGetBlocks(page);
-  const items = blocksQuery.data?.data;
+  const { validators } = useContext(AppContext);
+  const contractsQuery = useGetContracts(page);
+  const items = contractsQuery.data?.data;
   useEffect(() => {
-    blocksQuery.refetch();
+    contractsQuery.refetch();
   }, [page]);
   // Error state
-  if (blocksQuery.error || (!items && !blocksQuery.isFetching)) {
+  if (contractsQuery.error || (!items && !contractsQuery.isFetching)) {
     return <ErrorMessage />;
   }
 
   const headers = [
-    "Date",
-    "Block height",
-    "Era",
-    "Deploys",
-    "Block hash",
-    "Validator",
+    "Deployed date",
+    "Name",
+    "Package Hash",
+    "Type",
+    "30d deploys",
+    "Owner",
   ];
-  const { validators } = useContext(AppContext);
+
   const rows = items?.map(item => {
     return [
       <span className="flex items-center space-x-2 text-sm">
         <span> {getRelativeDateTime({ date1: new Date(item.timestamp) })}</span>
       </span>,
-      <span>{formatNumber(item.blockHeight)}</span>,
-      <span>{item.eraId}</span>,
-      <span>{item.deployCount + item.transferCount}</span>,
+      <span>{item.contract_name}</span>,
       <Link
         className="text-blue-500 hover:text-blue-900"
-        href={`/block/${item.blockHash}?tab=deploys`}
+        href={`/contract-package/${item.contract_package_hash}?tab=deploys`}
       >
-        {truncateString(item.blockHash, 10)}
+        {truncateString(item.contract_package_hash, 10)}
       </Link>,
+      <div>{getTypeContract(item.contract_type_id)}</div>,
+      <span>{item.deploys_num}</span>,
 
       <Link
         className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
-        href={`/validator/${item.proposer}?tab=delegators`}
+        href={`/account/${item.owner_public_key}?tab=deploys`}
       >
         <img
           className="w-6 h-6 rounded-lg"
-          src={getAvatarUrl(item.proposer, validators)}
+          src={getAvatarUrl(item.owner_public_key, validators)}
         />
         <span>
-          {truncateString(getPublicKeyName(item.proposer, validators), 10)}
+          {truncateString(
+            getPublicKeyName(item.owner_public_key, validators),
+            10
+          )}
         </span>
       </Link>,
     ];
@@ -85,7 +83,7 @@ const BlocksList = ({ pubicKey, isAccount }: DeployListProps) => {
             shallow: true,
           });
         }}
-        totalItems={blocksQuery.data?.itemCount || 0}
+        totalItems={contractsQuery.data?.itemCount || 0}
         rows={rows}
         header={headers}
       />
@@ -93,4 +91,25 @@ const BlocksList = ({ pubicKey, isAccount }: DeployListProps) => {
   );
 };
 
-export default BlocksList;
+export const getTypeContract = type => {
+  let contract = "";
+  switch (type) {
+    case 7:
+      contract = "CEP-78 NFT";
+      break;
+    case 2:
+      contract = "ERC-20";
+      break;
+    case 5:
+      contract = "CEP-47 NFT";
+      break;
+    case 1:
+      contract = "Auction";
+      break;
+    default:
+      break;
+  }
+  return contract;
+};
+
+export default ContractsList;

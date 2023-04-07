@@ -37,6 +37,7 @@
     "date-fns": "^2.29.3",
     "http-proxy": "^1.18.1",
     "lodash": "^4.17.21",
+    "mapbox-gl": "^2.13.0",
     "next": "latest",
     "next-connect": "^0.13.0",
     "next-themes": "^0.0.15",
@@ -50,6 +51,7 @@
     "react-horizontal-scrolling-menu": "^4.0.1",
     "react-icons": "^4.8.0",
     "react-json-view": "^1.21.3",
+    "react-map-gl": "^7.0.21",
     "react-query": "^3.39.3",
     "react-use": "^17.3.2",
     "tailwindcss": "^3.0.23"

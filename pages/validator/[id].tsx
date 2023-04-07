@@ -30,6 +30,7 @@ import Tabs from "../../components/shared/Tabs/Tabs";
 import DelegatorsByValidatorsList from "../../components/shared/DelegatorsByValidatorsList/DelegatorsByValidatorsList";
 import RewardsByValidatorsList from "../../components/shared/RewardsByValidatorsList/RewardsByValidatorsList";
 import BlocksByValidatorsList from "../../components/shared/BlocksByValidatorsList/BlocksByValidatorsList";
+import CopyButton from "../../components/shared/CopyButton/CopyButton";
 const Valiator = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -120,7 +121,7 @@ const Valiator = () => {
                   <div className="flex items-center justify-between px-2 space-x-4 md:justify-between">
                     <div className="flex items-center justify-between space-x-4">
                       <img
-                        className="w-16 h-16"
+                        className="w-32 h-32"
                         src={
                           validator?.account_info?.info.owner.branding.logo
                             .png_1024 ||
@@ -130,7 +131,7 @@ const Valiator = () => {
                         }
                       />
                       <div>
-                        <p className="text-xl text-gray-800">
+                        <p className="text-2xl text-gray-800">
                           {accountInfo?.info.owner.name}
                         </p>
                         {accountInfo?.info.owner.location.country && (
@@ -146,17 +147,6 @@ const Valiator = () => {
                           </div>
                         )}
                       </div>
-                    </div>
-                    <div
-                      className="flex-col items-center justify-center w-1/6 my-4 md:my-0"
-                      id="chart"
-                    >
-                      <Chart
-                        options={config}
-                        series={config.series}
-                        type="donut"
-                        height={100}
-                      />
                     </div>
                   </div>
                   <div className="flex items-center justify-start mt-4 mb-10 ml-4 space-x-6">
@@ -246,9 +236,10 @@ const Valiator = () => {
                 <div className="flex-col w-full md:w-4/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
                     <p className="text-gray-400 text-md">Public key</p>
-                    <p className="text-lg text-gray-800 truncate">
-                      {validator?.public_key}
-                    </p>
+                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                      <span>{validator?.public_key}</span>
+                      <CopyButton textToCopy={validator?.public_key} />
+                    </div>
                   </div>
                   <div className="py-2 border-b">
                     <p className="text-gray-400 text-md">Total stake</p>
@@ -315,6 +306,7 @@ const Valiator = () => {
                       </span>
                     </span>
                   </div>
+
                   <div className="py-2 border-b">
                     <p className="text-gray-400 text-md">
                       Total validators rewards
@@ -346,6 +338,21 @@ const Valiator = () => {
                         $
                       </span>
                     </span>
+                  </div>
+                  <div className="py-2">
+                    <p className="text-gray-400 text-md">Performance</p>
+                    <div
+                      className="flex-col items-start justify-start"
+                      id="chart"
+                      style={{ width: "100px" }}
+                    >
+                      <Chart
+                        options={config}
+                        series={config.series}
+                        type="donut"
+                        height={100}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

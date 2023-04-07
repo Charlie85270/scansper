@@ -24,6 +24,7 @@ import TransfersList from "../../components/shared/TransfersList/TransfersList";
 import RewardsList from "../../components/shared/RewardsList.tsx/RewardsList";
 import NFTList from "../../components/shared/NFTList/NFTList";
 import DelegationsList from "../../components/shared/DelegationsList/DelegationsList";
+import CopyButton from "../../components/shared/CopyButton/CopyButton";
 const Account = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -45,7 +46,7 @@ const Account = () => {
   const stateRootHash =
     statusInfos.data?.result.last_added_block_info.state_root_hash;
   const urefData = useGetItemFromHashAccount(stateRootHash, accountHashKey);
-  const { data, isFetching, error } = useGetDelegationDetailsByAcount(id);
+  const { data } = useGetDelegationDetailsByAcount(id);
   const { data: dataTotalRewards } = useGetDelegatorTotalRewards(id);
   const { data: dataUndelegatingToken } = useGetUndelegatingTokensByAccount(
     id,
@@ -155,13 +156,17 @@ const Account = () => {
                 <div className="flex-col w-full md:w-5/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
                     <p className="text-gray-400 text-md">Public key</p>
-                    <p className="text-lg text-gray-800 truncate">{id}</p>
+                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                      <span>{id}</span>
+                      <CopyButton textToCopy={id} />
+                    </div>
                   </div>
                   <div className="py-2 mt-4 border-b md:mt-0">
                     <p className="text-gray-400 text-md">Account hash</p>
-                    <p className="text-lg text-gray-800 truncate">
-                      {accountHash}
-                    </p>
+                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                      <span>{accountHash}</span>
+                      <CopyButton textToCopy={accountHash} />
+                    </div>
                   </div>
 
                   <div className="py-2 border-b">

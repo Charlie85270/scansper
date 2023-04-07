@@ -54,7 +54,7 @@ const RewardsByValidatorsList = () => {
   return (
     <Table
       showTotalItems
-      totalItems={queryRewards.data?.itemCount || 1}
+      totalItems={queryRewards.data?.itemCount || 0}
       pageSize={12}
       showPagination
       currentPage={Number(page) || 1}

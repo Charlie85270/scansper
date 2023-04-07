@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";

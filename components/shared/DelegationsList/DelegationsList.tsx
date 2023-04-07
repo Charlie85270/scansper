@@ -1,16 +1,11 @@
-import classNames from "classnames";
 import Link from "next/link";
 import React, { useContext, useEffect } from "react";
-import { BiTransfer } from "react-icons/bi";
-import { FiLock, FiUnlock } from "react-icons/fi";
-import { GoFileCode } from "react-icons/go";
-import { GiWarPick } from "react-icons/gi";
+
 import {
   formatNumber,
   getPublicKeyName,
   getAvatarUrl,
   MOTE_VALUE,
-  truncateString,
 } from "../../../utils/Utils";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Table from "../Table/Table";
@@ -97,7 +92,7 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
             shallow: true,
           });
         }}
-        totalItems={delegationsQuery.data?.itemCount || 1}
+        totalItems={delegationsQuery.data?.itemCount || 0}
         rows={rows}
         header={headers}
       />

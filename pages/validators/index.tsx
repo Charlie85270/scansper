@@ -1,6 +1,7 @@
 import React from "react";
 import AppLayout from "../../components/layout/AppLayout";
 import Card from "../../components/shared/Card/Card";
+
 import ValidatorsList from "../../components/shared/ValidatorsList/ValidatorsList";
 
 export const IndexPage = () => {

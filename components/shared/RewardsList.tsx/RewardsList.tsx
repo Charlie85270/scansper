@@ -98,7 +98,7 @@ const RewardsList = ({ publicKey }: DeployListProps) => {
             shallow: true,
           });
         }}
-        totalItems={rewardsQuery.data?.itemCount || 1}
+        totalItems={rewardsQuery.data?.itemCount || 0}
         rows={rows}
         header={headers}
       />

@@ -76,7 +76,7 @@ const DelegatorsByValidatorsList = () => {
   return (
     <Table
       showTotalItems
-      totalItems={queryValidator.data?.itemCount || 1}
+      totalItems={queryValidator.data?.itemCount || 0}
       pageSize={12}
       showPagination
       currentPage={Number(page) || 1}

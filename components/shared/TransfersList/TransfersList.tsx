@@ -65,7 +65,7 @@ const TransfersList = ({ accountHash }: DeployListProps) => {
       </Link>,
       <Link
         className="text-sm text-blue-500 hover:text-blue-900"
-        href={`/block/${item.blockHash}`}
+        href={`/block/${item.blockHash}?tab=deploys`}
       >
         {truncateString(item.blockHash, 10)}
       </Link>,
@@ -136,7 +136,7 @@ const TransfersList = ({ accountHash }: DeployListProps) => {
             shallow: true,
           });
         }}
-        totalItems={transfersQuery.data?.itemCount || 1}
+        totalItems={transfersQuery.data?.itemCount || 0}
         rows={rows}
         header={headers}
       />

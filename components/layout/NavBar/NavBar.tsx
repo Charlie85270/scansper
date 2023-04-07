@@ -2,7 +2,7 @@ import React from "react";
 import CasperPriceChart from "../../shared/Chart/CasperPriceChart/CasperPriceChart";
 import {
   FiHome,
-  FiBriefcase,
+  FiFileText,
   FiCodepen,
   FiServer,
   FiSun,
@@ -27,10 +27,16 @@ const NavBar = () => {
       icon: TbGavel,
     },
     {
+      label: "Contracts",
+      link: "/contracts",
+      icon: FiFileText,
+    },
+    {
       label: "Deploys",
       link: "/deploys",
       icon: FiServer,
     },
+
     // {
     //   label: "My account",
     //   link: "/account",
@@ -82,7 +88,7 @@ const NavBar = () => {
             <div>
               {links.map(link => {
                 return (
-                  <Link href={link.link} className="relative">
+                  <Link href={link.link} className="relative" key={link.link}>
                     <div
                       className={`${
                         isActive(link.link) ? "text-gray-900 bg-bgApp" : ""

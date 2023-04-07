@@ -21,20 +21,30 @@ import { useGetDeploysByAccount } from "../../../hooks/useGetDeploysByAccount";
 import { useRouter } from "next/router";
 import { pageSize } from "../../../services/httpReq";
 import AppContext from "../../../AppContext";
+import { useGetDeploysByBlock } from "../../../hooks/useGetDeploysByBlock";
 
 interface DeployListProps {
   pubicKey?: string;
   isAccount?: boolean;
+  blockId?: string;
+  contractPackage?: string;
 }
 
-const DeploysList = ({ pubicKey, isAccount }: DeployListProps) => {
+const DeploysList = ({
+  pubicKey,
+  isAccount,
+  blockId,
+  contractPackage,
+}: DeployListProps) => {
   const { push, query } = useRouter();
 
   const { page } = query;
 
   const deploysQuery = isAccount
     ? useGetDeploysByAccount(pubicKey, page)
-    : useGetDeploys(page);
+    : blockId
+    ? useGetDeploysByBlock(blockId, page)
+    : useGetDeploys(page, contractPackage);
   const items = deploysQuery.data?.data;
   useEffect(() => {
     deploysQuery.refetch();
@@ -72,7 +82,7 @@ const DeploysList = ({ pubicKey, isAccount }: DeployListProps) => {
       <div>{getNodeFromMethod(method)}</div>,
       <Link
         className="text-blue-500 hover:text-blue-900"
-        href={`/block/${item.deploy_hash}`}
+        href={`/block/${item.deploy_hash}?tab=deploys`}
       >
         {truncateString(item.block_hash, 10)}
       </Link>,
@@ -137,7 +147,7 @@ const DeploysList = ({ pubicKey, isAccount }: DeployListProps) => {
             shallow: true,
           });
         }}
-        totalItems={deploysQuery.data?.itemCount || 1}
+        totalItems={deploysQuery.data?.itemCount || 0}
         rows={rows}
         header={headers}
       />
@@ -159,7 +169,7 @@ const DeployStatus = props => {
   );
 };
 
-const getNodeFromMethod = method => {
+export const getNodeFromMethod = method => {
   let Icon = BiTransfer;
   switch (method) {
     case "transfer":

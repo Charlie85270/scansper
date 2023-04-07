@@ -17,7 +17,7 @@ const TodayDeploysStatsChart = () => {
   }
 
   // We want today stats
-  const stats = query.data
+  const stats = [...query.data]
     .filter(
       deploy => new Date(deploy.day).getUTCDate() === new Date().getUTCDate()
     )

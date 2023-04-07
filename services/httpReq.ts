@@ -9,7 +9,7 @@ import {
 } from "../types";
 import { CoinCommunityPayload } from "../types/coinGeckoTypes";
 import { DelegationsPayload, ValidatorsPayload } from "../types/validators";
-import { DeploysPayload } from "../types/deploys";
+import { ContractPackage, DeploysPayload } from "../types/deploys";
 import fetch from "./request";
 import {
   BlocksValidatorPayload,
@@ -31,6 +31,8 @@ import {
 import { BlocksPayload } from "../types/blocks";
 import { FriendlyNFTByAccount } from "../types/nft";
 import { DeployPayload } from "../types/deploy";
+import { BlockPayload } from "../types/block";
+import { ContractsPayload } from "../types/contracts";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
@@ -87,10 +89,13 @@ export const getStatusInfos = (): Promise<StatusInfoPayload> => {
 
 export const getDeploys = (
   page: number,
-  limit: number = pageSize
+  limit: number = pageSize,
+  contractPackage?: string
 ): Promise<DeploysPayload> => {
   return sendRequest({
-    url: `${make_api_url}extended-deploys?page=${page}&limit=${limit}&fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
+    url: `${make_api_url}extended-deploys?page=${page}&limit=${limit}&fields=entry_point,contract_package&with_amounts_in_currency_id=1${
+      contractPackage ? `&contract_package_hash=${contractPackage}` : ""
+    }`,
   });
 };
 
@@ -299,5 +304,36 @@ export const getDeployRaw = (id: string): Promise<any> => {
 export const getBlocks = (page?: number): Promise<BlocksPayload> => {
   return sendRequest({
     url: `${make_api_url}blocks?page=${page}&limit=${pageSize}`,
+  });
+};
+
+export const getBlockDetails = (id: string): Promise<BlockPayload> => {
+  return sendRequest({
+    url: `${make_api_url}blocks/${id}`,
+  });
+};
+
+export const getDeploysFromBlock = (
+  id: string,
+  page?: number
+): Promise<DeploysPayload> => {
+  return sendRequest({
+    url: `${make_api_url}blocks/${id}/extended-deploys?page=${
+      page || 1
+    }&limit=${pageSize}&fields=entry_point,contract_package&with_amounts_in_currency_id=1`,
+  });
+};
+
+export const getContracts = (page: number): Promise<ContractsPayload> => {
+  return sendRequest({
+    url: `${make_api_url}contract-packages?with_deploys_num=30&page=${
+      page || 1
+    }&limit=${pageSize}&order_by=timestamp&order_direction=DESC`,
+  });
+};
+
+export const getContractPackage = (id: string): Promise<ContractPackage> => {
+  return sendRequest({
+    url: `${make_api_url}contract-packages/${id}`,
   });
 };

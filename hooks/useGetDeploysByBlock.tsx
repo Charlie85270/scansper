@@ -1,12 +1,13 @@
 import { useQuery } from "react-query";
-import { getDeploys } from "../services/httpReq";
+import { getDeploysFromBlock } from "../services/httpReq";
 import { DeploysPayload } from "../types/deploys";
 
-export const useGetDeploys = (page, contractPackage?: string) =>
+export const useGetDeploysByBlock = (id: string, page) =>
   useQuery<DeploysPayload, Error>(
-    "deploys",
-    () => getDeploys(page, undefined, contractPackage),
+    `deploys-block-${id}`,
+    () => getDeploysFromBlock(id, page),
     {
+      enabled: Boolean(id),
       refetchOnWindowFocus: false,
       // cached request will stay "fresh" for 10 seconds
       staleTime: 10000,
