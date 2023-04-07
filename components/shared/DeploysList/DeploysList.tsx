@@ -137,6 +137,9 @@ const DeploysList = ({
 
   return (
     <div className="w-full overflow-y-hidden flex-nowrap">
+      <p className="p-4 text-xl text-gray-400">
+        All deploys ({deploysQuery.data?.itemCount})
+      </p>
       <Table
         showTotalItems
         showPagination

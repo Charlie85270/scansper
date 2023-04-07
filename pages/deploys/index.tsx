@@ -10,7 +10,7 @@ export const IndexPage = () => {
       title="Casper Network deploys list"
       desc="Get all informations about transactions, deploys, staking, mint on Casper network"
     >
-      <Card titleSize="large" title="Deploys">
+      <Card titleSize="large" title="Last 14 Deploys">
         <Last14DeploysStatsChart />
         <DeploysList />
       </Card>
