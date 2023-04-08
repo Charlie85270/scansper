@@ -173,7 +173,7 @@ const ValidatorsList = () => {
           zoom: 1,
         }}
         mapStyle="mapbox://styles/crabiller/ck95juxij2kf71iqbdoi5v00w"
-        style={{ width: "100%", height: 300 }}
+        style={{ width: "100%", height: 300, marginBottom: "12px" }}
       >
         {pins}
         {popupInfo && (

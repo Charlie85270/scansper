@@ -33,6 +33,8 @@ import { FriendlyNFTByAccount } from "../types/nft";
 import { DeployPayload } from "../types/deploy";
 import { BlockPayload } from "../types/block";
 import { ContractsPayload } from "../types/contracts";
+import { RichList } from "../types/richlist";
+import { Projects } from "../types/projects";
 
 export const v1Prefix = "/v1";
 export const statPrefix = "/stat";
@@ -43,6 +45,7 @@ const casper_token_id = "casper-network";
 const make_api_url = "https://event-store-api-clarity-mainnet.make.services/";
 const friendly_market_url = "https://nft-api.friendly.market/api/v1/";
 const casper_holders_url = "https://data.casperholders.com/";
+const casper_ecosystem = "https://casperecosystem.io/";
 
 export const sendRequest = (config: QueryConfig) => {
   return fetch(qs.stringifyUrl({ url: config.url, query: config.query }), {
@@ -335,5 +338,17 @@ export const getContracts = (page: number): Promise<ContractsPayload> => {
 export const getContractPackage = (id: string): Promise<ContractPackage> => {
   return sendRequest({
     url: `${make_api_url}contract-packages/${id}`,
+  });
+};
+
+export const getRichList = (page: number): Promise<RichList[]> => {
+  return sendRequest({
+    url: `${casper_holders_url}rich_list?limit=${25}&offset=${(page - 1) * 25}`,
+  });
+};
+
+export const getCasperProjects = (): Promise<Projects> => {
+  return sendRequest({
+    url: `/api/projects`,
   });
 };

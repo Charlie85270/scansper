@@ -13,7 +13,7 @@ interface Props {
 
 const Card = ({ title, children, titleSize, backLabel, backLink }: Props) => {
   return (
-    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 bg-white rounded-md shadow">
+    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 bg-white border rounded-md">
       <div className="flex items-center justify-between">
         {title && (
           <span

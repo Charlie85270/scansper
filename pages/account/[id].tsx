@@ -28,31 +28,40 @@ import CopyButton from "../../components/shared/CopyButton/CopyButton";
 const Account = () => {
   const router = useRouter();
   const { id } = router.query;
-  const accountHash = id
-    ? CLValueBuilder.publicKey(
-        decodeBase16(id?.toString() || "").subarray(1),
-        decodeBase16(id?.toString() || "")[0]
-      ).toAccountRawHashStr()
-    : undefined;
-  const accountHashKey = id
-    ? CLValueBuilder.publicKey(
-        decodeBase16(id?.toString() || "").subarray(1),
-        decodeBase16(id?.toString() || "")[0]
-      ).toAccountHashStr()
-    : undefined;
+  let accountHash = id;
+  let accountHashKey = id;
+  try {
+    accountHash = id
+      ? CLValueBuilder.publicKey(
+          decodeBase16(id?.toString() || "").subarray(1),
+          decodeBase16(id?.toString() || "")[0]
+        ).toAccountRawHashStr()
+      : undefined;
+    accountHashKey = id
+      ? CLValueBuilder.publicKey(
+          decodeBase16(id?.toString() || "").subarray(1),
+          decodeBase16(id?.toString() || "")[0]
+        ).toAccountHashStr()
+      : undefined;
+  } catch (err) {
+    // already an account hash
+  }
 
   const statusInfos = useGetStatusInfos();
   const era = statusInfos.data?.result.last_added_block_info.era_id || 0;
   const stateRootHash =
     statusInfos.data?.result.last_added_block_info.state_root_hash;
-  const urefData = useGetItemFromHashAccount(stateRootHash, accountHashKey);
+  const urefData = useGetItemFromHashAccount(
+    stateRootHash,
+    accountHashKey === id ? `account-hash-${id}` : accountHashKey
+  );
   const { data } = useGetDelegationDetailsByAcount(id);
   const { data: dataTotalRewards } = useGetDelegatorTotalRewards(id);
   const { data: dataUndelegatingToken } = useGetUndelegatingTokensByAccount(
     id,
     era
   );
-  const uref = urefData.data?.result.stored_value.Account.main_purse;
+  const uref = urefData.data?.result?.stored_value.Account.main_purse;
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
 
@@ -65,9 +74,9 @@ const Account = () => {
   ];
   const tabsContent = [
     <DeploysList isAccount pubicKey={id?.toString()} />,
-    <TransfersList accountHash={accountHash} />,
+    <TransfersList accountHash={accountHash?.toString()} />,
     <RewardsList publicKey={id?.toString()} />,
-    <NFTList accountHash={accountHash} />,
+    <NFTList accountHash={accountHash?.toString()} />,
     <DelegationsList isAccount accountHash={id?.toString()} />,
   ];
   const delegationDetails = data?.data;
@@ -122,7 +131,9 @@ const Account = () => {
                             <span className="text-xl font-medium text-gray-800">
                               {formatNumber(
                                 balanceValue +
-                                  totalStakeNumber +
+                                  (isNaN(totalStakeNumber)
+                                    ? 0
+                                    : totalStakeNumber) +
                                   totalUndelegatingNumber
                               )}
                             </span>
@@ -139,7 +150,9 @@ const Account = () => {
                                   (
                                     (balanceValue +
                                       totalUndelegatingNumber +
-                                      totalStakeNumber) *
+                                      (isNaN(totalStakeNumber)
+                                        ? 0
+                                        : totalStakeNumber)) *
                                     casperPrice
                                   ).toFixed(0)
                                 )

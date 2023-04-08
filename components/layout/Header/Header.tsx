@@ -4,7 +4,7 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white shadow dark:bg-gray-800 lg:px-0">
+    <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white border-b dark:bg-gray-800 lg:px-0">
       <div className="flex items-center h-full py-4 space-x-2">
         <div className="flex flex-wrap items-center justify-start ml-6 dark:text-white md:justify-between">
           <div className="relative flex items-center w-full h-full lg:w-96 group">

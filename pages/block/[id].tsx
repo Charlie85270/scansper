@@ -12,7 +12,7 @@ import Tabs from "../../components/shared/Tabs/Tabs";
 
 const Block = () => {
   const { query } = useRouter();
-  const { id } = query;
+  const id = query?.id;
   const blockQuery = useGetBlockById(id);
 
   const { validators } = useContext(AppContext);
