@@ -294,6 +294,9 @@ const NavBar = () => {
                             ) : (
                               <Link
                                 href={sublink.link || ""}
+                                onClick={() =>
+                                  isOpenMenu ? setIsOpenMenu(false) : null
+                                }
                                 className={classNames(
                                   {
                                     "opacity-50 cursor-not-allowed":

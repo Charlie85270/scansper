@@ -42,6 +42,15 @@ const TodayDeploysStatsChart = () => {
           },
         },
       },
+      {
+        breakpoint: 767,
+        options: {
+          chart: {
+            width: 300,
+            height: 300,
+          },
+        },
+      },
     ],
     legend: {
       show: false,
