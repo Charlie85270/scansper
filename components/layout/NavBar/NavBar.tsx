@@ -237,7 +237,7 @@ const NavBar = () => {
             <FiX className="w-8 h-8" />
           </button>
         </div>
-        <div className="px-6">
+        <div className="hidden px-6 md:block">
           <CasperPriceChart />
         </div>
         <div className="relative mt-4 overflow-hidden">
