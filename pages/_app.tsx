@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -31,10 +31,12 @@ const ContextComp = ({ children }) => {
   const statusInfos = useGetStatusInfos();
   const era = statusInfos.data?.result.last_added_block_info.era_id || 0;
   const validatorsQuery = useGetAllValidators(era);
-
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   return (
     <AppContext.Provider
       value={{
+        isOpenMenu,
+        setIsOpenMenu,
         validators:
           validatorsQuery?.data?.data?.map(item => {
             return {

@@ -122,12 +122,7 @@ const Deploy = () => {
                   />
                   <span className="text-xs text-gray-400">
                     {formatNumber(
-                      Number(
-                        (
-                          (Number(data?.amount) / MOTE_VALUE) *
-                          casperPrice
-                        ).toFixed(2)
-                      )
+                      Number((Number(data?.amount) / MOTE_VALUE) * casperPrice)
                     )}
                     $
                   </span>
@@ -138,11 +133,7 @@ const Deploy = () => {
                 <span className="flex items-center space-x-2">
                   <span className="text-lg text-gray-800">
                     {formatNumber(
-                      Number(
-                        Number(
-                          Number(data?.payment_amount) / MOTE_VALUE
-                        ).toFixed(0)
-                      )
+                      Number(Number(Number(data?.payment_amount) / MOTE_VALUE))
                     )}
                   </span>
                   <img
@@ -153,10 +144,8 @@ const Deploy = () => {
                   <span className="text-xs text-gray-400">
                     {formatNumber(
                       Number(
-                        (
-                          (Number(data?.payment_amount) / MOTE_VALUE) *
+                        (Number(data?.payment_amount) / MOTE_VALUE) *
                           casperPrice
-                        ).toFixed(2)
                       )
                     )}
                     $
@@ -169,7 +158,7 @@ const Deploy = () => {
                 <span className="flex items-center space-x-2">
                   <span className="text-lg text-gray-800">
                     {formatNumber(
-                      Number(Number(Number(data?.cost) / MOTE_VALUE).toFixed(0))
+                      Number(Number(Number(data?.cost) / MOTE_VALUE))
                     )}
                   </span>
                   <img
@@ -179,12 +168,7 @@ const Deploy = () => {
                   />
                   <span className="text-xs text-gray-400">
                     {formatNumber(
-                      Number(
-                        (
-                          (Number(data?.cost) / MOTE_VALUE) *
-                          casperPrice
-                        ).toFixed(2)
-                      )
+                      Number((Number(data?.cost) / MOTE_VALUE) * casperPrice)
                     )}
                     $
                   </span>
