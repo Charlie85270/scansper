@@ -53,7 +53,7 @@ const Header = () => {
             setIsOpenMenu(true);
             document.body.style.overflow = "hidden";
           }}
-          className="p-2 rounded hover:bg-gray-200"
+          className="p-2 rounded"
         >
           <FiMenu className="w-8 h-8" />
         </button>

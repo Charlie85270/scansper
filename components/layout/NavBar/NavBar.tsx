@@ -248,11 +248,7 @@ const NavBar = () => {
                 <li>
                   {link.childrens ? (
                     <div
-                      onClick={
-                        link.childrens
-                          ? _ => toggleSection(link.id)
-                          : () => null
-                      }
+                      onClick={() => toggleSection(link.id)}
                       className="relative cursor-pointer"
                       key={link.link}
                     >
@@ -261,11 +257,10 @@ const NavBar = () => {
                   ) : (
                     <Link
                       scroll={link.childrens ? false : true}
-                      onClick={
-                        link.childrens
-                          ? _ => toggleSection(link.id)
-                          : () => null
-                      }
+                      onClick={() => {
+                        setIsOpenMenu(false);
+                        document.body.style.overflow = "visible";
+                      }}
                       href={link.link || ""}
                       className="relative"
                       key={link.link}
