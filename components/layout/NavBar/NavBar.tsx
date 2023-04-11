@@ -14,7 +14,7 @@ import {
 import { MdTravelExplore, MdCompareArrows, MdQueryStats } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
 import { IoPodiumOutline } from "react-icons/io5";
-import { VscTools } from "react-icons/vsc";
+import { VscTools, VscSourceControl } from "react-icons/vsc";
 import { TbGavel, TbPigMoney, TbApps } from "react-icons/tb";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -96,6 +96,12 @@ const NavBar = () => {
           id: "richlist",
           link: "/stats/richlist",
           icon: IoPodiumOutline,
+        },
+        {
+          label: "Genesis accounts list",
+          id: "genesis",
+          link: "/stats/genesis",
+          icon: VscSourceControl,
         },
         {
           label: "Github activity",
