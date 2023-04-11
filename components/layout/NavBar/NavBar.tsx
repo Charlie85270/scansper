@@ -231,7 +231,7 @@ const NavBar = () => {
             }}
             className={classNames(
               { "lg:hidden": !isOpenMenu },
-              "p-2 rounded  hover:bg-gray-200"
+              "p-2 rounded mr-4 hover:bg-gray-200"
             )}
           >
             <FiX className="w-8 h-8" />

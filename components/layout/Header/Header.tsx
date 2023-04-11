@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import AppContext from "../../../AppContext";
-import NavBar from "../NavBar/NavBar";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
-  const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
+  const { setIsOpenMenu } = useContext(AppContext);
   return (
     <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white border-b dark:bg-gray-800 lg:px-0">
       <div className="flex items-center justify-between h-24">
@@ -48,9 +47,17 @@ const Header = () => {
             disabled={!searchText}
             className={`${
               !searchText ? "opacity-50" : ""
-            } w-24 h-10 px-4 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}
+            } w-12 h-12 px-4 text-base font-semibold text-center text-white transition duration-200 ease-in bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}
           >
-            Search
+            <span>
+              {" "}
+              <svg
+                className="left-0 z-20 w-4 h-4 text-white pointer-events-none fill-current group-hover:text-gray-400"
+                viewBox="0 0 20 20"
+              >
+                <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+              </svg>
+            </span>
           </button>
         </div>
         <button
