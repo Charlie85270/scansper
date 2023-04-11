@@ -22,7 +22,7 @@ const Pager = ({
     // calculate total pages
     const totalPages = Math.ceil(totalItems / pageSize);
 
-    const maxNumberPageToDisplay = 3;
+    const maxNumberPageToDisplay = 4;
 
     var startPage = 0,
       endPage = 0;
@@ -104,7 +104,7 @@ const Pager = ({
               onClick={() => onChangePage && onChangePage(1)}
               type="button"
               className={classNames(
-                "w-full px-4 py-2 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
               )}
             >
               {1}
@@ -114,7 +114,7 @@ const Pager = ({
               disabled
               type="button"
               className={classNames(
-                "w-full px-4 py-2 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
               )}
             >
               ...
@@ -128,7 +128,7 @@ const Pager = ({
             type="button"
             className={classNames(
               { "text-gray-900 bg-gray-100": pager.currentPage === page },
-              "w-full px-4 py-2 text-base border-t border-b hover:bg-gray-100 "
+              "w-full px-3 py-2 md:px-4 text-base border-t border-b hover:bg-gray-100 "
             )}
           >
             {page}
@@ -141,7 +141,7 @@ const Pager = ({
               disabled
               type="button"
               className={classNames(
-                "w-full px-4 py-2 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
               )}
             >
               ...
@@ -151,7 +151,7 @@ const Pager = ({
               onClick={() => onChangePage && onChangePage(pager.totalPages)}
               type="button"
               className={classNames(
-                "w-full px-4 py-2 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
               )}
             >
               {pager.totalPages}

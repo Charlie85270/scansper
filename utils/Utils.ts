@@ -45,6 +45,18 @@ export const KNOW_ADDRESSES = [
     name: "Casper - AG",
     img: "/labs.png",
   },
+  {
+    public_key:
+      "02029d865f743f9a67c82c84d443cbd8187bc4a08ca7b4c985f0caca1a4ee98b1f4c",
+    name: "Coinlist",
+    img: "/coinlist.jpeg",
+  },
+  {
+    public_key:
+      "01b92e36567350dd7b339d709bfe341df6fda853e85315418f1bb3ddd414d9f5be",
+    name: "Huobi",
+    img: "/huobi.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
