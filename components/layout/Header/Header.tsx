@@ -1,14 +1,19 @@
+import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import AppContext from "../../../AppContext";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
+  const router = useRouter();
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
   return (
     <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white border-b dark:bg-gray-800 lg:px-0">
       <div className="flex items-center justify-between h-24">
-        <div className="flex space-x-4 lg:hidden">
+        <div
+          className="flex space-x-4 lg:hidden"
+          onClick={() => router.push("/")}
+        >
           <img src="/cspr.png" width="50" height="50" />
         </div>
         <div className="flex items-center h-full py-4 space-x-2">
