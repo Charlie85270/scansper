@@ -220,7 +220,7 @@ export const getAvatarUrl = (
   }[]
 ) => {
   const isKnow = KNOW_ADDRESSES.find(
-    add => add.public_key.toLocaleLowerCase() === publicKey.toLocaleLowerCase()
+    add => add.public_key.toLocaleLowerCase() === publicKey?.toLocaleLowerCase()
   );
   let img = `https://api.dicebear.com/6.x/bottts-neutral/svg?seed=${
     publicKey ? publicKey.slice(12) : "abby"
@@ -249,7 +249,7 @@ export const getPublicKeyName = (
   }[]
 ) => {
   const isKnow = KNOW_ADDRESSES.find(
-    add => add.public_key.toLocaleLowerCase() === publicKey.toLocaleLowerCase()
+    add => add.public_key.toLocaleLowerCase() === publicKey?.toLocaleLowerCase()
   );
   let name = publicKey;
 
