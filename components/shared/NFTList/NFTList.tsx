@@ -39,6 +39,9 @@ const NFTList = ({ accountHash }: DeployListProps) => {
 
   return (
     <div className="pt-4">
+      <p className="italic">
+        NB : Only collections registered on Friendly.Market will appears
+      </p>
       <div className="grid grid-cols-1 gap-4 mt-4 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {items?.map((nft, index) => {
           return (

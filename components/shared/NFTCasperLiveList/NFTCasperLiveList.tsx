@@ -37,10 +37,10 @@ const NFTCasperLiveList = ({ accountHash }: DeployListProps) => {
 
   const totalItems = nftCsprLive?.data?.itemCount;
   const nftName = (meta: any) => {
-    return meta?.name;
+    return meta?.name || meta?.find(data => data.key === "name")?.value;
   };
   const nftNImg = (meta: any) => {
-    return meta?.token_uri;
+    return meta?.token_uri || meta?.find(data => data.key === "image")?.value;
   };
 
   return (

@@ -72,12 +72,12 @@ const Table = ({
             )}
           </tbody>
         </table>
-        {showTotalItems && (
-          <p className="w-full py-3 text-sm text-center text-gray-400">
-            {totalItems} results
-          </p>
-        )}
       </div>
+      {showTotalItems && (
+        <p className="w-full py-3 text-sm text-center text-gray-400">
+          {totalItems} results
+        </p>
+      )}
       {showPagination && (
         <div className="mt-2">
           <Pager
