@@ -32,6 +32,7 @@ const ContextComp = ({ children }) => {
   const era = statusInfos.data?.result.last_added_block_info.era_id || 0;
   const validatorsQuery = useGetAllValidators(era);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+
   return (
     <AppContext.Provider
       value={{

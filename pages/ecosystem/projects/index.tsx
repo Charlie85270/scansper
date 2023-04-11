@@ -1,11 +1,8 @@
-import classNames from "classnames";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import AppLayout from "../../../components/layout/AppLayout";
-import Card from "../../../components/shared/Card/Card";
 import ProjectCard from "../../../components/shared/Card/ProjectCard/ProjectCard";
 import Loader from "../../../components/shared/Loader/Loader";
-import RichList from "../../../components/shared/RichList/RichList";
 import Tag from "../../../components/shared/Tag/Tag";
 import { useGetProjects } from "../../../hooks/useGetProjects";
 

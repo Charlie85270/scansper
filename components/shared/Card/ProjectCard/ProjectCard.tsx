@@ -13,7 +13,8 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
     ? `https://casperecosystem.io${project?.childrenFile[0]?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
     : "/defaultNFT.png";
 
-  const re = /(?<=<!--lang:en--> ).*(?= <!--lang:es--])/g;
+  const re = new RegExp(/(?<=<!--lang:en--> ).*(?= <!--lang:es--])/g, "i");
+
   const chaine = project?.Description?.replace(/\n|\r|(\n\r)/g, " ") || "";
   const desc = chaine.match(re);
 
@@ -22,9 +23,14 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
       href={project.Website}
       target="_blank"
       className={classNames(
-        "px-4 bg-white hover:shadow-lg py-2 mt-2 border relative rounded-lg"
+        "px-4 relative bg-white hover:shadow-lg py-2 mt-2 border relative rounded-lg"
       )}
     >
+      {project.Status.toString() === "Not Live - In Development" && (
+        <p className="absolute top-0 right-0 p-1 text-xs text-white bg-indigo-600 rounded">
+          Comming soon
+        </p>
+      )}
       <div className="flex items-center justify-center py-3 border-b">
         <img className="rounded-lg max-w-40 max-h-12" src={img}></img>
       </div>

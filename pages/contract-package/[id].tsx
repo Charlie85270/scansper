@@ -10,7 +10,7 @@ import { getTypeContract } from "../../components/shared/ContractsList/Contracts
 import dynamic from "next/dynamic";
 import { useGetItemFromHashAccount } from "../../hooks/useGetItemFromHashAccount";
 import { useGetStatusInfos } from "../../hooks/useGetStatusInfos";
-import { CLValueBuilder, decodeBase16 } from "casper-js-sdk";
+
 const DynamicReactJson = dynamic(import("react-json-view"), { ssr: false });
 
 const ContractPackage = () => {

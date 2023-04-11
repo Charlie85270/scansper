@@ -7,6 +7,15 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
+  const launchSearch = () => {
+    router.push(
+      "search",
+      { query: { search: searchText }, pathname: "/search" },
+      {
+        shallow: true,
+      }
+    );
+  };
   return (
     <header className="fixed relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 bg-white border-b lg:h-24 dark:bg-gray-800 lg:px-0">
       <div className="relative flex items-center justify-between h-24">
@@ -35,6 +44,7 @@ const Header = () => {
               />
             </div>
             <button
+              onClick={launchSearch}
               type="button"
               disabled={!searchText}
               className={`${
@@ -42,7 +52,6 @@ const Header = () => {
               } w-12 h-12 px-4 text-base ml-2 font-semibold text-center text-white transition duration-200 ease-in bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2`}
             >
               <span>
-                {" "}
                 <svg
                   className="left-0 z-20 w-4 h-4 text-white pointer-events-none fill-current group-hover:text-gray-400"
                   viewBox="0 0 20 20"
@@ -59,7 +68,7 @@ const Header = () => {
             document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
             setIsOpenMenu(!isOpenMenu);
           }}
-          className="p-2 rounded"
+          className="p-2 border rounded"
         >
           {isOpenMenu ? (
             <FiX className="w-8 h-8" />

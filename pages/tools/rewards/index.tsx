@@ -4,7 +4,7 @@ import AppLayout from "../../../components/layout/AppLayout";
 import Card from "../../../components/shared/Card/Card";
 import useClickOutside from "../../../hooks/useClickOutside";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
-import { formatNumber } from "../../../utils/Utils";
+import { formatNumber, truncateString } from "../../../utils/Utils";
 
 export const RewardsCalculator = () => {
   const { validators } = useContext(AppContext);
@@ -67,8 +67,21 @@ export const RewardsCalculator = () => {
                         alt={selectedValidator.name}
                         className="flex-shrink-0 w-6 h-6 rounded-full"
                       />
-                      <span className="block ml-3 font-normal truncate">
-                        {selectedValidator.name || selectedValidator.publicKey}
+                      <span className="hidden block ml-3 font-normal truncate lg:block">
+                        {truncateString(
+                          selectedValidator.name ||
+                            selectedValidator.publicKey ||
+                            "",
+                          30
+                        )}
+                      </span>
+                      <span className="block ml-3 font-normal truncate lg:hidden">
+                        {truncateString(
+                          selectedValidator.name ||
+                            selectedValidator.publicKey ||
+                            "",
+                          15
+                        )}
                       </span>
                     </div>
                     <p>
@@ -123,8 +136,17 @@ export const RewardsCalculator = () => {
                               alt={val.name}
                               className="flex-shrink-0 w-6 h-6 rounded-full"
                             />
-                            <span className="block ml-3 font-normal truncate">
-                              {val.name || val.publicKey}
+                            <span className="hidden block ml-3 font-normal truncate lg:block">
+                              {truncateString(
+                                val.name || val.publicKey || "",
+                                30
+                              )}
+                            </span>
+                            <span className="block ml-3 font-normal truncate lg:hidden">
+                              {truncateString(
+                                val.name || val.publicKey || "",
+                                15
+                              )}
                             </span>
                           </div>
                           <p>
