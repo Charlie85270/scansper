@@ -121,8 +121,8 @@ export const IndexPage = () => {
 
   return (
     <AppLayout
-      title="casper.explrorer is an explorer for the Casper Network blockchain"
-      desc="Retrieve data, follow the network usages and much more"
+      title="Casperscan is an explorer for the Casper Network blockchain build by the community"
+      desc="Retrieve data, follow the network usages and last projects launched on Casper Network"
     >
       {/* Blockchain DATA */}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12">
