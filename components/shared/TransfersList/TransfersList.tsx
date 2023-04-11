@@ -53,10 +53,10 @@ const TransfersList = ({ accountHash }: DeployListProps) => {
 
   const rows = items?.map(item => {
     return [
-      <span className="flex items-center space-x-2 text-sm">
+      <div className="flex items-center w-24 space-x-2 text-sm">
         <DeployStatus />
         <span> {getRelativeDateTime({ date1: new Date(item.timestamp) })}</span>
-      </span>,
+      </div>,
       <Link
         className="text-sm text-blue-500 hover:text-blue-900"
         href={`/deploy/${item.deployHash}`}
