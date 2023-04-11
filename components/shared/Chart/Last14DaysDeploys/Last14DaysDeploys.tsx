@@ -101,7 +101,25 @@ const Last14DeploysStatsChart = () => {
         columnWidth: "50%",
       },
     },
-
+    responsive: [
+      {
+        breakpoint: 767,
+        options: {
+          stroke: {
+            width: [1, 1, 1, 1, 3],
+            curve: "smooth",
+          },
+          legend: {
+            fontSize: "14px",
+            offsetY: 20,
+            itemMargin: {
+              vertical: 10,
+              horizontal: 10,
+            },
+          },
+        },
+      },
+    ],
     fill: {
       opacity: [1, 1, 1, 1, 1],
       gradient: {
@@ -120,7 +138,6 @@ const Last14DeploysStatsChart = () => {
     legend: {
       fontSize: "16px",
       offsetY: 20,
-
       itemMargin: {
         vertical: 20,
         horizontal: 20,

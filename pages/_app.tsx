@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -9,6 +9,8 @@ import AppContext from "../AppContext";
 import { useGetAllValidators } from "../hooks/useGetAllValidators";
 import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
 import { getAvatarUrl } from "../utils/Utils";
+import * as gtag from "../lib/gtag";
+import { useRouter } from "next/router";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -16,6 +18,16 @@ const queryClient = new QueryClient({
 });
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = url => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <QueryClientProvider client={queryClient}>
       <ContextComp>

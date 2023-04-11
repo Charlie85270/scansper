@@ -22,7 +22,7 @@ const Pager = ({
     // calculate total pages
     const totalPages = Math.ceil(totalItems / pageSize);
 
-    const maxNumberPageToDisplay = 4;
+    const maxNumberPageToDisplay = 3;
 
     var startPage = 0,
       endPage = 0;

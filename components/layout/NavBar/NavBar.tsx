@@ -307,7 +307,7 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      <div className="flex items-center px-10 pt-6">
+      <div className="flex items-center hidden px-10 pt-6">
         <span className="flex items-center space-x-4">
           {theme === "dark" ? <FiSun /> : <FiMoon />} <span> Dark mode</span>
         </span>

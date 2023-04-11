@@ -69,10 +69,10 @@ const DeploysList = ({
       item?.entry_point?.name || getExecutionTypeById(item.execution_type_id);
 
     return [
-      <span className="flex items-center space-x-2 text-sm">
+      <div className="flex items-center w-24 space-x-2 text-sm flex-nowrap">
         <DeployStatus errorMessage={item.error_message} />
         <span> {getRelativeDateTime({ date1: new Date(item.timestamp) })}</span>
-      </span>,
+      </div>,
       <Link
         className="text-blue-500 hover:text-blue-900"
         href={`/deploy/${item.deploy_hash}`}
@@ -136,7 +136,7 @@ const DeploysList = ({
   });
 
   return (
-    <div className="w-full overflow-y-hidden flex-nowrap">
+    <div className="">
       <p className="p-4 text-xl text-gray-400">
         All deploys ({deploysQuery.data?.itemCount})
       </p>

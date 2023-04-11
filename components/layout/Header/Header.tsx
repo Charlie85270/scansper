@@ -7,7 +7,9 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
-  const launchSearch = () => {
+  const launchSearch = e => {
+    e.preventDefault();
+
     router.push(
       "search",
       { query: { search: searchText }, pathname: "/search" },
@@ -27,7 +29,10 @@ const Header = () => {
         </div>
         <p className="text-xl lg:hidden">Casperscan</p>
         <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-1/4 lg:relative">
-          <div className="flex items-center justify-start w-full lg:ml-6 dark:text-white lg:justify-between ">
+          <form
+            onSubmit={launchSearch}
+            className="flex items-center justify-start w-full lg:ml-6 dark:text-white lg:justify-between "
+          >
             <div className="relative flex items-center w-full h-full lg:w-96 group">
               <svg
                 className="absolute left-0 z-20 w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-gray-400"
@@ -44,8 +49,7 @@ const Header = () => {
               />
             </div>
             <button
-              onClick={launchSearch}
-              type="button"
+              type="submit"
               disabled={!searchText}
               className={`${
                 !searchText ? "opacity-50" : ""
@@ -60,7 +64,7 @@ const Header = () => {
                 </svg>
               </span>
             </button>
-          </div>
+          </form>
         </div>
         <button
           type="button"

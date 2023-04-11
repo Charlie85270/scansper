@@ -28,54 +28,56 @@ const Table = ({
 }: TableProps) => {
   return (
     <div>
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            {header.map(head => {
-              return (
-                <th
-                  key={head}
-                  scope="col"
-                  className="px-5 py-5 font-semibold text-left text-gray-700 bg-white border-b border-gray-200 text-md"
-                >
-                  {head}
-                </th>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {isLoading ? (
+      <div className="w-full overflow-y-hidden flex-nowrap">
+        <table className="min-w-full">
+          <thead>
             <tr>
-              <td
-                className="justify-center p-4 text-center bg-gray-200 h-72 animate-pulse"
-                colSpan={header.length}
-              >
-                <Loader />
-              </td>
+              {header.map(head => {
+                return (
+                  <th
+                    key={head}
+                    scope="col"
+                    className="px-5 py-5 font-semibold text-left text-gray-700 bg-white border-b border-gray-200 text-md"
+                  >
+                    {head}
+                  </th>
+                );
+              })}
             </tr>
-          ) : (
-            rows?.map((row, index) => {
-              return (
-                <tr key={index}>
-                  {row.map(r => {
-                    return (
-                      <td className="px-5 py-3 text-base bg-white border-b border-gray-200">
-                        {r}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })
-          )}
-        </tbody>
-      </table>
-      {showTotalItems && (
-        <p className="w-full py-3 text-sm text-center text-gray-400">
-          {totalItems} results
-        </p>
-      )}
+          </thead>
+          <tbody>
+            {isLoading ? (
+              <tr>
+                <td
+                  className="justify-center p-4 text-center bg-gray-200 h-72 animate-pulse"
+                  colSpan={header.length}
+                >
+                  <Loader />
+                </td>
+              </tr>
+            ) : (
+              rows?.map((row, index) => {
+                return (
+                  <tr key={index}>
+                    {row.map(r => {
+                      return (
+                        <td className="px-5 py-3 text-base bg-white border-b border-gray-200">
+                          {r}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+        </table>
+        {showTotalItems && (
+          <p className="w-full py-3 text-sm text-center text-gray-400">
+            {totalItems} results
+          </p>
+        )}
+      </div>
       {showPagination && (
         <div className="mt-2">
           <Pager
