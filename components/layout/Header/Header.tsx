@@ -9,20 +9,7 @@ const Header = () => {
     <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white border-b dark:bg-gray-800 lg:px-0">
       <div className="flex items-center justify-between h-24">
         <div className="flex space-x-4 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="33"
-            height="33"
-            viewBox="0 0 33 33"
-            data-src="/_next/static/media/trusted-icon.3594043f.svg"
-          >
-            <path
-              id="Trazado_217-1"
-              data-name="Trazado 217"
-              d="M29.217,11.106a3.78,3.78,0,0,0,3.778-3.778V3.778A3.777,3.777,0,0,0,29.217,0H25.662a3.78,3.78,0,0,0-3.778,3.778v5.8a1.367,1.367,0,0,1-1.372,1.367H12.478a1.371,1.371,0,0,1-1.372-1.367v-5.8A3.779,3.779,0,0,0,7.333,0H3.773A3.776,3.776,0,0,0,0,3.778V7.333a3.777,3.777,0,0,0,3.778,3.778h5.8a1.372,1.372,0,0,1,1.372,1.372v8.039A1.371,1.371,0,0,1,9.58,21.894H3.773A3.774,3.774,0,0,0,0,25.667v3.555A3.777,3.777,0,0,0,3.778,33H7.333a3.776,3.776,0,0,0,3.773-3.778v-5.8a1.372,1.372,0,0,1,1.372-1.372h8.039a1.371,1.371,0,0,1,1.372,1.367v5.8a3.776,3.776,0,0,0,3.778,3.778h3.555A3.78,3.78,0,0,0,33,29.217V25.662a3.777,3.777,0,0,0-3.778-3.778h-5.8a1.372,1.372,0,0,1-1.372-1.372V12.478a1.375,1.375,0,0,1,1.094-1.342,1.245,1.245,0,0,1,.274-.03Z"
-              fill="#ff2d2e"
-            ></path>
-          </svg>
+          <img src="/cspr.png" width="55" height="55" />
         </div>
         <div className="flex items-center h-full py-4 space-x-2">
           <div className="flex flex-wrap items-center justify-start ml-6 dark:text-white md:justify-between">
