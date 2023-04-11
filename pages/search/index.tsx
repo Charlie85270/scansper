@@ -9,7 +9,11 @@ import Loader from "../../components/shared/Loader/Loader";
 import { useGetBlockById } from "../../hooks/useGetBlockById";
 import { useGetContractPackage } from "../../hooks/useGetContractPackage";
 import { useGetDeployById } from "../../hooks/useGetDeployById";
-import { getAvatarUrl, truncateString } from "../../utils/Utils";
+import {
+  getAvatarUrl,
+  KNOW_ADDRESSES,
+  truncateString,
+} from "../../utils/Utils";
 
 export const Search = () => {
   const { validators } = useContext(AppContext);
@@ -20,6 +24,14 @@ export const Search = () => {
   const deployQuery = useGetDeployById(search);
   const contractQuery = useGetContractPackage(search);
   const blockQuery = useGetBlockById(search);
+  const knowAddress = KNOW_ADDRESSES.filter(
+    val =>
+      val.name
+        ?.toLocaleLowerCase()
+        ?.includes(search.toString().toLocaleLowerCase()) ||
+      val.public_key?.toLocaleLowerCase() ===
+        search.toString().toLocaleLowerCase()
+  );
   const filteredValidator = validators.filter(
     val =>
       val.name
@@ -56,6 +68,7 @@ export const Search = () => {
     filteredValidator.length === 0 &&
     !accountHash &&
     !deployQuery.data &&
+    knowAddress.length === 0 &&
     !blockQuery.data;
   return (
     <AppLayout
@@ -109,25 +122,42 @@ export const Search = () => {
               </div>
             )}
             {/* ACCOUNTS */}
-            {accountHash && (
+            {(accountHash || knowAddress.length > 0) && (
               <div className="mt-6">
                 <p className="text-lg text-gray-800 border-b">Account</p>
-
-                <Link
-                  key={search}
-                  className="flex items-center mt-4 space-x-4 hover:underline"
-                  href={`/account/${search}?tab=deploys`}
-                >
-                  <img
-                    className="w-8 h-8 rounded-lg"
-                    src={getAvatarUrl(search || "", validators)}
-                  />
-                  <div className="">
-                    <p className="text-gray-700 hover:text-gray-900">
-                      {truncateString(search || "", 45)}
-                    </p>
-                  </div>
-                </Link>
+                {accountHash && (
+                  <Link
+                    key={search}
+                    className="flex items-center mt-4 space-x-4 hover:underline"
+                    href={`/account/${search}?tab=deploys`}
+                  >
+                    <img
+                      className="w-8 h-8 rounded-lg"
+                      src={getAvatarUrl(search || "", validators)}
+                    />
+                    <div className="">
+                      <p className="text-gray-700 hover:text-gray-900">
+                        {truncateString(search || "", 45)}
+                      </p>
+                    </div>
+                  </Link>
+                )}
+                {knowAddress?.map(ad => {
+                  return (
+                    <Link
+                      key={ad.public_key}
+                      className="flex items-center mt-4 space-x-4 hover:underline"
+                      href={`/account/${ad.public_key}?tab=deploys`}
+                    >
+                      <img className="w-8 h-8 rounded-lg" src={ad.img} />
+                      <div className="">
+                        <p className="text-gray-700 hover:text-gray-900">
+                          {truncateString(ad.name || "", 45)}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             )}
             {/* DEPLOY */}

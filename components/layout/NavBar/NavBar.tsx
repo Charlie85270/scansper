@@ -235,7 +235,7 @@ const NavBar = () => {
           <ul className="">
             {links.map(link => {
               return (
-                <li>
+                <li key={link.label}>
                   {link.childrens ? (
                     <div
                       onClick={() => toggleSection(link.id)}
