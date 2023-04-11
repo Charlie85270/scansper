@@ -25,6 +25,7 @@ import RewardsList from "../../components/shared/RewardsList.tsx/RewardsList";
 import NFTList from "../../components/shared/NFTList/NFTList";
 import DelegationsList from "../../components/shared/DelegationsList/DelegationsList";
 import CopyButton from "../../components/shared/CopyButton/CopyButton";
+import NFTCasperLiveList from "../../components/shared/NFTCasperLiveList/NFTCasperLiveList";
 const Account = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -69,7 +70,8 @@ const Account = () => {
     { id: "deploys", title: "Deploys" },
     { id: "transfers", title: "Transfers" },
     { id: "staking", title: "StakingRewards" },
-    { id: "nft", title: "NFT" },
+    { id: "nft", title: "NFT (Friendly Market)" },
+    { id: "nftlive", title: "NFT (Cspr.live)" },
     { id: "delegations", title: "Delegations" },
   ];
   const tabsContent = [
@@ -77,6 +79,7 @@ const Account = () => {
     <TransfersList accountHash={accountHash?.toString()} />,
     <RewardsList publicKey={id?.toString()} />,
     <NFTList accountHash={accountHash?.toString()} />,
+    <NFTCasperLiveList accountHash={accountHash?.toString()} />,
     <DelegationsList isAccount accountHash={id?.toString()} />,
   ];
   const delegationDetails = data?.data;

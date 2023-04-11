@@ -82,6 +82,8 @@ export const IndexPage = () => {
     },
   ];
 
+  const apy = (100 / percentStaked) * 8;
+
   const options: IconCardProps[] = [
     {
       title: "Volume (24h)",
@@ -99,7 +101,7 @@ export const IndexPage = () => {
     },
     {
       title: "APY",
-      value: 10.67,
+      value: apy.toFixed(2),
       currency: "%",
       icon: FiPercent,
     },

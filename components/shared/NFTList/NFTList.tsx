@@ -1,23 +1,12 @@
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import {
-  formatNumber,
-  getPublicKeyName,
-  getAvatarUrl,
-  getRelativeDateTime,
-  MOTE_VALUE,
-} from "../../../utils/Utils";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Table from "../Table/Table";
+
 import { useRouter } from "next/router";
 import { pageSize } from "../../../services/httpReq";
-import AppContext from "../../../AppContext";
-import { useGetRewardsByAccount } from "../../../hooks/useGetRewardsByAccount";
-import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
-import { useGetNFTByAccount } from "../../../hooks/useGetNFTByAccount";
+
 import NFTCollectionCard from "../Card/NFTCollectionCard/NFTCollectionCard";
-import { NFT } from "../../../types/account";
 import { useGetFriendlyMarketNFTByAccount } from "../../../hooks/useGetFriendlyMarketNFTByAccount";
 import Pager from "../Table/Pager";
 
@@ -30,6 +19,7 @@ const NFTList = ({ accountHash }: DeployListProps) => {
   const { push, query } = useRouter();
 
   const { page } = query;
+
   const nftQuery = useGetFriendlyMarketNFTByAccount(accountHash, page);
 
   const items = nftQuery.data?.data;
@@ -41,8 +31,8 @@ const NFTList = ({ accountHash }: DeployListProps) => {
     return <ErrorMessage />;
   }
 
-  if (!items && nftQuery.isFetched) {
-    return <p className="p-4">No data</p>;
+  if (items?.length === 0 && nftQuery.isFetched) {
+    return <p className="p-4">No result</p>;
   }
 
   const totalItems = nftQuery?.data?.length;

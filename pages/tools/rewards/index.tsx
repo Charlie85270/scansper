@@ -3,14 +3,24 @@ import AppContext from "../../../AppContext";
 import AppLayout from "../../../components/layout/AppLayout";
 import Card from "../../../components/shared/Card/Card";
 import useClickOutside from "../../../hooks/useClickOutside";
+import { useGetAuctionMetrics } from "../../../hooks/useGetAuctionMetrics";
+import { useGetCasperSupplyInfo } from "../../../hooks/useGetCasperSupplyInfo";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
-import { formatNumber, truncateString } from "../../../utils/Utils";
+import { formatNumber, MOTE_VALUE, truncateString } from "../../../utils/Utils";
 
 export const RewardsCalculator = () => {
   const { validators } = useContext(AppContext);
   const [amount, setAmount] = useState<number>();
   const clickRef = React.useRef<HTMLDivElement>(null);
-
+  const querySupply = useGetCasperSupplyInfo();
+  const queryAuction = useGetAuctionMetrics();
+  const totalStaked =
+    Number(
+      Number(Number(queryAuction.data?.total_active_era_stake)).toFixed(0)
+    ) / MOTE_VALUE;
+  const totalSupply = querySupply.data?.data.total || 0;
+  const percentStaked = (100 * totalStaked) / totalSupply;
+  const apy = (100 / percentStaked) * 8 || 10.67;
   const [selectedValidator, setSelectedValidator] = useState<{
     publicKey?: string | undefined;
     name?: string | undefined;
@@ -21,7 +31,6 @@ export const RewardsCalculator = () => {
   useClickOutside(clickRef, () => setIsOpen(false));
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
-  const apy = 10.67;
 
   const rewardsPerYear =
     ((100 - (selectedValidator?.fee || 0)) * ((amount || 0) * (apy / 100))) /
