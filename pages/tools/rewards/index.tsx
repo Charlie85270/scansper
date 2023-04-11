@@ -21,7 +21,7 @@ export const RewardsCalculator = () => {
   useClickOutside(clickRef, () => setIsOpen(false));
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
-  const apy = 10.78;
+  const apy = 10.67;
 
   const rewardsPerYear =
     ((100 - (selectedValidator?.fee || 0)) * ((amount || 0) * (apy / 100))) /
