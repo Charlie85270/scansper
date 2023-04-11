@@ -13,10 +13,10 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
     ? `https://casperecosystem.io${project?.childrenFile[0]?.childImageSharp?.gatsbyImageData?.images?.fallback?.src}`
     : "/defaultNFT.png";
 
-  const re = new RegExp(/(?<=<!--lang:en--> ).*(?= <!--lang:es--])/g, "i");
-
-  const chaine = project?.Description?.replace(/\n|\r|(\n\r)/g, " ") || "";
-  const desc = chaine.match(re);
+  const re = /(<!--lang:en--> ).*( <!--lang:es--])/g;
+  const desc = project?.Description?.replace(/\n|\r|(\n\r)/g, " ").match(re);
+  const chaine =
+    desc?.[0].replace("<!--lang:en-->", "").replace("<!--lang:es--]", "") || "";
 
   return (
     <a
@@ -38,8 +38,8 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
       <div className="flex-col items-center justify-between h-full my-2">
         <p className="text-xl text-gray-800"> {project.Name}</p>
         <p className="my-2 text-sm text-gray-400">
-          {desc && desc?.length > 0
-            ? truncateString(desc[0], 90)
+          {chaine && chaine?.length > 0
+            ? truncateString(chaine, 90)
             : "No description"}
         </p>
         <div className="block p-1 px-3 text-sm text-gray-800 bg-gray-100 w-fit rounded-xl">

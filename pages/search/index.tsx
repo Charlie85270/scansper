@@ -124,7 +124,11 @@ export const Search = () => {
             {/* ACCOUNTS */}
             {(accountHash || knowAddress.length > 0) && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800 border-b">Account</p>
+                <p className="text-lg text-gray-800 border-b">
+                  {knowAddress.length > 0
+                    ? `${knowAddress.length} Accounts`
+                    : "Account"}
+                </p>
                 {accountHash && (
                   <Link
                     key={search}
