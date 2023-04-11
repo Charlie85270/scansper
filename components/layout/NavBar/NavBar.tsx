@@ -22,6 +22,7 @@ import { useTheme } from "next-themes";
 import { IconType } from "react-icons/lib";
 import classNames from "classnames";
 import AppContext from "../../../AppContext";
+import Header from "../Header/Header";
 
 interface ILink {
   label: string;
@@ -203,23 +204,12 @@ const NavBar = () => {
   return (
     <div className="flex flex-col justify-between h-full pb-6 bg-white dark:bg-gray-700">
       <div style={{ overflow: "overlay" }}>
-        <div className="flex items-center justify-between px-4 pt-6 pb-6 mb-2 border-b lg:mb-0 lg:pb-0 lg:border-b-0 lg:pt-8">
-          <div className="flex items-center space-x-4 lg:mb-12">
-            <img src="/cspr.png" width="55" height="55" />
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="33"
-              height="33"
-              viewBox="0 0 33 33"
-              data-src="/_next/static/media/trusted-icon.3594043f.svg"
-            >
-              <path
-                id="Trazado_217-1"
-                data-name="Trazado 217"
-                d="M29.217,11.106a3.78,3.78,0,0,0,3.778-3.778V3.778A3.777,3.777,0,0,0,29.217,0H25.662a3.78,3.78,0,0,0-3.778,3.778v5.8a1.367,1.367,0,0,1-1.372,1.367H12.478a1.371,1.371,0,0,1-1.372-1.367v-5.8A3.779,3.779,0,0,0,7.333,0H3.773A3.776,3.776,0,0,0,0,3.778V7.333a3.777,3.777,0,0,0,3.778,3.778h5.8a1.372,1.372,0,0,1,1.372,1.372v8.039A1.371,1.371,0,0,1,9.58,21.894H3.773A3.774,3.774,0,0,0,0,25.667v3.555A3.777,3.777,0,0,0,3.778,33H7.333a3.776,3.776,0,0,0,3.773-3.778v-5.8a1.372,1.372,0,0,1,1.372-1.372h8.039a1.371,1.371,0,0,1,1.372,1.367v5.8a3.776,3.776,0,0,0,3.778,3.778h3.555A3.78,3.78,0,0,0,33,29.217V25.662a3.777,3.777,0,0,0-3.778-3.778h-5.8a1.372,1.372,0,0,1-1.372-1.372V12.478a1.375,1.375,0,0,1,1.094-1.342,1.245,1.245,0,0,1,.274-.03Z"
-                fill="#ff2d2e"
-              ></path>
-            </svg> */}
+        <div className={classNames({ hidden: !isOpenMenu })}>
+          <Header />
+        </div>
+        <div className="flex items-center justify-between hidden px-4 pt-6 pb-4 border-b md:block lg:mb-0 lg:pb-0 lg:border-b-0 lg:pt-8">
+          <div className="flex items-center space-x-4 lg:mb-8">
+            <img src="/cspr.png" width="50" height="50" />
             <span className="text-2xl font-light text-gray-900">
               Casper.scan
             </span>
@@ -227,12 +217,12 @@ const NavBar = () => {
           <button
             type="button"
             onClick={() => {
-              setIsOpenMenu(false);
-              document.body.style.overflow = "visible";
+              document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
+              setIsOpenMenu(!isOpenMenu);
             }}
             className={classNames(
               { "lg:hidden": !isOpenMenu },
-              "p-2 rounded mr-4 hover:bg-gray-200"
+              "p-2 rounded  hover:bg-gray-200"
             )}
           >
             <FiX className="w-8 h-8" />

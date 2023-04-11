@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import AppContext from "../../../AppContext";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
-  const { setIsOpenMenu } = useContext(AppContext);
+  const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
   return (
     <header className="fixed relative top-0 z-50 flex-none w-full h-24 px-4 mx-auto text-sm text-gray-700 bg-white border-b dark:bg-gray-800 lg:px-0">
       <div className="flex items-center justify-between h-24">
         <div className="flex space-x-4 lg:hidden">
-          <img src="/cspr.png" width="55" height="55" />
+          <img src="/cspr.png" width="50" height="50" />
         </div>
         <div className="flex items-center h-full py-4 space-x-2">
           <div className="flex flex-wrap items-center justify-start ml-6 dark:text-white md:justify-between">
@@ -50,12 +50,16 @@ const Header = () => {
         <button
           type="button"
           onClick={() => {
-            setIsOpenMenu(true);
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
+            setIsOpenMenu(!isOpenMenu);
           }}
           className="p-2 rounded"
         >
-          <FiMenu className="w-8 h-8" />
+          {isOpenMenu ? (
+            <FiX className="w-8 h-8" />
+          ) : (
+            <FiMenu className="w-8 h-8" />
+          )}
         </button>
       </div>
     </header>
