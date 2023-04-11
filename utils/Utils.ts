@@ -15,6 +15,24 @@ export const KNOW_ADDRESSES = [
     name: "Gate.io",
     img: "/gateio.png",
   },
+  {
+    public_key:
+      "0203A5C03D9F7D6885276D0FAA25D412ECC1369F6573856C321D99CAFC0DAC2A8C12",
+    name: "Casper - Developer grants",
+    img: "/labs.png",
+  },
+  {
+    public_key:
+      "02024C5E3BA7B1DA49CDA950319AEC914CD3C720FBEC3DCF25AA4ADD631E28F70AA9",
+    name: "Casper - Association",
+    img: "/labs.png",
+  },
+  {
+    public_key:
+      "02036210C108F7E819A38AE05CC7B1DC39A2E6366F1404CE4C12E9C05B3832D811BB",
+    name: "Casper - Team",
+    img: "/labs.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
@@ -189,7 +207,9 @@ export const getAvatarUrl = (
     img?: string;
   }[]
 ) => {
-  const isKnow = KNOW_ADDRESSES.find(add => add.public_key === publicKey);
+  const isKnow = KNOW_ADDRESSES.find(
+    add => add.public_key.toLocaleLowerCase() === publicKey.toLocaleLowerCase()
+  );
   let img = `https://api.dicebear.com/6.x/bottts-neutral/svg?seed=${
     publicKey ? publicKey.slice(12) : "abby"
   }`;
@@ -216,7 +236,9 @@ export const getPublicKeyName = (
     img?: string;
   }[]
 ) => {
-  const isKnow = KNOW_ADDRESSES.find(add => add.public_key === publicKey);
+  const isKnow = KNOW_ADDRESSES.find(
+    add => add.public_key.toLocaleLowerCase() === publicKey.toLocaleLowerCase()
+  );
   let name = publicKey;
 
   if (isKnow) {

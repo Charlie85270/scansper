@@ -281,7 +281,13 @@ const NavBar = () => {
                               <Link
                                 href={sublink.link || ""}
                                 onClick={() =>
-                                  isOpenMenu ? setIsOpenMenu(false) : null
+                                  isOpenMenu
+                                    ? () => {
+                                        setIsOpenMenu(false);
+                                        document.body.style.overflow =
+                                          "visible";
+                                      }
+                                    : null
                                 }
                                 className={classNames(
                                   {

@@ -22,7 +22,7 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
       href={project.Website}
       target="_blank"
       className={classNames(
-        "px-4 bg-white hover:shadow-lg py-2 mt-2 mr-2 border relative rounded-lg"
+        "px-4 bg-white hover:shadow-lg py-2 mt-2 border relative rounded-lg"
       )}
     >
       <div className="flex items-center justify-center py-3 border-b">
