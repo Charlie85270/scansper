@@ -217,8 +217,8 @@ const NavBar = () => {
           <button
             type="button"
             onClick={() => {
-              document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
-              setIsOpenMenu(!isOpenMenu);
+              document.body.style.overflow = "auto";
+              setIsOpenMenu(false);
             }}
             className={classNames(
               { "lg:hidden": !isOpenMenu },
@@ -263,7 +263,7 @@ const NavBar = () => {
                     <ul>
                       {link?.childrens?.map(sublink => {
                         return (
-                          <li>
+                          <li key={sublink.link}>
                             {sublink.isSoon ? (
                               <div
                                 className={classNames(
@@ -280,15 +280,10 @@ const NavBar = () => {
                             ) : (
                               <Link
                                 href={sublink.link || ""}
-                                onClick={() =>
-                                  isOpenMenu
-                                    ? () => {
-                                        setIsOpenMenu(false);
-                                        document.body.style.overflow =
-                                          "visible";
-                                      }
-                                    : null
-                                }
+                                onClick={() => {
+                                  setIsOpenMenu(false);
+                                  document.body.style.overflow = "visible";
+                                }}
                                 className={classNames(
                                   {
                                     "opacity-50 cursor-not-allowed":
