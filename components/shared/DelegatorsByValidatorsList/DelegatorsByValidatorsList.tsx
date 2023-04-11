@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import AppContext from "../../../AppContext";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
 import { useGetValidatorsListByDelegator } from "../../../hooks/useGetValidatorsListByDelegator";
 import {
   formatNumber,
   getAvatarUrl,
+  getPublicKeyName,
   MOTE_VALUE,
   truncateString,
 } from "../../../utils/Utils";
@@ -17,7 +19,7 @@ const DelegatorsByValidatorsList = () => {
   const { page } = query;
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
-
+  const { validators } = useContext(AppContext);
   const queryValidator = useGetValidatorsListByDelegator(
     id?.toString() || "",
     Number(page)
@@ -36,13 +38,13 @@ const DelegatorsByValidatorsList = () => {
       >
         <img
           className="w-8 h-8 rounded-lg"
-          src={getAvatarUrl(item.public_key)}
+          src={getAvatarUrl(item.public_key, validators)}
         />
         <span className="hidden lg:block">
-          {truncateString(item.public_key, 45)}
+          {truncateString(getPublicKeyName(item.public_key, validators), 45)}
         </span>
         <span className="truncate lg:hidden">
-          {truncateString(item.public_key, 15)}
+          {truncateString(getPublicKeyName(item.public_key, validators), 15)}
         </span>
       </Link>,
       <div>
