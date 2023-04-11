@@ -44,7 +44,7 @@ const DelegatorsByValidatorsList = () => {
           {truncateString(getPublicKeyName(item.public_key, validators), 45)}
         </span>
         <span className="truncate lg:hidden">
-          {truncateString(getPublicKeyName(item.public_key, validators), 15)}
+          {truncateString(getPublicKeyName(item.public_key, validators), 25)}
         </span>
       </Link>,
       <div>

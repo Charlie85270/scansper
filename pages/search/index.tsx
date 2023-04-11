@@ -45,7 +45,7 @@ export const Search = () => {
       setIsloading(false);
       const match = router.asPath.match(new RegExp(`[&?]search=(.*?)(&|$)`));
       if (!match) return undefined;
-      setSearch(decodeURIComponent(match[1]));
+      setSearch(decodeURIComponent(match[1].trim()));
     }
   }, [router]);
 
@@ -141,7 +141,7 @@ export const Search = () => {
                     />
                     <div className="">
                       <p className="text-gray-700 hover:text-gray-900">
-                        {truncateString(search || "", 45)}
+                        {truncateString(search || "", 35)}
                       </p>
                     </div>
                   </Link>
@@ -156,7 +156,7 @@ export const Search = () => {
                       <img className="w-8 h-8 rounded-lg" src={ad.img} />
                       <div className="">
                         <p className="text-gray-700 hover:text-gray-900">
-                          {truncateString(ad.name || "", 45)}
+                          {truncateString(ad.name || "", 35)}
                         </p>
                       </div>
                     </Link>
@@ -176,7 +176,7 @@ export const Search = () => {
                 >
                   <div className="">
                     <p className="text-gray-700 hover:text-gray-900">
-                      {truncateString(search || "", 45)}
+                      {truncateString(search || "", 35)}
                     </p>
                   </div>
                 </Link>
@@ -194,7 +194,7 @@ export const Search = () => {
                 >
                   <div className="">
                     <p className="text-gray-700 hover:text-gray-900">
-                      {truncateString(search || "", 45)}
+                      {truncateString(search || "", 35)}
                     </p>
                   </div>
                 </Link>
@@ -215,7 +215,7 @@ export const Search = () => {
                       {contractQuery.data.contract_name}
                     </p>
                     <p className="text-sm text-gray-400 truncate">
-                      {truncateString(search || "", 45)}
+                      {truncateString(search || "", 35)}
                     </p>
                   </div>
                 </Link>
