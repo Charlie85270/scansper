@@ -23,8 +23,8 @@ export const ProjectsPage = () => {
       : [...(projects || [])].filter(pr => pr.Tag === currentTag);
   return (
     <AppLayout
-      title="Casper Network rich list"
-      desc="Top holders and addresses of the Casper network"
+      title="Scansper | Ecosystem"
+      desc="List of all projects deployed and building on the Casper Network"
     >
       {projectsQuery.isFetching || projectsQuery.isLoading ? (
         <div className="h-screen">

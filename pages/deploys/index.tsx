@@ -7,8 +7,8 @@ import DeploysList from "../../components/shared/DeploysList/DeploysList";
 export const IndexPage = () => {
   return (
     <AppLayout
-      title="Casper Network deploys list"
-      desc="Get all informations about transactions, deploys, staking, mint on Casper network"
+      title="Scansper | Deploys"
+      desc="List of all deploys produced on the Casper Netowrk"
     >
       <Card titleSize="large" title="Last 14 Deploys">
         <Last14DeploysStatsChart />

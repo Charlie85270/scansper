@@ -7,8 +7,8 @@ import ValidatorsList from "../../components/shared/ValidatorsList/ValidatorsLis
 export const IndexPage = () => {
   return (
     <AppLayout
-      title="Casper Network Validators list"
-      desc="Find the best validators to stake you CSPR tokens"
+      title="Scansper | Validators"
+      desc="List of all active validators on the Casper Network"
     >
       <Card title="Validators" titleSize="large">
         <ValidatorsList />

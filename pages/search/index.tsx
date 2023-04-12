@@ -72,7 +72,7 @@ export const Search = () => {
     !blockQuery.data;
   return (
     <AppLayout
-      title="Casper Network search page"
+      title="Scansper | Search Page"
       desc="Search accounts, validators, blocks, contracts data on the Casper Network"
     >
       <Card>

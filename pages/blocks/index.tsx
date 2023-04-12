@@ -6,8 +6,8 @@ import Card from "../../components/shared/Card/Card";
 export const BlocksPage = () => {
   return (
     <AppLayout
-      title="Casper Network deploys list"
-      desc="Get all informations about transactions, deploys, blocks, staking, mint on Casper network"
+      title="Scansper | Blocks list"
+      desc="List of all blocks produced by the Casper Network"
     >
       <Card titleSize="large" title="Latest blocks">
         <BlocksList />

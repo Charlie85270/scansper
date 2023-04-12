@@ -35,8 +35,8 @@ const Deploy = () => {
   const rawData = useGetDeployRaw(id);
   return (
     <AppLayout
-      title="Casper Network Validators list"
-      desc="Find the best validators to stake you CSPR tokens"
+      title="Scansper | Deploy"
+      desc="Detail of a deploy on the Casper netowrk"
     >
       <div className="w-full mb-4">
         <Card

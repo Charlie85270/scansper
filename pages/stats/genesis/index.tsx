@@ -379,8 +379,8 @@ export const Genesis = () => {
   });
   return (
     <AppLayout
-      title="Genesis accounts of the Casper Network"
-      desc="Genesis accounts of the Casper Network"
+      title="Scansper | Genesis accounts"
+      desc="List of the genesis accounts of the Casper Network"
     >
       <Card titleSize="large" title="Genesis accounts">
         <p className="italic text-gray-400">

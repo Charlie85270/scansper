@@ -21,8 +21,8 @@ const Block = () => {
   const tabsContent = [<DeploysList blockId={id?.toString()} />];
   return (
     <AppLayout
-      title="Casper Network block details"
-      desc="Find the best validators to stake you CSPR tokens"
+      title="Scansper | Block"
+      desc="Block detail on Scansper for the Casper Network"
     >
       <div className="w-full mb-4">
         <Card

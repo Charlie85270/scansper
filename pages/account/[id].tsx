@@ -104,8 +104,8 @@ const Account = () => {
   const name = getPublicKeyName(id?.toString() || "");
   return (
     <AppLayout
-      title="Casper Network Validators list"
-      desc="Find the best validators to stake you CSPR tokens"
+      title="Scansper | Account"
+      desc="Account details on the Casper network"
     >
       <div className="">
         <div className="w-full mb-4">

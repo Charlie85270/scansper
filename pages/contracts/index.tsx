@@ -6,8 +6,8 @@ import ContractsList from "../../components/shared/ContractsList/ContractsList";
 export const IndexPage = () => {
   return (
     <AppLayout
-      title="Casper Network contracts list"
-      desc="Get all informations about transactions, deploys, contracts staking, mint on Casper network"
+      title="Scansper | Contracts"
+      desc="List of the contracts deployed on the Casper Network"
     >
       <Card titleSize="large" title="Contracts">
         <ContractsList />

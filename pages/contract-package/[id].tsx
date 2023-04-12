@@ -18,12 +18,7 @@ const ContractPackage = () => {
   const { id } = query;
   const contractQuery = useGetContractPackage(id);
   const statusInfos = useGetStatusInfos();
-  // const accountHashKey = id
-  //   ? CLValueBuilder.publicKey(
-  //       decodeBase16(id?.toString() || "").subarray(1),
-  //       decodeBase16(id?.toString() || "")[0]
-  //     ).toAccountHashStr()
-  //   : undefined;
+
   const stateRootHash =
     statusInfos.data?.result.last_added_block_info.state_root_hash;
   const rawData = useGetItemFromHashAccount(stateRootHash, `hash-${id}`);
@@ -32,8 +27,8 @@ const ContractPackage = () => {
   const tabsContent = [<DeploysList contractPackage={id?.toString()} />];
   return (
     <AppLayout
-      title="Casper Network contract details"
-      desc="Find the best validators to stake you CSPR tokens"
+      title="Scansper | Contract"
+      desc="Detail of the contract deployed on Casper Netowrk"
     >
       <div className="w-full mb-4">
         <Card

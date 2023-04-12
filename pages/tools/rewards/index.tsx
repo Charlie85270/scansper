@@ -42,7 +42,7 @@ export const RewardsCalculator = () => {
 
   return (
     <AppLayout
-      title="Casper Network rewards calculator"
+      title="Scansper | Rewards calculator"
       desc="Calcul how you will earn CSPR if you stake your casper using one of the 100 casper network validators"
     >
       <Card titleSize="large" title="Rewards Calculator">
