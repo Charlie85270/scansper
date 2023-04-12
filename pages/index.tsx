@@ -21,7 +21,7 @@ import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard
 import DeploysList from "../components/shared/DeploysList/DeploysList";
 import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
 import Card from "../components/shared/Card/Card";
-import { getAccountNumber } from "../services/httpReq";
+import { getAccountNumber, getHolderstNumber } from "../services/httpReq";
 
 export const IndexPage = () => {
   // Queries
@@ -31,9 +31,14 @@ export const IndexPage = () => {
   const statusInfos = useGetStatusInfos();
   const community = useGetCoinCommunityData();
   const [holders, setHolders] = useState(0);
+  const [account, setAccounts] = useState(0);
   useEffect(() => {
     getAccountNumber().then(data => {
-      console.log(data);
+      if (data?.contentRange) {
+        setAccounts(data?.contentRange?.split("/")[1]);
+      }
+    });
+    getHolderstNumber().then(data => {
       if (data?.contentRange) {
         setHolders(data?.contentRange?.split("/")[1]);
       }
@@ -114,6 +119,7 @@ export const IndexPage = () => {
     {
       title: "Holders",
       value: formatNumber(holders),
+      description: `${formatNumber(account)} accounts`,
       currency: "",
       icon: MdPeopleOutline,
     },

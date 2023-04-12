@@ -362,3 +362,15 @@ export const getAccountNumber = () => {
     }
   );
 };
+
+export const getHolderstNumber = () => {
+  return fetchResponseHeaders(
+    qs.stringifyUrl({
+      url: `${casper_holders_url}rich_list?total=gt.10000000000`,
+    }),
+    {
+      method: "HEAD",
+      headers: { prefer: "count=exact" },
+    }
+  );
+};
