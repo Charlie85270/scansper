@@ -123,7 +123,7 @@ export const IndexPage = () => {
 
   return (
     <AppLayout
-      title="Casperscan is an explorer for the Casper Network blockchain build by the community"
+      title="Scansper is an explorer for the Casper Network blockchain build by the community"
       desc="Retrieve data, follow the network usages and last projects launched on Casper Network"
     >
       {/* Blockchain DATA */}

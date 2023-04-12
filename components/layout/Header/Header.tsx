@@ -27,7 +27,7 @@ const Header = () => {
         >
           <img src="/cspr.png" width="50" height="50" />
         </div>
-        <p className="text-xl lg:hidden">Casperscan</p>
+        <p className="text-xl lg:hidden">Scansper</p>
         <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-1/4 lg:relative">
           <form
             onSubmit={launchSearch}

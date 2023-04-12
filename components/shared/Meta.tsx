@@ -57,10 +57,10 @@ const Meta = ({ pageTitle, description }: Props) => {
       />
       <meta name="twitter:site" content="@CasperNetwork" />
       <meta name="twitter:creator" content="@CasperNetwork" />
-      <meta name="twitter:title" content="Casperscan explorer" />
+      <meta name="twitter:title" content="Scansper explorer" />
       <meta
         name="twitter:description"
-        content="Casperscan is an explorer for the casper network build by the community."
+        content="Scansper is an explorer for the casper network build by the community."
       />
       <meta
         name="twitter:image"
