@@ -10,7 +10,7 @@ import {
 import { CoinCommunityPayload } from "../types/coinGeckoTypes";
 import { DelegationsPayload, ValidatorsPayload } from "../types/validators";
 import { ContractPackage, DeploysPayload } from "../types/deploys";
-import fetch from "./request";
+import fetch, { fetchResponseHeaders } from "./request";
 import {
   BlocksValidatorPayload,
   DelegatorsPayload,
@@ -351,4 +351,14 @@ export const getCasperProjects = (): Promise<Projects> => {
   return sendRequest({
     url: `/api/projects`,
   });
+};
+
+export const getAccountNumber = () => {
+  return fetchResponseHeaders(
+    qs.stringifyUrl({ url: `${casper_holders_url}accounts` }),
+    {
+      method: "HEAD",
+      headers: { prefer: "count=exact" },
+    }
+  );
 };

@@ -10,7 +10,7 @@ const checkStatus = response => {
 };
 
 const parseJSON = async function (response) {
-  const contentType = response.headers.get("content-type");
+  const contentType = response?.headers.get("content-type") || "";
   try {
     if (contentType.includes("application/json")) {
       return { data: await response.json(), response };
@@ -18,6 +18,22 @@ const parseJSON = async function (response) {
       return { data: await response.text(), response };
     } else {
       return { data: response, response };
+    }
+  } catch (error) {
+    if ((error as any).name === "AbortError") {
+      return { data: response, response };
+    }
+
+    (error as any).response = response;
+    console.log(error);
+  }
+};
+
+const parseHeaders = async function (response) {
+  const contentRange = response?.headers.get("content-range") || "";
+  try {
+    if (contentRange) {
+      return { contentRange };
     }
   } catch (error) {
     if ((error as any).name === "AbortError") {
@@ -40,6 +56,23 @@ const checkResponse = ({ data, response }) => {
     error.response = data;
     throw error;
   }
+};
+
+const getReponseHeaders = data => {
+  return data;
+};
+
+export const fetchResponseHeaders = (url, opts = {}) => {
+  return fetch(url, opts)
+    .then(checkStatus)
+    .then(parseHeaders)
+    .then(getReponseHeaders)
+    .catch(error => {
+      if (error.name === "TypeError") {
+        console.log(error);
+      }
+      throw error;
+    });
 };
 
 const fetchData = (url, opts = {}) => {

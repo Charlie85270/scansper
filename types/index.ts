@@ -3,7 +3,7 @@ import { StringifiableRecord } from "query-string";
 
 export interface QueryConfig {
   query?: StringifiableRecord;
-  method?: "GET";
+  method?: "GET" | "HEAD";
   url: string;
   body?: Object;
   headers?: Headers;

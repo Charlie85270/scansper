@@ -9,7 +9,6 @@ import { pageSize } from "../../../services/httpReq";
 import NFTCollectionCard from "../Card/NFTCollectionCard/NFTCollectionCard";
 import { useGetCasperLiveNFTByAccount } from "../../../hooks/useGetCasperLiveNFTByAccount";
 import Pager from "../Table/Pager";
-import { Metadatum } from "../../../types/account";
 
 interface DeployListProps {
   accountHash?: string;
@@ -31,8 +30,8 @@ const NFTCasperLiveList = ({ accountHash }: DeployListProps) => {
     return <ErrorMessage />;
   }
 
-  if (!items && nftCsprLive.isFetched) {
-    return <p className="p-4">No data</p>;
+  if (items?.length === 0 && nftCsprLive.isFetched) {
+    return <p className="p-4">No result</p>;
   }
 
   const totalItems = nftCsprLive?.data?.itemCount;

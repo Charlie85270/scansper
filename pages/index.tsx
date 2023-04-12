@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppLayout from "../components/layout/AppLayout";
 import HomeCard from "../components/shared/Card/HomeCard/HomeCard";
 import IconCard, {
   IconCardProps,
 } from "../components/shared/Card/IconCard/IconCard";
+
+import { MdPeopleOutline } from "react-icons/md";
 import { AiOutlineBarChart, AiOutlineLineChart } from "react-icons/ai";
 import { formatNumber, MOTE_VALUE } from "../utils/Utils";
-import { FiDatabase, FiPercent, FiHeart } from "react-icons/fi";
+import { FiDatabase, FiHeart, FiPercent } from "react-icons/fi";
 import LinearNFTCollection from "../components/shared/NFTCollection/LinearNFTCollection";
 import { useGetCasperSupplyInfo } from "../hooks/useGetCasperSupplyInfo";
 import { useGetAuctionMetrics } from "../hooks/useGetAuctionMetrics";
@@ -19,6 +21,7 @@ import SentimentCard from "../components/shared/Card/SentimentCard/SentimentCard
 import DeploysList from "../components/shared/DeploysList/DeploysList";
 import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
 import Card from "../components/shared/Card/Card";
+import { getAccountNumber } from "../services/httpReq";
 
 export const IndexPage = () => {
   // Queries
@@ -27,6 +30,15 @@ export const IndexPage = () => {
   const price = useGetHistoryCasperPrice(1);
   const statusInfos = useGetStatusInfos();
   const community = useGetCoinCommunityData();
+  const [holders, setHolders] = useState(0);
+  useEffect(() => {
+    getAccountNumber().then(data => {
+      console.log(data);
+      if (data?.contentRange) {
+        setHolders(data?.contentRange?.split("/")[1]);
+      }
+    });
+  }, []);
 
   const totalStaked =
     Number(
@@ -100,10 +112,10 @@ export const IndexPage = () => {
       changes: percentMarketCap,
     },
     {
-      title: "APY",
-      value: apy.toFixed(2),
-      currency: "%",
-      icon: FiPercent,
+      title: "Holders",
+      value: formatNumber(holders),
+      currency: "",
+      icon: MdPeopleOutline,
     },
     {
       title: "Block height",
