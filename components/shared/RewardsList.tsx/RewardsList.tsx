@@ -67,7 +67,7 @@ const RewardsList = ({ publicKey }: DeployListProps) => {
 
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(item.amount) / MOTE_VALUE)}
           </span>
           <img

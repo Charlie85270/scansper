@@ -6,7 +6,7 @@ const Footer = () => {
   const creditLink = "https://github.com/Charlie85270";
   const coingecko = "https://www.coingecko.com/";
   return (
-    <footer className="px-3 py-8 text-gray-500 transition-colors duration-200 bg-white dark:bg-gray-800 text-2 dark:text-gray-200">
+    <footer className="px-3 py-8 text-gray-500 transition-colors duration-200 background-card text-2 dark:text-gray-200">
       <div className="flex flex-col">
         <div className="flex flex-col w-full mt-4 justify-evenly md:mt-0 md:flex-row">
           <p className="flex flex-col items-center justify-center w-full border-gray-100 md:w-1/5 md:items-end md:border-r md:pr-5">

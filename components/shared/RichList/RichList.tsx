@@ -35,7 +35,7 @@ const RichList = () => {
     return [
       <p>{(Number(page || 1) - 1) * 25 + index + 1}</p>,
       <Link
-        className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
+        className="flex items-center space-x-2 text-blue-500"
         href={`/account/${item.public_key || item.account_hash}?tab=deploys`}
       >
         <img
@@ -48,7 +48,7 @@ const RichList = () => {
       </Link>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(Number(item.total / MOTE_VALUE).toFixed(0)))}
           </span>
           <img
@@ -57,7 +57,7 @@ const RichList = () => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber(
             Number(Number((item.total / MOTE_VALUE) * casperPrice).toFixed(0))
           )}
@@ -68,7 +68,7 @@ const RichList = () => {
   });
 
   return (
-    <div className="w-full overflow-y-hidden flex-nowrap">
+    <div className="w-full overflow-y-hidden text-primary flex-nowrap">
       <Table
         showTotalItems
         showPagination

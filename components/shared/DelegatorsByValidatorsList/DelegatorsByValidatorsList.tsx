@@ -49,7 +49,7 @@ const DelegatorsByValidatorsList = () => {
       </Link>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(
               Number(
                 (Number(Number(item.stake).toFixed(2)) / MOTE_VALUE).toFixed(0)
@@ -62,7 +62,7 @@ const DelegatorsByValidatorsList = () => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber(
             Number(
               Number((Number(item?.stake) / MOTE_VALUE) * casperPrice).toFixed(

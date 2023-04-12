@@ -19,7 +19,7 @@ const AppLayout = ({ title, desc, children }: Props) => {
       <Meta pageTitle={title} description={desc} />
       <div className="flex">
         <div className="fixed top-0">
-          <nav className="relative hidden h-screen overflow-hidden border-r lg:block lg:w-72 xl:w-80">
+          <nav className="relative hidden h-screen overflow-hidden border-r dark:border-gray-900 lg:block lg:w-72 xl:w-80">
             <NavBar />
           </nav>
         </div>
@@ -43,7 +43,7 @@ const AppLayout = ({ title, desc, children }: Props) => {
         </div>
       </div>
       {isOpenMenu && (
-        <nav className="fixed top-0 z-50 w-full h-screen overflow-hidden border-r">
+        <nav className="fixed top-0 z-50 w-full h-screen overflow-hidden border-r dark:border-gray-900">
           <NavBar />
         </nav>
       )}

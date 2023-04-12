@@ -59,10 +59,8 @@ const ValidatorsList = () => {
           }
         />
         <div className="">
-          <p className="text-gray-700 hover:text-gray-900">
-            {item.account_info?.info.owner.name}
-          </p>
-          <p className="text-sm text-gray-400">
+          <p className="text-primary">{item.account_info?.info.owner.name}</p>
+          <p className="text-sm text-secondary">
             {truncateString(item.public_key, 10)}
           </p>
         </div>
@@ -70,14 +68,14 @@ const ValidatorsList = () => {
       <span className="flex items-center space-x-2 text-sm">{item.fee}%</span>,
       <div className="flex items-center space-x-2">
         <span>{item.delegators_number}</span>{" "}
-        <FiUsers className="w-3 text-gray-400" />
+        <FiUsers className="w-3 text-secondary" />
       </div>,
 
-      <p className="text-gray-400">{item.self_share}%</p>,
-      <p className="text-gray-400">{item.network_share}%</p>,
+      <p className="text-secondary">{item.self_share}%</p>,
+      <p className="text-secondary">{item.network_share}%</p>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(
               Number(Number(Number(item.total_stake) / MOTE_VALUE).toFixed(0))
             )}
@@ -88,13 +86,13 @@ const ValidatorsList = () => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber((Number(item.total_stake) / MOTE_VALUE) * casperPrice)}$
         </span>
       </div>,
 
       <div>
-        <span className="text-sm text-gray-400">
+        <span className="text-sm text-secondary">
           {item?.average_performance?.average_score?.toFixed(2)}%{" "}
         </span>
 
@@ -164,7 +162,7 @@ const ValidatorsList = () => {
     });
 
   return (
-    <div className="relative overflow-hidden rounded-lg">
+    <div className="relative overflow-hidden rounded-lg text-secondary">
       <Map
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
         initialViewState={{
@@ -198,11 +196,11 @@ const ValidatorsList = () => {
                   }
                 />
                 <div className="">
-                  <p className="text-sm text-gray-800">
+                  <p className="text-sm text-primary">
                     {popupInfo.account_info?.info.owner.name}
                   </p>
                   {popupInfo?.account_info?.info.owner.location.country && (
-                    <div className="flex items-center space-x-2 text-gray-400">
+                    <div className="flex items-center space-x-2 text-secondary">
                       <img
                         className="w-4 h-4"
                         src={`https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${popupInfo?.account_info?.info.owner.location.country.toLocaleLowerCase()}.svg`}

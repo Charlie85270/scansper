@@ -383,16 +383,18 @@ export const Genesis = () => {
       desc="List of the genesis accounts of the Casper Network"
     >
       <Card titleSize="large" title="Genesis accounts">
-        <p className="italic text-gray-400">
+        <p className="italic text-secondary">
           This is the list of all genesis accounts (validators) when the Casper
           mainnet was launched the Mar 31 2021.
         </p>
-        <Table
-          showTotalItems
-          totalItems={genesisAccount.length}
-          rows={rows}
-          header={headers}
-        />
+        <div className="text-primary">
+          <Table
+            showTotalItems
+            totalItems={genesisAccount.length}
+            rows={rows}
+            header={headers}
+          />
+        </div>
       </Card>
     </AppLayout>
   );

@@ -11,7 +11,7 @@ interface Props {
 const LinkButton = ({ title, href, target, icon }: Props) => {
   return (
     <Link
-      className="flex items-center p-2 space-x-3 font-light text-center text-gray-500 border border-gray-400 rounded-md text-md hover:border-gray-700 hover:text-gray-700"
+      className="flex items-center p-2 space-x-3 font-light text-center border border-gray-400 rounded-md text-primary text-md hover:border-gray-700 hover:text-gray-700"
       href={href}
       target={target}
     >

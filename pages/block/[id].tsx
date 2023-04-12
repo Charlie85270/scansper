@@ -33,30 +33,30 @@ const Block = () => {
           <div className="px-2">
             <div className="flex-col w-full">
               <div className="pb-2 border-b">
-                <p className="text-gray-400 text-md">Date</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Date</p>
+                <p className="text-lg text-primary truncate">
                   {new Date(
                     data?.data?.timestamp.toString() || ""
                   ).toLocaleDateString()}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Block hash</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Block hash</p>
+                <p className="text-lg text-primary truncate">
                   {data?.data.blockHash}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Block height</p>
+                <p className="text-secondary text-md">Block height</p>
 
                 {data?.data.blockHeight}
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Era</p>
+                <p className="text-secondary text-md">Era</p>
                 {data?.data.eraId}
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Parent block key</p>
+                <p className="text-secondary text-md">Parent block key</p>
                 <Link
                   className="flex items-center space-x-2 text-lg text-blue-500 hover:text-blue-900"
                   href={`/block/${data?.data.parentHash}?tab=deploys`}
@@ -65,11 +65,11 @@ const Block = () => {
                 </Link>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">State root hash</p>
+                <p className="text-secondary text-md">State root hash</p>
                 {data?.data.state}
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Validator</p>
+                <p className="text-secondary text-md">Validator</p>
                 <Link
                   className="flex items-center space-x-2 text-lg text-blue-500 hover:text-blue-900"
                   href={`/validator/${data?.data.proposer}?tab=delegators`}

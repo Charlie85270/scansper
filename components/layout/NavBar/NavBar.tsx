@@ -168,11 +168,12 @@ const NavBar = () => {
         <div
           className={classNames(
             {
-              "text-gray-900 bg-bgApp": isActive(link.link || ""),
+              "text-primary background-app": isActive(link.link || ""),
+              "text-secondary": !isActive(link.link || ""),
               "pl-12 text-sm": isChildren,
               "pl-6 text-base": !isChildren,
             },
-            "flex items-center justify-between pr-8 hover:bg-bgApp"
+            "flex items-center  justify-between pr-8 hover:background-app"
           )}
         >
           <div>
@@ -197,7 +198,7 @@ const NavBar = () => {
             ""
           )}
           {link.isSoon && (
-            <p className="p-2 text-xs text-gray-700 border rounded-lg">Soon</p>
+            <p className="p-2 text-xs border rounded-lg text-secondary">Soon</p>
           )}
         </div>
         {isActive(link.link || "") && (
@@ -208,7 +209,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between h-full pb-6 bg-white dark:bg-gray-700">
+    <div className="flex flex-col justify-between h-full pb-6 background-card">
       <div style={{ overflow: "overlay" }}>
         <div className={classNames({ hidden: !isOpenMenu })}>
           <Header />
@@ -216,7 +217,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between hidden px-4 pt-6 pb-4 border-b md:block lg:mb-0 lg:pb-0 lg:border-b-0 lg:pt-8">
           <div className="flex items-center space-x-4 lg:mb-8">
             <img src="/cspr.png" width="50" height="50" />
-            <span className="text-2xl font-light text-gray-900">Scansper</span>
+            <span className="text-2xl font-light text-primary">Scansper</span>
           </div>
           <button
             type="button"
@@ -311,8 +312,8 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      <div className="flex items-center hidden px-10 pt-6">
-        <span className="flex items-center space-x-4">
+      <div className="flex items-center px-10 pt-6">
+        <span className="flex items-center space-x-4 text-primary">
           {theme === "dark" ? <FiSun /> : <FiMoon />} <span> Dark mode</span>
         </span>
         <div className="relative inline-block w-10 ml-4 mr-2 align-middle select-none">
@@ -322,7 +323,7 @@ const NavBar = () => {
             id="Gray"
             onChange={_ => setTheme(theme === "dark" ? "light" : "dark")}
             checked={theme === "dark"}
-            className="absolute block w-6 h-6 duration-200 ease-in bg-white border-4 rounded-full outline-none appearance-none cursor-pointer checked:bg-gray-500 focus:outline-none right-4 checked:right-0"
+            className="absolute block w-6 h-6 duration-200 ease-in border-4 rounded-full outline-none appearance-none cursor-pointer background-card checked:bg-gray-500 focus:outline-none right-4 checked:right-0"
           />
           <label
             htmlFor="Gray"

@@ -105,10 +105,10 @@ const TransfersList = ({ accountHash }: DeployListProps) => {
           )}
         </span>
       </Link>,
-      <div className="text-gray-400">{item.transferId}</div>,
+      <div className="text-secondary">{item.transferId}</div>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(item.amount) / MOTE_VALUE)}
           </span>
           <img
@@ -117,7 +117,7 @@ const TransfersList = ({ accountHash }: DeployListProps) => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber((Number(item.amount) / MOTE_VALUE) * item.rate)}$
         </span>
       </div>,

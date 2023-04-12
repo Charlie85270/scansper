@@ -75,7 +75,7 @@ const Pager = ({
   }
 
   return (
-    <div className="flex flex-col items-center px-5 bg-white xs:flex-row xs:justify-between">
+    <div className="flex flex-col items-center px-5 background-card xs:flex-row xs:justify-between">
       <div className="flex items-center">
         <button
           type="button"
@@ -83,7 +83,7 @@ const Pager = ({
           disabled={pager.currentPage === 1}
           className={classNames(
             { "opacity-60": pager.currentPage === pager.totalPages },
-            "w-full p-4 text-base text-gray-600 bg-white border-t border-b border-l rounded-l-lg hover:bg-gray-100"
+            "w-full p-4 text-base text-gray-600 background-app hover:text-primary border-t border-b border-l rounded-l-lg dark:border-gray-800"
           )}
         >
           <svg
@@ -104,7 +104,7 @@ const Pager = ({
               onClick={() => onChangePage && onChangePage(1)}
               type="button"
               className={classNames(
-                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base background-app hover:text-primary border-t border-b dark:border-gray-800 "
               )}
             >
               {1}
@@ -114,7 +114,7 @@ const Pager = ({
               disabled
               type="button"
               className={classNames(
-                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base background-app hover:text-primary border-t border-b dark:border-gray-800 "
               )}
             >
               ...
@@ -127,8 +127,8 @@ const Pager = ({
             onClick={() => onChangePage && onChangePage(page)}
             type="button"
             className={classNames(
-              { "text-gray-900 bg-gray-100": pager.currentPage === page },
-              "w-full px-3 py-2 md:px-4 text-base border-t border-b hover:bg-gray-100 "
+              { "text-primary background-app": pager.currentPage === page },
+              "w-full px-3 py-2 md:px-4 text-base border-t background-app hover:text-primary border-b dark:border-gray-800 "
             )}
           >
             {page}
@@ -141,7 +141,7 @@ const Pager = ({
               disabled
               type="button"
               className={classNames(
-                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base background-app hover:text-primary border-t border-b dark:border-gray-800 "
               )}
             >
               ...
@@ -151,7 +151,7 @@ const Pager = ({
               onClick={() => onChangePage && onChangePage(pager.totalPages)}
               type="button"
               className={classNames(
-                "w-full px-3 py-2 md:px-4 text-base bg-white border-t border-b hover:bg-gray-100 "
+                "w-full px-3 py-2 md:px-4 text-base background-app hover:text-primary border-t border-b dark:border-gray-800"
               )}
             >
               {pager.totalPages}
@@ -165,7 +165,7 @@ const Pager = ({
           disabled={pager.currentPage === pager.totalPages}
           className={classNames(
             { "opacity-60": pager.currentPage === pager.totalPages },
-            "w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-lg hover:bg-gray-100"
+            "w-full p-4 text-base text-gray-600 background-app hover:text-primary border-t border-b border-r dark:border-gray-800 rounded-r-lg "
           )}
         >
           <svg

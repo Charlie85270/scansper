@@ -13,18 +13,18 @@ const Tag = ({ tag, onClickTag, isSelected }: ITagProps) => {
     <button
       className={classNames(
         {
-          "bg-indigo-600 text-white": isSelected,
-          "bg-white": !isSelected,
+          "bg-indigo-600 ": isSelected,
+          "background-card": !isSelected,
         },
-        "px-4 py-2 mt-2  mr-2 border rounded-lg"
+        "px-4 py-2 mt-2 text-primary mr-2 border dark:border-gray-900 rounded-lg"
       )}
       onClick={() => onClickTag(tag.tagName)}
     >
       {tag.tagName}
       <span
         className={classNames(
-          { "text-white": isSelected },
-          "text-sm text-gray-400"
+          { "text-primary": isSelected },
+          "text-sm text-secondary"
         )}
       >
         {" "}

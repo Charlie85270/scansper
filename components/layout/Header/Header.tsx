@@ -19,7 +19,7 @@ const Header = () => {
     );
   };
   return (
-    <header className="fixed relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 bg-white border-b lg:h-24 dark:bg-gray-800 lg:px-0">
+    <header className="fixed relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 border-b dark:border-gray-900 background-card lg:h-24 lg:px-0">
       <div className="relative flex items-center justify-between h-24">
         <div
           className="flex items-center space-x-4 lg:hidden"
@@ -28,8 +28,8 @@ const Header = () => {
           <img src="/cspr.png" width="50" height="50" />
         </div>
         <div className="flex flex-col items-center justify-center lg:hidden">
-          <p className="text-xl">Scansper</p>
-          <p className="text-sm text-gray-400">Casper Network explorer</p>
+          <p className="text-xl text-primary">Scansper</p>
+          <p className="text-sm text-secondary">Casper Network explorer</p>
         </div>
 
         <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-1/4 lg:relative">
@@ -39,7 +39,7 @@ const Header = () => {
           >
             <div className="relative flex items-center w-full h-full lg:w-96 group">
               <svg
-                className="absolute left-0 z-20 w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-gray-400"
+                className="absolute left-0 z-20 w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-secondary"
                 viewBox="0 0 20 20"
               >
                 <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
@@ -48,7 +48,7 @@ const Header = () => {
                 value={searchText}
                 onChange={e => setSearchText(e.target.value)}
                 type="text"
-                className="block w-full h-12 py-1.5 pl-10 pr-4 leading-normal rounded-md focus:border-transparent focus:outline-none ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input"
+                className="block w-full h-12 py-1.5 pl-10 pr-4 leading-normal rounded-md focus:border-transparent focus:outline-none ring-opacity-90 bg-gray-100 dark:bg-gray-900 text-secondary aa-input"
                 placeholder="Search"
               />
             </div>
@@ -61,7 +61,7 @@ const Header = () => {
             >
               <span>
                 <svg
-                  className="left-0 z-20 w-4 h-4 text-white pointer-events-none fill-current group-hover:text-gray-400"
+                  className="left-0 z-20 w-4 h-4 text-white pointer-events-none fill-current group-hover:text-secondary"
                   viewBox="0 0 20 20"
                 >
                   <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
@@ -76,7 +76,7 @@ const Header = () => {
             document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
             setIsOpenMenu(!isOpenMenu);
           }}
-          className="p-2 border rounded"
+          className="p-2 border rounded text-primary dark:border-gray-100"
         >
           {isOpenMenu ? (
             <FiX className="w-8 h-8" />

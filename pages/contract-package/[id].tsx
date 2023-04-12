@@ -39,31 +39,31 @@ const ContractPackage = () => {
           <div className="px-2">
             <div className="flex-col w-full">
               <div className="pb-2 border-b">
-                <p className="text-gray-400 text-md">Date</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Date</p>
+                <p className="text-lg text-primary truncate">
                   {new Date(
                     data?.timestamp.toString() || ""
                   ).toLocaleDateString()}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Contract package hash</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Contract package hash</p>
+                <p className="text-lg text-primary truncate">
                   {data?.contract_package_hash}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Name</p>
+                <p className="text-secondary text-md">Name</p>
 
                 {data?.contract_name}
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Contract type</p>
+                <p className="text-secondary text-md">Contract type</p>
 
                 {getTypeContract(data?.contract_type_id)}
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Description</p>
+                <p className="text-secondary text-md">Description</p>
                 {data?.contract_description}
               </div>
             </div>

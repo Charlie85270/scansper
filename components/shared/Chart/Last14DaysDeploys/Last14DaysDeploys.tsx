@@ -15,7 +15,7 @@ const Last14DeploysStatsChart = () => {
   if (query.isFetching) {
     return <Loader />;
   }
-  console.log(query.data);
+
   const allData = JSON.parse(JSON.stringify(query.data));
   const transfers = [...query.data]
     .filter(data => data.type === "transfer")
@@ -169,7 +169,7 @@ const Last14DeploysStatsChart = () => {
   return (
     <div
       id="chart"
-      className="flex-col items-center justify-center w-full mx-auto"
+      className="flex-col items-center justify-center w-full mx-auto text-primary"
     >
       <Chart options={config} series={config.series} type="line" height={400} />
     </div>

@@ -72,7 +72,7 @@ const ContractsList = () => {
   });
 
   return (
-    <div className="w-full overflow-y-hidden flex-nowrap">
+    <div className="w-full overflow-y-hidden text-primary flex-nowrap">
       <Table
         showTotalItems
         showPagination

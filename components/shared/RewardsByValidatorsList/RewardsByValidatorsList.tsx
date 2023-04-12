@@ -33,7 +33,7 @@ const RewardsByValidatorsList = () => {
       </p>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(Number(Number(item.amount)) / MOTE_VALUE))}
           </span>
           <img
@@ -42,7 +42,7 @@ const RewardsByValidatorsList = () => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber(
             Number((Number(item?.amount) / MOTE_VALUE) * casperPrice)
           )}

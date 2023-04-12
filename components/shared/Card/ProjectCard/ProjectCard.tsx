@@ -23,7 +23,7 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
       href={project.Website}
       target="_blank"
       className={classNames(
-        "px-4 relative bg-white hover:shadow-lg py-2 mt-2 border relative rounded-lg"
+        "px-4 relative background-card hover:shadow-lg py-2 mt-2 border dark:border-gray-900 relative rounded-lg"
       )}
     >
       {project.Status.toString() === "Not Live - In Development" && (
@@ -31,18 +31,18 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
           Comming soon
         </p>
       )}
-      <div className="flex items-center justify-center py-3 border-b">
+      <div className="flex items-center justify-center py-3 border-b dark:border-gray-900">
         <img className="rounded-lg max-w-40 max-h-12" src={img}></img>
       </div>
 
       <div className="flex-col items-center justify-between h-full my-2">
-        <p className="text-xl text-gray-800"> {project.Name}</p>
-        <p className="my-2 text-sm text-gray-400">
+        <p className="text-xl text-primary"> {project.Name}</p>
+        <p className="my-2 text-sm text-secondary">
           {chaine && chaine?.length > 0
             ? truncateString(chaine, 90)
             : "No description"}
         </p>
-        <div className="block p-1 px-3 text-sm text-gray-800 bg-gray-100 w-fit rounded-xl">
+        <div className="block p-1 px-3 text-sm bg-gray-100 dark:bg-gray-900 text-primary w-fit rounded-xl">
           {project.Tag}
         </div>
       </div>

@@ -47,21 +47,21 @@ const Deploy = () => {
           <div className="px-2">
             <div className="flex-col w-full">
               <div className="pb-2 border-b">
-                <p className="text-gray-400 text-md">Date</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Date</p>
+                <p className="text-lg text-primary truncate">
                   {new Date(
                     data?.timestamp?.toString() || ""
                   ).toLocaleDateString()}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Deploy hash</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Deploy hash</p>
+                <p className="text-lg text-primary truncate">
                   {data?.deploy_hash}
                 </p>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Block hash</p>
+                <p className="text-secondary text-md">Block hash</p>
                 <Link
                   className="flex items-center space-x-2 text-lg text-blue-500 truncate hover:text-blue-900"
                   href={`/block/${data?.block_hash}?tab=deploys`}
@@ -70,7 +70,7 @@ const Deploy = () => {
                 </Link>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Public key</p>
+                <p className="text-secondary text-md">Public key</p>
                 <Link
                   className="flex items-center space-x-2 text-lg text-blue-500 hover:text-blue-900"
                   href={`/account/${data?.caller_public_key}?tab=deploys`}
@@ -91,7 +91,7 @@ const Deploy = () => {
                 </Link>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Action</p>
+                <p className="text-secondary text-md">Action</p>
                 {data?.contract_package ? (
                   <div className="flex space-x-2">
                     {getNodeFromMethod(method)}
@@ -106,13 +106,13 @@ const Deploy = () => {
                     </Link>
                   </div>
                 ) : (
-                  <p className="text-lg text-gray-800 truncate">{method}</p>
+                  <p className="text-lg text-primary truncate">{method}</p>
                 )}
               </div>
               <div className="py-2 border-b">
-                <p className="text-gray-400 text-md">Amount</p>
+                <p className="text-secondary text-md">Amount</p>
                 <span className="flex items-center space-x-2">
-                  <span className="text-lg text-gray-800">
+                  <span className="text-lg text-primary">
                     {formatNumber(Number(data?.amount) / MOTE_VALUE)}
                   </span>
                   <img
@@ -120,7 +120,7 @@ const Deploy = () => {
                     width="12px"
                     alt="cspr"
                   />
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(
                       Number((Number(data?.amount) / MOTE_VALUE) * casperPrice)
                     )}
@@ -129,9 +129,9 @@ const Deploy = () => {
                 </span>
               </div>
               <div className="py-2 border-b">
-                <p className="text-gray-400 text-md">Payment amount</p>
+                <p className="text-secondary text-md">Payment amount</p>
                 <span className="flex items-center space-x-2">
-                  <span className="text-lg text-gray-800">
+                  <span className="text-lg text-primary">
                     {formatNumber(
                       Number(Number(Number(data?.payment_amount) / MOTE_VALUE))
                     )}
@@ -141,7 +141,7 @@ const Deploy = () => {
                     width="12px"
                     alt="cspr"
                   />
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(
                       Number(
                         (Number(data?.payment_amount) / MOTE_VALUE) *
@@ -154,9 +154,9 @@ const Deploy = () => {
               </div>
 
               <div className="py-2 border-b">
-                <p className="text-gray-400 text-md">Cost</p>
+                <p className="text-secondary text-md">Cost</p>
                 <span className="flex items-center space-x-2">
-                  <span className="text-lg text-gray-800">
+                  <span className="text-lg text-primary">
                     {formatNumber(
                       Number(Number(Number(data?.cost) / MOTE_VALUE))
                     )}
@@ -166,7 +166,7 @@ const Deploy = () => {
                     width="12px"
                     alt="cspr"
                   />
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(
                       Number((Number(data?.cost) / MOTE_VALUE) * casperPrice)
                     )}
@@ -175,8 +175,8 @@ const Deploy = () => {
                 </span>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
-                <p className="text-gray-400 text-md">Status</p>
-                <p className="text-lg text-gray-800 truncate">
+                <p className="text-secondary text-md">Status</p>
+                <p className="text-lg text-primary truncate">
                   <span
                     className={classNames(
                       {

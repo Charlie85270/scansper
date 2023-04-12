@@ -81,16 +81,16 @@ export const Search = () => {
         ) : (
           <>
             {" "}
-            <p className="flex items-center mb-8 text-gray-400 text-md">
+            <p className="flex items-center mb-8 text-secondary text-md">
               <span> Result found for : </span>
-              <p className="ml-2 font-semibold text-gray-800 truncate ">
+              <p className="ml-2 font-semibold text-primary truncate ">
                 {search}
               </p>
             </p>
             {/* VALIDATORS */}
             {filteredValidator.length > 0 && (
               <div className="mt-6">
-                <p className="pb-2 mb-2 text-lg text-gray-800 border-b">
+                <p className="pb-2 mb-2 text-lg text-primary border-b">
                   {filteredValidator.length} validators
                 </p>
                 <div>
@@ -107,10 +107,10 @@ export const Search = () => {
                             src={getAvatarUrl(val.publicKey || "", validators)}
                           />
                           <div className="">
-                            <p className="text-gray-700 hover:text-gray-900">
+                            <p className="text-gray-700 hover:text-primary">
                               {val.name}
                             </p>
-                            <p className="text-sm text-gray-400 truncate">
+                            <p className="text-sm text-secondary truncate">
                               {truncateString(val.publicKey || "", 45)}
                             </p>
                           </div>
@@ -124,7 +124,7 @@ export const Search = () => {
             {/* ACCOUNTS */}
             {(accountHash || knowAddress.length > 0) && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800 border-b">
+                <p className="text-lg text-primary border-b">
                   {knowAddress.length > 0
                     ? `${knowAddress.length} Accounts`
                     : "Account"}
@@ -140,7 +140,7 @@ export const Search = () => {
                       src={getAvatarUrl(search || "", validators)}
                     />
                     <div className="">
-                      <p className="text-gray-700 hover:text-gray-900">
+                      <p className="text-gray-700 hover:text-primary">
                         {truncateString(search || "", 35)}
                       </p>
                     </div>
@@ -155,7 +155,7 @@ export const Search = () => {
                     >
                       <img className="w-8 h-8 rounded-lg" src={ad.img} />
                       <div className="">
-                        <p className="text-gray-700 hover:text-gray-900">
+                        <p className="text-gray-700 hover:text-primary">
                           {truncateString(ad.name || "", 35)}
                         </p>
                       </div>
@@ -167,7 +167,7 @@ export const Search = () => {
             {/* DEPLOY */}
             {deployQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800 border-b">Deploy</p>
+                <p className="text-lg text-primary border-b">Deploy</p>
 
                 <Link
                   key={search}
@@ -175,7 +175,7 @@ export const Search = () => {
                   href={`/deploy/${search}`}
                 >
                   <div className="">
-                    <p className="text-gray-700 hover:text-gray-900">
+                    <p className="text-gray-700 hover:text-primary">
                       {truncateString(search || "", 35)}
                     </p>
                   </div>
@@ -185,7 +185,7 @@ export const Search = () => {
             {/* BLOCK */}
             {blockQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800 border-b">Block</p>
+                <p className="text-lg text-primary border-b">Block</p>
 
                 <Link
                   key={search}
@@ -193,7 +193,7 @@ export const Search = () => {
                   href={`/block/${search}?tab=deploys`}
                 >
                   <div className="">
-                    <p className="text-gray-700 hover:text-gray-900">
+                    <p className="text-gray-700 hover:text-primary">
                       {truncateString(search || "", 35)}
                     </p>
                   </div>
@@ -203,7 +203,7 @@ export const Search = () => {
             {/* CONTRACT */}
             {contractQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800 border-b">Contract</p>
+                <p className="text-lg text-primary border-b">Contract</p>
 
                 <Link
                   key={search}
@@ -211,10 +211,10 @@ export const Search = () => {
                   href={`/contract/${search}?tab=deploys`}
                 >
                   <div className="">
-                    <p className="text-gray-700 hover:text-gray-900">
+                    <p className="text-gray-700 hover:text-primary">
                       {contractQuery.data.contract_name}
                     </p>
-                    <p className="text-sm text-gray-400 truncate">
+                    <p className="text-sm text-secondary truncate">
                       {truncateString(search || "", 35)}
                     </p>
                   </div>
@@ -224,7 +224,7 @@ export const Search = () => {
             {/* NO RESULTS */}
             {noResult && (
               <div className="mt-6">
-                <p className="text-lg text-gray-800">No result</p>
+                <p className="text-lg text-primary">No result</p>
               </div>
             )}
           </>

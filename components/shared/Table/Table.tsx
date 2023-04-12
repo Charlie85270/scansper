@@ -37,7 +37,7 @@ const Table = ({
                   <th
                     key={head}
                     scope="col"
-                    className="px-5 py-5 font-semibold text-left text-gray-700 bg-white border-b border-gray-200 text-md"
+                    className="px-5 py-5 font-semibold text-left text-gray-700 border-b border-gray-200 dark:text-gray-100 dark:border-gray-900 background-card text-md"
                   >
                     {head}
                   </th>
@@ -61,7 +61,7 @@ const Table = ({
                   <tr key={index}>
                     {row.map(r => {
                       return (
-                        <td className="px-5 py-3 text-base bg-white border-b border-gray-200">
+                        <td className="px-5 py-3 text-base border-b border-gray-200 dark:border-gray-900 background-card">
                           {r}
                         </td>
                       );
@@ -74,7 +74,7 @@ const Table = ({
         </table>
       </div>
       {showTotalItems && (
-        <p className="w-full py-3 text-sm text-center text-gray-400">
+        <p className="w-full py-3 text-sm text-center text-secondary">
           {totalItems} results
         </p>
       )}

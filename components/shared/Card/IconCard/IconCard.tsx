@@ -29,7 +29,7 @@ const IconCard = ({
           {icon({ className: "w-6 h-6 opacity-10" })}
         </div>
         <div className="flex-col">
-          <span className="flex items-end text-2xl text-gray-800">
+          <span className="flex items-end text-2xl text-primary">
             {value}
             <span className="text-sm text-gray-500"> {currency}</span>
           </span>
@@ -37,11 +37,11 @@ const IconCard = ({
           <span
             className={`${
               isNegative ? "text-red-400" : "text-green-400"
-            } text-sm text-gray-400`}
+            } text-sm text-secondary`}
           >
             {changes && `${changes.toFixed(2)}%`}‎
           </span>
-          {description && <span className="text-gray-400">{description}</span>}
+          {description && <span className="text-secondary">{description}</span>}
         </div>
       </div>
     </Card>

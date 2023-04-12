@@ -13,13 +13,13 @@ interface Props {
 
 const Card = ({ title, children, titleSize, backLabel, backLink }: Props) => {
   return (
-    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 bg-white border rounded-md">
+    <div className="relative flex flex-col justify-between w-full p-4 space-y-4 border rounded-md dark:border-gray-900 background-card">
       <div className="flex items-center justify-between">
         {title && (
           <span
             className={classNames(
               { "text-xl": titleSize === "large" },
-              "text-sm text-gray-400"
+              "text-sm text-secondary"
             )}
           >
             {title}

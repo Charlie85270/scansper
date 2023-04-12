@@ -55,10 +55,10 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
         </span>
       </Link>,
 
-      <div className="text-gray-400">{item.validator.fee}%</div>,
+      <div className="text-secondary">{item.validator.fee}%</div>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(item.stake) / MOTE_VALUE)}
           </span>
           <img
@@ -67,7 +67,7 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber(
             Number(
               Number((Number(item?.stake) / MOTE_VALUE) * casperPrice).toFixed(

@@ -120,7 +120,7 @@ const Account = () => {
                         src={id ? getAvatarUrl(id.toString()) : ""}
                       />
                       {name !== id && (
-                        <p className="flex justify-center mx-auto mt-8 text-2xl text-center text-gray-900 full">
+                        <p className="flex justify-center mx-auto mt-8 text-2xl text-center text-primary full">
                           <span>{name}</span>
                           <MdVerified className="w-6 h-6 ml-2 text-blue-500" />
                         </p>
@@ -129,9 +129,9 @@ const Account = () => {
                     <div className="py-2 lg:mt-8">
                       <div className="flex-col items-center justify-center p-4 space-y-3 text-center border rounded basis-1/3">
                         <FaBalanceScaleLeft className="w-5 h-5 mx-auto " />
-                        <div className="text-xl font-semibold text-gray-800">
+                        <div className="text-xl font-semibold text-primary">
                           <span className="flex items-center justify-center space-x-2">
-                            <span className="text-xl font-medium text-gray-800">
+                            <span className="text-xl font-medium text-primary">
                               {formatNumber(
                                 balanceValue +
                                   (isNaN(totalStakeNumber)
@@ -147,7 +147,7 @@ const Account = () => {
                             />
                           </span>
                           <div className="flex items-center w-full">
-                            <span className="w-full text-xs text-center text-gray-400">
+                            <span className="w-full text-xs text-center text-secondary">
                               {formatNumber(
                                 Number(
                                   (
@@ -171,24 +171,24 @@ const Account = () => {
                 </div>
                 <div className="flex-col w-full md:w-5/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
-                    <p className="text-gray-400 text-md">Public key</p>
-                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                    <p className="text-secondary text-md">Public key</p>
+                    <div className="flex items-center space-x-2 text-lg text-primary truncate">
                       <span>{id}</span>
                       <CopyButton textToCopy={id} />
                     </div>
                   </div>
                   <div className="py-2 mt-4 border-b md:mt-0">
-                    <p className="text-gray-400 text-md">Account hash</p>
-                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                    <p className="text-secondary text-md">Account hash</p>
+                    <div className="flex items-center space-x-2 text-lg text-primary truncate">
                       <span>{accountHash}</span>
                       <CopyButton textToCopy={accountHash} />
                     </div>
                   </div>
 
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">Liquid</p>
+                    <p className="text-secondary text-md">Liquid</p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(balanceValue)}
                       </span>
                       <img
@@ -196,7 +196,7 @@ const Account = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number((balanceValue * casperPrice).toFixed(0))
                         )}
@@ -205,9 +205,9 @@ const Account = () => {
                     </span>
                   </div>
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">Total staked</p>
+                    <p className="text-secondary text-md">Total staked</p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(
                           Number(
                             Number(Number(totalStake) / MOTE_VALUE).toFixed(0)
@@ -219,7 +219,7 @@ const Account = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (
@@ -233,9 +233,9 @@ const Account = () => {
                     </span>
                   </div>
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">Total undelegating</p>
+                    <p className="text-secondary text-md">Total undelegating</p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(totalUndelegatingNumber)}
                       </span>
                       <img
@@ -243,7 +243,7 @@ const Account = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (
@@ -257,9 +257,9 @@ const Account = () => {
                     </span>
                   </div>
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">Total rewards</p>
+                    <p className="text-secondary text-md">Total rewards</p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(
                           Number(
                             Number(Number(totalRewards) / MOTE_VALUE).toFixed(0)
@@ -271,7 +271,7 @@ const Account = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (

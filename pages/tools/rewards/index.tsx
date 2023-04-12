@@ -47,7 +47,7 @@ export const RewardsCalculator = () => {
     >
       <Card titleSize="large" title="Rewards Calculator">
         <div className="w-full lg:w-1/2">
-          <label className="mb-4">
+          <label className="mb-4 text-primary">
             <span className="block py-2">
               Enter the amount of casper to stake
             </span>
@@ -56,16 +56,16 @@ export const RewardsCalculator = () => {
               onChange={e => setAmount(Number(e.target.value))}
               type="number"
               placeholder="0"
-              className="w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 border rounded-lg dark:border-gray-900 background-card focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </label>
 
           <div className="relative my-4" ref={clickRef}>
-            <span className="block py-2">Select a validator</span>
+            <span className="block py-2 text-primary">Select a validator</span>
             <button
               type="button"
               onClick={() => setIsOpen(true)}
-              className="relative w-full py-3 pl-3 pr-10 text-left bg-white border rounded-md cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="relative w-full py-3 pl-3 pr-10 text-left border rounded-md cursor-default dark:border-gray-900 background-card focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <span className="flex items-center justify-between">
                 {selectedValidator ? (
@@ -94,18 +94,18 @@ export const RewardsCalculator = () => {
                       </span>
                     </div>
                     <p>
-                      <span className="text-xs text-gray-400">Fees :</span>{" "}
+                      <span className="text-xs text-secondary">Fees :</span>{" "}
                       {selectedValidator.fee}%
                     </p>
                   </>
                 ) : (
-                  <p>Select a validator</p>
+                  <p className="text-secondary">Select a validator</p>
                 )}
               </span>
 
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
                 <svg
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-secondary"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -120,7 +120,7 @@ export const RewardsCalculator = () => {
               </span>
             </button>
             {open && (
-              <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
+              <div className="absolute z-10 w-full mt-1 rounded-md shadow-lg background-card">
                 <ul
                   role="listbox"
                   aria-labelledby="listbox-label"
@@ -136,7 +136,7 @@ export const RewardsCalculator = () => {
                           setIsOpen(false);
                         }}
                         role="option"
-                        className="relative py-2 pl-3 text-gray-900 cursor-pointer select-none hover:bg-gray-200 pr-9"
+                        className="relative py-2 pl-3 cursor-pointer select-none text-primary hover:background-app pr-9"
                       >
                         <div className="flex justify-between">
                           <div className="flex items-center">
@@ -159,7 +159,7 @@ export const RewardsCalculator = () => {
                             </span>
                           </div>
                           <p>
-                            <span className="text-xs text-gray-400">
+                            <span className="text-xs text-secondary">
                               Fees :
                             </span>{" "}
                             {val.fee}%
@@ -175,11 +175,11 @@ export const RewardsCalculator = () => {
           {selectedValidator && amount !== 0 && (
             <div className="w-full mt-12 rounded-lg">
               <span className="block py-2 mb-3">Estimated rewards</span>
-              <div className="flex items-center justify-between my-4 text-xl border-b">
+              <div className="flex items-center justify-between my-4 text-xl border-b dark:border-gray-900">
                 <p>Per year</p>
                 <div className="flex items-center">
                   <span className="flex items-center space-x-2">
-                    <span className="text-gray-800 text-md">
+                    <span className="text-primary text-md">
                       {formatNumber(rewardsPerYear)}
                     </span>
                     <img
@@ -188,16 +188,16 @@ export const RewardsCalculator = () => {
                       alt="cspr"
                     />
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(Number(rewardsPerYear) * casperPrice)}$
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between my-4 text-xl border-b">
+              <div className="flex items-center justify-between my-4 text-xl border-b dark:border-gray-900">
                 <p>Per month</p>
                 <div className="flex items-center">
                   <span className="flex items-center space-x-2">
-                    <span className="text-gray-800 text-md">
+                    <span className="text-primary text-md">
                       {formatNumber(rewardsPerMonth)}
                     </span>
                     <img
@@ -206,16 +206,16 @@ export const RewardsCalculator = () => {
                       alt="cspr"
                     />
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(Number(rewardsPerMonth) * casperPrice)}$
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between my-4 text-xl border-b">
+              <div className="flex items-center justify-between my-4 text-xl border-b dark:border-gray-900">
                 <p>Per week</p>
                 <div className="flex items-center">
                   <span className="flex items-center space-x-2">
-                    <span className="text-gray-800 text-md">
+                    <span className="text-primary text-md">
                       {formatNumber(rewardsPerWeek)}
                     </span>
                     <img
@@ -224,16 +224,16 @@ export const RewardsCalculator = () => {
                       alt="cspr"
                     />
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(Number(rewardsPerWeek) * casperPrice)}$
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between my-4 text-xl border-b">
+              <div className="flex items-center justify-between my-4 text-xl border-b dark:border-gray-900">
                 <p>Per day</p>
                 <div className="flex items-center">
                   <span className="flex items-center space-x-2">
-                    <span className="text-gray-800 text-md">
+                    <span className="text-primary text-md">
                       {formatNumber(rewardsPerDay)}
                     </span>
                     <img
@@ -242,16 +242,16 @@ export const RewardsCalculator = () => {
                       alt="cspr"
                     />
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(Number(rewardsPerDay) * casperPrice)}$
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between my-4 text-xl border-b">
+              <div className="flex items-center justify-between my-4 text-xl border-b dark:border-gray-900">
                 <p>Per Era</p>
                 <div className="flex items-center">
                   <span className="flex items-center space-x-2">
-                    <span className="text-gray-800 text-md">
+                    <span className="text-primary text-md">
                       {formatNumber(rewardsPerEra)}
                     </span>
                     <img
@@ -260,7 +260,7 @@ export const RewardsCalculator = () => {
                       alt="cspr"
                     />
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-secondary">
                     {formatNumber(Number(rewardsPerEra) * casperPrice)}$
                   </span>
                 </div>

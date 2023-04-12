@@ -131,7 +131,7 @@ const Valiator = () => {
                         }
                       />
                       <div>
-                        <p className="text-2xl text-gray-800">
+                        <p className="text-2xl text-primary">
                           {accountInfo?.info.owner.name}
                         </p>
                         {accountInfo?.info.owner.location.country && (
@@ -171,7 +171,7 @@ const Valiator = () => {
                         target="_blank"
                         href={`https://medium.com/${validator?.account_info?.info?.owner?.social.medium}`}
                       >
-                        <FaMedium className="w-5 h-5 text-gray-900" />
+                        <FaMedium className="w-5 h-5 text-primary" />
                       </a>
                     )}
                     {validator?.account_info?.info?.owner?.social.reddit && (
@@ -212,21 +212,21 @@ const Valiator = () => {
                   <div className="flex items-center justify-between space-x-3">
                     <div className="flex-col items-center justify-center p-4 space-y-3 text-center border rounded basis-1/3">
                       <FiTrendingUp className="w-5 h-5 mx-auto " />
-                      <p className="text-xl font-semibold text-gray-800">
+                      <p className="text-xl font-semibold text-primary">
                         {validator?.rank}
                       </p>
                       <p className="text-xs text-gray-500">Rank</p>
                     </div>
                     <div className="flex-col items-center justify-center p-4 space-y-3 text-center border rounded basis-1/3">
                       <FiUsers className="w-5 h-5 mx-auto " />
-                      <p className="text-xl font-semibold text-gray-800">
+                      <p className="text-xl font-semibold text-primary">
                         {validator?.delegators_number}
                       </p>
                       <p className="text-xs text-gray-500">Delegators</p>
                     </div>
                     <div className="flex-col items-center justify-center p-4 space-y-3 text-center border rounded basis-1/3">
                       <FiPercent className="w-5 h-5 mx-auto " />
-                      <p className="text-xl font-semibold text-gray-800">
+                      <p className="text-xl font-semibold text-primary">
                         {validator?.fee}
                       </p>
                       <p className="text-xs text-gray-500">Fees</p>
@@ -235,16 +235,16 @@ const Valiator = () => {
                 </div>
                 <div className="flex-col w-full md:w-4/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
-                    <p className="text-gray-400 text-md">Public key</p>
-                    <div className="flex items-center space-x-2 text-lg text-gray-800 truncate">
+                    <p className="text-secondary text-md">Public key</p>
+                    <div className="flex items-center space-x-2 text-lg text-primary truncate">
                       <span>{validator?.public_key}</span>
                       <CopyButton textToCopy={validator?.public_key} />
                     </div>
                   </div>
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">Total stake</p>
+                    <p className="text-secondary text-md">Total stake</p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(
                           Number(
                             Number(
@@ -258,7 +258,7 @@ const Valiator = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (
@@ -273,11 +273,11 @@ const Valiator = () => {
                   </div>
 
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">
+                    <p className="text-secondary text-md">
                       Total delegators rewards
                     </p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(
                           Number(
                             Number(
@@ -292,7 +292,7 @@ const Valiator = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (
@@ -308,11 +308,11 @@ const Valiator = () => {
                   </div>
 
                   <div className="py-2 border-b">
-                    <p className="text-gray-400 text-md">
+                    <p className="text-secondary text-md">
                       Total validators rewards
                     </p>
                     <span className="flex items-center space-x-2">
-                      <span className="text-lg text-gray-800">
+                      <span className="text-lg text-primary">
                         {formatNumber(
                           Number(
                             Number(
@@ -326,7 +326,7 @@ const Valiator = () => {
                         width="12px"
                         alt="cspr"
                       />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-secondary">
                         {formatNumber(
                           Number(
                             (
@@ -340,7 +340,7 @@ const Valiator = () => {
                     </span>
                   </div>
                   <div className="py-2">
-                    <p className="text-gray-400 text-md">Performance</p>
+                    <p className="text-secondary text-md">Performance</p>
                     <div
                       className="flex-col items-start justify-start"
                       id="chart"
@@ -358,7 +358,7 @@ const Valiator = () => {
               </div>
               {/* ABOUT */}
               <div className="mb-6">
-                <p className="mt-6 font-semibold text-gray-800">About</p>
+                <p className="mt-6 font-semibold text-primary">About</p>
                 <p className="text-sm text-gray-500">
                   {accountInfo?.info?.nodes[0]?.description ||
                     accountInfo?.info.owner.description ||

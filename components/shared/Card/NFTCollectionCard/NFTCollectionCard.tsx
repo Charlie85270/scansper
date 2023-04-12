@@ -37,7 +37,7 @@ const NFTCollectionCard = ({
 
   return (
     <Link target={target} href={href}>
-      <div className="relative flex flex-col justify-between w-full pb-2 bg-white rounded-md shadow-lg flex-nowrap hover:shadow-xl hover:opacity-70">
+      <div className="relative flex flex-col justify-between w-full pb-2 rounded-md shadow-lg background-card flex-nowrap hover:shadow-xl hover:opacity-70">
         <img
           onLoad={imageOnLoad}
           src={image || "/defaultNFT.png"}
@@ -53,12 +53,12 @@ const NFTCollectionCard = ({
         ></div>
 
         <div className="flex-col justify-between w-full px-4 pt-2">
-          <div className="flex items-center mb-2 space-x-2 text-lg text-gray-800">
+          <div className="flex items-center mb-2 space-x-2 text-lg text-primary">
             <span>{truncateString(title, 20)}</span>
             {verified && <AiFillCheckCircle className="text-blue-400" />}
           </div>
           <div className="flex-col">
-            <span className="flex items-center justify-between text-2xl text-gray-900">
+            <span className="flex items-center justify-between text-2xl text-primary">
               <span className="text-sm text-gray-500">Floor price</span>
               <span className="text-sm text-gray-500">
                 <span className="flex items-center space-x-2">
@@ -67,7 +67,7 @@ const NFTCollectionCard = ({
                     width="15px"
                     alt="cspr"
                   />
-                  <span className="text-xl text-gray-800">{price}</span>
+                  <span className="text-xl text-primary">{price}</span>
                 </span>
               </span>
             </span>
@@ -76,13 +76,13 @@ const NFTCollectionCard = ({
               {totalItems && (
                 <div className="flex-col">
                   <p>Items</p>
-                  <p className="text-gray-800">{totalItems}</p>
+                  <p className="text-primary">{totalItems}</p>
                 </div>
               )}
               {holders && (
                 <div className="flex-col">
                   <p>Holders</p>
-                  <p className="text-right text-gray-800">{holders}</p>
+                  <p className="text-right text-primary">{holders}</p>
                 </div>
               )}
             </div>

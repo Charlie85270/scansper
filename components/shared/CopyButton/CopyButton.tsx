@@ -26,7 +26,7 @@ export default function CopyButton({ textToCopy }) {
         {copied ? (
           <FiCheckSquare className="text-green-400" />
         ) : (
-          <FiCopy className="text-gray-400" />
+          <FiCopy className="text-secondary" />
         )}
       </button>
     </div>

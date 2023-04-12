@@ -71,7 +71,10 @@ const DeploysList = ({
     return [
       <div className="flex items-center w-24 space-x-2 text-sm flex-nowrap">
         <DeployStatus errorMessage={item.error_message} />
-        <span> {getRelativeDateTime({ date1: new Date(item.timestamp) })}</span>
+        <span className="text-primary">
+          {" "}
+          {getRelativeDateTime({ date1: new Date(item.timestamp) })}
+        </span>
       </div>,
       <Link
         className="text-blue-500 hover:text-blue-900"
@@ -104,7 +107,7 @@ const DeploysList = ({
       </Link>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(item.amount) / MOTE_VALUE)}
           </span>
           <img
@@ -113,13 +116,13 @@ const DeploysList = ({
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber((Number(item.amount) / MOTE_VALUE) * item.rate)}$
         </span>
       </div>,
       <div>
         <span className="flex items-center space-x-2">
-          <span className="text-gray-800 text-md">
+          <span className="text-primary text-md">
             {formatNumber(Number(item.cost) / MOTE_VALUE)}
           </span>
           <img
@@ -128,7 +131,7 @@ const DeploysList = ({
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-secondary">
           {formatNumber((Number(item.cost) / MOTE_VALUE) * item.rate)}$
         </span>
       </div>,
@@ -137,7 +140,7 @@ const DeploysList = ({
 
   return (
     <div className="">
-      <p className="p-4 text-xl text-gray-400">
+      <p className="p-4 text-xl text-primary">
         All deploys ({deploysQuery.data?.itemCount})
       </p>
       <Table
@@ -166,7 +169,7 @@ const DeployStatus = props => {
           "bg-red-400": props.errorMessage,
           "bg-green-400": !props.errorMessage,
         },
-        "w-2 h-2 rounded-full"
+        "w-2 h-2 text-secondary rounded-full"
       )}
     />
   );
@@ -195,8 +198,8 @@ export const getNodeFromMethod = method => {
 
   return (
     <div className="flex items-center space-x-2">
-      {Icon({ className: "text-gray-500" })}
-      <span className="text-gray-500">{method}</span>
+      {Icon({ className: "text-primary" })}
+      <span className="text-primary">{method}</span>
     </div>
   );
 };
