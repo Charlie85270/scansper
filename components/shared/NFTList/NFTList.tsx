@@ -48,7 +48,7 @@ const NFTList = ({ accountHash }: DeployListProps) => {
             <NFTCollectionCard
               key={nft.tokenID + index}
               target="_self"
-              href={`/contract/${nft.contractHash}`}
+              href={`/contract-package/${nft.contractHash}`}
               title={`${nft.name} - ${nft.tokenID}`}
               image={nft.imageURL}
             />
