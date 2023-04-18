@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import React from "react";
+import React, { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 interface PagerProps {
   totalItems: number;
@@ -69,6 +70,7 @@ const Pager = ({
 
   const pager = getPager(totalItems, currentPage, pageSize);
 
+  const [pageSet, setPageSet] = useState("");
   if (!pager.pages || pager.pages.length <= 1) {
     // don't display pager if there is only 1 page
     return null;
@@ -181,6 +183,32 @@ const Pager = ({
           >
             <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"></path>
           </svg>
+        </button>
+      </div>
+      <div className="flex items-center mt-2 text-secondary">
+        <label>
+          Go to page
+          <input
+            type="number"
+            min={1}
+            className="w-16 px-3 py-2 ml-1 border-t border-b border-l rounded-l text-secondary dark:border-gray-900 background-card"
+            value={pageSet}
+            onChange={e => setPageSet(e.target.value)}
+            max={pager.totalPages}
+          />
+        </label>
+        <button
+          className={classNames(
+            {
+              "opacity-50": !pageSet,
+              "hover:background-app": Boolean(pageSet),
+            },
+            "background-card border rounded-r  px-3 py-3 dark:border-gray-900"
+          )}
+          onClick={() => onChangePage && onChangePage(Number(pageSet))}
+          disabled={!pageSet}
+        >
+          <FiSearch />
         </button>
       </div>
     </div>
