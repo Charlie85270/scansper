@@ -41,8 +41,8 @@ const Tabs = ({ tabs, tabsContent, resetUrlOnchange }: PropsTabs) => {
               <p
                 className={classNames(
                   {
-                    "border-gray-700 border-b-2 text-gray-700": iTab.id === tab,
-                    "hover:border-b-2 hover:text-gray-700  hover:border-gray-700":
+                    "border-gray-700 border-b-2 text-primary": iTab.id === tab,
+                    "hover:border-b-2 hover:text-secondary  hover:border-gray-700":
                       iTab.id !== tab,
                   },
 
