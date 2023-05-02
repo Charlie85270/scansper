@@ -5,6 +5,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ApolloProvider } from "@apollo/client";
+import client from "../apolloClient";
 import AppContext from "../AppContext";
 import { useGetAllValidators } from "../hooks/useGetAllValidators";
 import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
@@ -29,13 +31,15 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     };
   }, [router.events]);
   return (
-    <QueryClientProvider client={queryClient}>
-      <ContextComp>
-        <ThemeProvider enableSystem={false} attribute="class">
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ContextComp>
-    </QueryClientProvider>
+    <ApolloProvider client={client}>
+      <QueryClientProvider client={queryClient}>
+        <ContextComp>
+          <ThemeProvider enableSystem={false} attribute="class">
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ContextComp>
+      </QueryClientProvider>
+    </ApolloProvider>
   );
 };
 

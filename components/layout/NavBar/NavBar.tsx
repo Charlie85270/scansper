@@ -10,6 +10,7 @@ import {
   FiChevronDown,
   FiGithub,
   FiX,
+  FiCalendar,
 } from "react-icons/fi";
 import { MdTravelExplore, MdCompareArrows, MdQueryStats } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
@@ -97,11 +98,18 @@ const NavBar = () => {
           link: "/stats/richlist",
           icon: IoPodiumOutline,
         },
+
         {
           label: "Genesis accounts list",
           id: "genesis",
           link: "/stats/genesis",
           icon: VscSourceControl,
+        },
+        {
+          label: "Active wallets by day",
+          id: "active-wallets",
+          link: "/stats/active-wallets",
+          icon: FiCalendar,
         },
         {
           label: "Github activity",
