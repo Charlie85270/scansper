@@ -106,9 +106,15 @@ const NavBar = () => {
           icon: VscSourceControl,
         },
         {
-          label: "Active wallets by day",
+          label: "Active wallets",
           id: "active-wallets",
           link: "/stats/active-wallets",
+          icon: FiCalendar,
+        },
+        {
+          label: "Contracts calls",
+          id: "contracts-call",
+          link: "/stats/contracts-call",
           icon: FiCalendar,
         },
         {

@@ -5,7 +5,7 @@ import { ContractPackagePayload } from "../types/contracts";
 
 export const useGetContractPackage = id =>
   useQuery<ContractPackagePayload, Error>(
-    `contract-${id}`,
+    `contract-package-${id}`,
     () => getContractPackage(id),
     {
       refetchOnWindowFocus: false,
