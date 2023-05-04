@@ -115,8 +115,11 @@ const ValidatorsList = () => {
     if (!t) {
       return undefined;
     }
+    if (!t.account_info?.info?.nodes) {
+      return undefined;
+    }
     if (
-      !t.account_info?.info.nodes[0]?.location.longitude &&
+      !t.account_info?.info?.nodes[0]?.location.longitude &&
       !t.account_info?.info.owner?.location.longitude
     ) {
       return undefined;
@@ -124,11 +127,11 @@ const ValidatorsList = () => {
 
     return {
       long:
-        t.account_info?.info.nodes[0]?.location.longitude ||
+        t.account_info?.info?.nodes[0]?.location.longitude ||
         t.account_info?.info.owner?.location.longitude,
       lat:
-        t.account_info?.info.nodes[0]?.location.latitude ||
-        t.account_info?.info.owner?.location.latitude,
+        t.account_info?.info?.nodes[0]?.location.latitude ||
+        t.account_info?.info?.owner?.location.latitude,
     };
   };
 
@@ -190,6 +193,7 @@ const ValidatorsList = () => {
                 <img
                   className="w-8 h-8 rounded-lg"
                   src={
+                    popupInfo.account_info?.info.owner?.branding.logo.svg ||
                     popupInfo.account_info?.info.owner?.branding.logo.png_256 ||
                     popupInfo.account_info?.info.owner?.branding.logo
                       .png_1024 ||
