@@ -1,8 +1,8 @@
 
-# Scansper: A Casper Blockchain Explorer
+# Scansper: The Casper Network Blockchain Explorer
 
 
-Scansper is an open-source blockchain explorer for the Casper network. It allows users to view information about blocks, transactions, and accounts on the network. You can track top holders, projects being built on the blockchain, metrics and many more things. 
+Scansper is an open-source explorer for the Casper network blockchain. It allows users to view information about blocks, transactions, and accounts on the network. You can track top holders, projects being built on the blockchain, metrics and many more things. 
 
 ![enter image description here](https://scansper.com/banner.png)
 
