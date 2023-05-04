@@ -55,10 +55,10 @@ const ContextComp = ({ children }) => {
             return {
               publicKey: item.public_key,
               fee: item.fee,
-              name: item.account_info?.info.owner.name,
+              name: item.account_info?.info.owner?.name,
               img:
-                item.account_info?.info.owner.branding.logo.png_256 ||
-                item.account_info?.info.owner.branding.logo.png_1024 ||
+                item.account_info?.info.owner?.branding.logo.png_256 ||
+                item.account_info?.info.owner?.branding.logo.png_1024 ||
                 getAvatarUrl(item.public_key),
             };
           }) || [],

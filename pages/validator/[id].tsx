@@ -123,26 +123,26 @@ const Valiator = () => {
                       <img
                         className="w-32 h-32"
                         src={
-                          validator?.account_info?.info.owner.branding.logo
+                          validator?.account_info?.info.owner?.branding.logo
                             .png_1024 ||
-                          validator?.account_info?.info.owner.branding.logo
+                          validator?.account_info?.info.owner?.branding.logo
                             .png_256 ||
                           getAvatarUrl(validator?.public_key || "")
                         }
                       />
                       <div>
                         <p className="text-2xl text-primary">
-                          {accountInfo?.info.owner.name}
+                          {accountInfo?.info.owner?.name}
                         </p>
-                        {accountInfo?.info.owner.location.country && (
+                        {accountInfo?.info.owner?.location.country && (
                           <div className="flex items-center space-x-2">
                             <img
                               className="w-4 h-4"
-                              src={`https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${accountInfo?.info.owner.location.country.toLocaleLowerCase()}.svg`}
+                              src={`https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${accountInfo?.info.owner?.location.country.toLocaleLowerCase()}.svg`}
                             />
                             <span>
-                              {accountInfo?.info.owner.location.country},
-                              {accountInfo?.info.owner.location.name}
+                              {accountInfo?.info.owner?.location.country},
+                              {accountInfo?.info.owner?.location.name}
                             </span>
                           </div>
                         )}
@@ -236,7 +236,7 @@ const Valiator = () => {
                 <div className="flex-col w-full md:w-4/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
                     <p className="text-secondary text-md">Public key</p>
-                    <div className="flex items-center space-x-2 text-lg text-primary truncate">
+                    <div className="flex items-center space-x-2 text-lg truncate text-primary">
                       <span>{validator?.public_key}</span>
                       <CopyButton textToCopy={validator?.public_key} />
                     </div>
@@ -361,7 +361,7 @@ const Valiator = () => {
                 <p className="mt-6 font-semibold text-primary">About</p>
                 <p className="text-sm text-gray-500">
                   {accountInfo?.info?.nodes[0]?.description ||
-                    accountInfo?.info.owner.description ||
+                    accountInfo?.info.owner?.description ||
                     "No description available"}
                 </p>
               </div>
@@ -374,17 +374,17 @@ const Valiator = () => {
                     href={accountInfo?.info.owner.website}
                     target="_blank"
                   >
-                    {accountInfo?.info.owner.website || "N/A"}
+                    {accountInfo?.info.owner?.website || "N/A"}
                   </a>
                 </div>
                 <div className="flex items-center space-x-4">
                   <FiMail />
                   <a
                     className="text-md"
-                    href={`mailto:${accountInfo?.info.owner.email}`}
+                    href={`mailto:${accountInfo?.info.owner?.email}`}
                     target="_blank"
                   >
-                    {accountInfo?.info.owner.email || "N/A"}
+                    {accountInfo?.info.owner?.email || "N/A"}
                   </a>
                 </div>
               </div>

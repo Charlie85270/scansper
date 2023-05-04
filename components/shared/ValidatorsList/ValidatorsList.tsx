@@ -53,13 +53,13 @@ const ValidatorsList = () => {
         <img
           className="w-8 h-8 rounded-lg"
           src={
-            item.account_info?.info.owner.branding.logo.png_256 ||
-            item.account_info?.info.owner.branding.logo.png_1024 ||
+            item.account_info?.info.owner?.branding.logo.png_256 ||
+            item.account_info?.info.owner?.branding.logo.png_1024 ||
             getAvatarUrl(item.public_key)
           }
         />
         <div className="">
-          <p className="text-primary">{item.account_info?.info.owner.name}</p>
+          <p className="text-primary">{item.account_info?.info.owner?.name}</p>
           <p className="text-sm text-secondary">
             {truncateString(item.public_key, 10)}
           </p>
@@ -152,8 +152,8 @@ const ValidatorsList = () => {
           <img
             className="w-6 rounded-full"
             src={
-              val.account_info?.info.owner.branding.logo.png_256 ||
-              val.account_info?.info.owner.branding.logo.png_1024 ||
+              val.account_info?.info.owner?.branding.logo.png_256 ||
+              val.account_info?.info.owner?.branding.logo.png_1024 ||
               getAvatarUrl(val.public_key)
             }
           />
@@ -190,24 +190,25 @@ const ValidatorsList = () => {
                 <img
                   className="w-8 h-8 rounded-lg"
                   src={
-                    popupInfo.account_info?.info.owner.branding.logo.png_256 ||
-                    popupInfo.account_info?.info.owner.branding.logo.png_1024 ||
+                    popupInfo.account_info?.info.owner?.branding.logo.png_256 ||
+                    popupInfo.account_info?.info.owner?.branding.logo
+                      .png_1024 ||
                     getAvatarUrl(popupInfo.public_key)
                   }
                 />
                 <div className="">
                   <p className="text-sm text-primary">
-                    {popupInfo.account_info?.info.owner.name}
+                    {popupInfo.account_info?.info.owner?.name}
                   </p>
-                  {popupInfo?.account_info?.info.owner.location.country && (
+                  {popupInfo?.account_info?.info.owner?.location.country && (
                     <div className="flex items-center space-x-2 text-secondary">
                       <img
                         className="w-4 h-4"
                         src={`https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${popupInfo?.account_info?.info.owner.location.country.toLocaleLowerCase()}.svg`}
                       />
                       <span>
-                        {popupInfo?.account_info?.info.owner.location.country},
-                        {popupInfo?.account_info?.info.owner.location.name}
+                        {popupInfo?.account_info?.info.owner?.location.country},
+                        {popupInfo?.account_info?.info.owner?.location.name}
                       </span>
                     </div>
                   )}
