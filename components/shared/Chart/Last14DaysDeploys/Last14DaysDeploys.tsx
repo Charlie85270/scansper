@@ -1,8 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { useGetLast14daysDeploysCount } from "../../../../hooks/useGetLast14daysDeploysCount";
-
-import Card from "../../Card/Card";
 import Loader from "../../Loader/Loader";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 

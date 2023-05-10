@@ -11,6 +11,8 @@ import {
   FiGithub,
   FiX,
   FiCalendar,
+  FiImage,
+  FiUserPlus,
 } from "react-icons/fi";
 import { MdTravelExplore, MdCompareArrows, MdQueryStats } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
@@ -112,10 +114,22 @@ const NavBar = () => {
           icon: FiCalendar,
         },
         {
-          label: "Contracts calls",
+          label: "Contracts stats",
           id: "contracts-call",
           link: "/stats/contracts-call",
-          icon: FiCalendar,
+          icon: FiFileText,
+        },
+        {
+          label: "NFTs stats",
+          id: "nft-mint",
+          link: "/stats/nfts-mint",
+          icon: FiImage,
+        },
+        {
+          label: "Accounts stats",
+          id: "account-stats",
+          link: "/stats/accounts-stats",
+          icon: FiUserPlus,
         },
         {
           label: "Github activity",
