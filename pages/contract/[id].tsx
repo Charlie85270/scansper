@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { useGetItemFromHashAccount } from "../../hooks/useGetItemFromHashAccount";
 import { useGetStatusInfos } from "../../hooks/useGetStatusInfos";
 import { useGetContract } from "../../hooks/useGetContract";
+import Link from "next/link";
 
 const DynamicReactJson = dynamic(import("react-json-view"), { ssr: false });
 
@@ -49,9 +50,12 @@ const Contract = () => {
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
                 <p className="text-secondary text-md">Contract package hash</p>
-                <p className="text-lg truncate text-primary">
+                <Link
+                  href={`/contract-package/${data?.contract_package_hash}?tab=deploys`}
+                  className="text-lg text-blue-500 truncate hover:underline"
+                >
                   {data?.contract_package_hash}
-                </p>
+                </Link>
               </div>
               <div className="py-2 mt-4 border-b md:mt-0">
                 <p className="text-secondary text-md">Name</p>
