@@ -6,6 +6,7 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { gql, useQuery } from "@apollo/client";
 
 import dynamic from "next/dynamic";
+import { Alert } from "../../../components/shared/Alert/Alert";
 
 const ACTIVE_CONTRACTS_BY_DAY_QUERY = gql`
   query GetCreatedWalletByDay($date: date) {
@@ -43,7 +44,7 @@ export const AccountsStats = () => {
         data: datas?.map(data => data.count),
       },
       {
-        name: "Average account created by day since launch",
+        name: "Average account created by day since mainnet launch (March 31, 2021)",
         type: "line",
         data: datas.map(_ => 122),
       },
@@ -129,7 +130,7 @@ export const AccountsStats = () => {
       y: {
         formatter: function (y) {
           if (typeof y !== "undefined") {
-            return y.toFixed(0) + " creations";
+            return y.toFixed(0) + " accounts created";
           }
           return y;
         },
@@ -142,6 +143,13 @@ export const AccountsStats = () => {
       title="Scansper | Top active wallet by day / month"
       desc="List of the top active accounts of the Casper Network"
     >
+      <Alert text="This feature is new and is in beta test, some errors can appears and data can be incorrect." />
+
+      <div className="flex items-center pb-2 mb-6 space-x-2 border-b">
+        <p className="text-2xl text-primary">
+          Number of accounts created per day the last 14 days
+        </p>
+      </div>
       <Chart options={config} series={config.series} type="line" height={400} />
     </AppLayout>
   );

@@ -1,20 +1,14 @@
 import Link from "next/link";
-import React, { useContext, useState } from "react";
-import AppContext from "../../../AppContext";
+import React, { useState } from "react";
 import AppLayout from "../../../components/layout/AppLayout";
 import Card from "../../../components/shared/Card/Card";
-import RichList from "../../../components/shared/RichList/RichList";
 import Table from "../../../components/shared/Table/Table";
-import {
-  formatNumber,
-  getAvatarUrl,
-  getPublicKeyName,
-  truncateString,
-} from "../../../utils/Utils";
+import { formatNumber, truncateString } from "../../../utils/Utils";
 import { gql, useQuery } from "@apollo/client";
 import IconCard from "../../../components/shared/Card/IconCard/IconCard";
 import { AiOutlineBarChart } from "react-icons/ai";
 import Loader from "../../../components/shared/Loader/Loader";
+import { Alert } from "../../../components/shared/Alert/Alert";
 
 const ACTIVE_CONTRACTS_BY_DAY_QUERY = gql`
   query GetActiveWalletsByDay($date: date) {
@@ -96,12 +90,15 @@ export const ContractsCall = () => {
       title="Scansper | Top active wallet by day / month"
       desc="List of the top active accounts of the Casper Network"
     >
-      <div className="flex items-center mb-6 space-x-4">
+      <Alert text="This feature is new and is in beta test, some errors can appears and data can be incorrect." />
+
+      <div className="flex items-center pb-2 mb-6 space-x-2 border-b">
         <div className="flex items-center space-x-2">
-          <label className="text-primary">Select date:</label>
+          <p className="text-2xl text-primary">Contract calls made by day</p>
+
           <input
             type="date"
-            className="px-4 py-2 text-base placeholder-gray-400 border rounded-lg text-primary dark:border-gray-900 background-card focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            className="px-4 py-2 text-base placeholder-gray-400 border rounded-lg w-60 text-primary dark:border-gray-900 background-card focus:outline-none focus:ring-2 focus:ring-indigo-600"
             id="start"
             name="trip-start"
             onChange={e => setDate(e.target.value)}
