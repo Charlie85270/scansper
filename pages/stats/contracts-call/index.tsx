@@ -33,6 +33,19 @@ interface Data {
   name: string;
 }
 
+const getName = (hash: string) => {
+  switch (hash.toLocaleLowerCase()) {
+    case "ccb576d6ce6dec84a551e48f0d0b7af89ddba44c7390b690036257a04a3ae9ea":
+      return "Auction (Delegate / Undelegate)";
+    case "fa64806972777d6263dea1f0e5a908620ffd19113df57ebd9ea4aa4e23de6090":
+      return "Friendly Market";
+    case "dc686e60defd00e917f23fcebc994644370f542023cafc8ffee4a32ff01a4cf8":
+      return "CasperPunks Mystery Box";
+    default:
+      return undefined;
+  }
+};
+
 export const ContractsCall = () => {
   // const date = new Date().toISOString().split("T")[0];
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -50,16 +63,9 @@ export const ContractsCall = () => {
     return a + Number(b["number_of_deploy"]);
   }, 0);
 
-  const auction =
-    "ccb576d6ce6dec84a551e48f0d0b7af89ddba44c7390b690036257a04a3ae9ea";
-
   const rows = addresses.map((item: Data) => {
     return [
-      <p>
-        {auction === item.contract_hash
-          ? "Auction (Delegate / Undelegate)"
-          : item.name || "-"}
-      </p>,
+      <p>{getName(item.contract_hash) || item.name || "-"}</p>,
       <Link
         key={item.contract_hash}
         className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
