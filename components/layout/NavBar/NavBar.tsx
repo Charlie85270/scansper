@@ -10,6 +10,9 @@ import {
   FiChevronDown,
   FiGithub,
   FiX,
+  FiCalendar,
+  FiImage,
+  FiUserPlus,
 } from "react-icons/fi";
 import { MdTravelExplore, MdCompareArrows, MdQueryStats } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
@@ -31,6 +34,7 @@ interface ILink {
   icon: IconType;
   childrens?: ILink[];
   isSoon?: boolean;
+  isNew?: boolean;
 }
 
 const NavBar = () => {
@@ -97,11 +101,40 @@ const NavBar = () => {
           link: "/stats/richlist",
           icon: IoPodiumOutline,
         },
+
         {
           label: "Genesis accounts list",
           id: "genesis",
           link: "/stats/genesis",
           icon: VscSourceControl,
+        },
+        {
+          label: "Active wallets",
+          id: "active-wallets",
+          link: "/stats/active-wallets",
+          icon: FiCalendar,
+          isNew: true,
+        },
+        {
+          label: "Contracts stats",
+          id: "contracts-call",
+          link: "/stats/contracts-call",
+          icon: FiFileText,
+          isNew: true,
+        },
+        {
+          label: "NFTs stats",
+          id: "nft-mint",
+          link: "/stats/nfts-mint",
+          icon: FiImage,
+          isNew: true,
+        },
+        {
+          label: "Accounts stats",
+          id: "account-stats",
+          link: "/stats/accounts-stats",
+          icon: FiUserPlus,
+          isNew: true,
         },
         {
           label: "Github activity",
@@ -196,6 +229,11 @@ const NavBar = () => {
             />
           ) : (
             ""
+          )}
+          {link.isNew && (
+            <p className="p-2 text-xs border rounded-lg text-secondary">
+              New !
+            </p>
           )}
           {link.isSoon && (
             <p className="p-2 text-xs border rounded-lg text-secondary">Soon</p>

@@ -335,6 +335,12 @@ export const getContracts = (page: number): Promise<ContractsPayload> => {
   });
 };
 
+export const getContract = (id: string): Promise<ContractPackage> => {
+  return sendRequest({
+    url: `${make_api_url}contracts/${id}?fields=contract_package`,
+  });
+};
+
 export const getContractPackage = (id: string): Promise<ContractPackage> => {
   return sendRequest({
     url: `${make_api_url}contract-packages/${id}`,

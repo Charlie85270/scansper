@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import { getContractPackage } from "../services/httpReq";
+import { getContract, getContractPackage } from "../services/httpReq";
 
 import { ContractPackagePayload } from "../types/contracts";
 
-export const useGetContractPackage = id =>
+export const useGetContract = id =>
   useQuery<ContractPackagePayload, Error>(
-    `contract-package-${id}`,
-    () => getContractPackage(id),
+    `contract-${id}`,
+    () => getContract(id),
     {
       refetchOnWindowFocus: false,
       enabled: Boolean(id),
