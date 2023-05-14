@@ -7,7 +7,7 @@ export const IndexPage = () => {
   return (
     <AppLayout
       title="Scansper | Contracts"
-      desc="List of the contracts deployed on the Casper Network"
+      desc="Find all informations about contracts deployed on the Casper Network blockchain"
     >
       <Card titleSize="large" title="Contracts">
         <ContractsList />

@@ -83,14 +83,14 @@ export const Search = () => {
             {" "}
             <p className="flex items-center mb-8 text-secondary text-md">
               <span> Result found for : </span>
-              <p className="ml-2 font-semibold text-primary truncate ">
+              <p className="ml-2 font-semibold truncate text-primary ">
                 {search}
               </p>
             </p>
             {/* VALIDATORS */}
             {filteredValidator.length > 0 && (
               <div className="mt-6">
-                <p className="pb-2 mb-2 text-lg text-primary border-b">
+                <p className="pb-2 mb-2 text-lg border-b text-primary">
                   {filteredValidator.length} validators
                 </p>
                 <div>
@@ -110,7 +110,7 @@ export const Search = () => {
                             <p className="text-gray-700 hover:text-primary">
                               {val.name}
                             </p>
-                            <p className="text-sm text-secondary truncate">
+                            <p className="text-sm truncate text-secondary">
                               {truncateString(val.publicKey || "", 45)}
                             </p>
                           </div>
@@ -124,7 +124,7 @@ export const Search = () => {
             {/* ACCOUNTS */}
             {(accountHash || knowAddress.length > 0) && (
               <div className="mt-6">
-                <p className="text-lg text-primary border-b">
+                <p className="text-lg border-b text-primary">
                   {knowAddress.length > 0
                     ? `${knowAddress.length} Accounts`
                     : "Account"}
@@ -167,7 +167,7 @@ export const Search = () => {
             {/* DEPLOY */}
             {deployQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-primary border-b">Deploy</p>
+                <p className="text-lg border-b text-primary">Deploy</p>
 
                 <Link
                   key={search}
@@ -185,7 +185,7 @@ export const Search = () => {
             {/* BLOCK */}
             {blockQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-primary border-b">Block</p>
+                <p className="text-lg border-b text-primary">Block</p>
 
                 <Link
                   key={search}
@@ -203,7 +203,7 @@ export const Search = () => {
             {/* CONTRACT */}
             {contractQuery.data && (
               <div className="mt-6">
-                <p className="text-lg text-primary border-b">Contract</p>
+                <p className="text-lg border-b text-primary">Contract</p>
 
                 <Link
                   key={search}
@@ -214,7 +214,7 @@ export const Search = () => {
                     <p className="text-gray-700 hover:text-primary">
                       {contractQuery.data.contract_name}
                     </p>
-                    <p className="text-sm text-secondary truncate">
+                    <p className="text-sm truncate text-secondary">
                       {truncateString(search || "", 35)}
                     </p>
                   </div>

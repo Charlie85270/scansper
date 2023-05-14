@@ -8,7 +8,7 @@ export const IndexPage = () => {
   return (
     <AppLayout
       title="Scansper | Deploys"
-      desc="List of all deploys produced on the Casper Netowrk"
+      desc="Find all informations about deploys made on the Casper Network blockchain"
     >
       <Card titleSize="large" title="Last 14 Deploys">
         <Last14DeploysStatsChart />

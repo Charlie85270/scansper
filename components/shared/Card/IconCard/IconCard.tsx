@@ -6,7 +6,7 @@ export interface IconCardProps {
   title: string;
   icon: IconType;
   value: number | string;
-  currency?: string;
+  currency?: string | any;
   changes?: number;
   description?: string;
 }
@@ -29,9 +29,9 @@ const IconCard = ({
           {icon({ className: "w-6 h-6 opacity-10" })}
         </div>
         <div className="flex-col">
-          <span className="flex items-end text-2xl text-primary">
+          <span className="flex items-center space-x-2 text-2xl text-primary">
             {value}
-            <span className="text-sm text-gray-500"> {currency}</span>
+            <span className="ml-2 text-sm text-gray-500"> {currency}</span>
           </span>
 
           <span

@@ -4,9 +4,13 @@ import HomeCard from "../components/shared/Card/HomeCard/HomeCard";
 import IconCard, {
   IconCardProps,
 } from "../components/shared/Card/IconCard/IconCard";
-
+import { GrDeploy } from "react-icons/gr";
 import { MdPeopleOutline } from "react-icons/md";
-import { AiOutlineBarChart, AiOutlineLineChart } from "react-icons/ai";
+import {
+  AiOutlineBarChart,
+  AiOutlineClose,
+  AiOutlineLineChart,
+} from "react-icons/ai";
 import { formatNumber, MOTE_VALUE } from "../utils/Utils";
 import { FiDatabase, FiHeart, FiPercent } from "react-icons/fi";
 import LinearNFTCollection from "../components/shared/NFTCollection/LinearNFTCollection";
@@ -22,6 +26,7 @@ import DeploysList from "../components/shared/DeploysList/DeploysList";
 import TodayDeploysStatsChart from "../components/shared/Chart/TodayDeploysStatsChart/TodayDeploysStatsChart";
 import Card from "../components/shared/Card/Card";
 import { getAccountNumber, getHolderstNumber } from "../services/httpReq";
+import Link from "next/link";
 
 export const IndexPage = () => {
   // Queries
@@ -99,8 +104,6 @@ export const IndexPage = () => {
     },
   ];
 
-  const apy = (100 / percentStaked) * 8;
-
   const options: IconCardProps[] = [
     {
       title: "Volume (24h)",
@@ -142,8 +145,33 @@ export const IndexPage = () => {
   return (
     <AppLayout
       title="Scansper | Home"
-      desc="Retrieve data, follow the network usages and last projects launched on Casper Network"
+      desc="Scansper is a Casper Network explorer where you can follow the network usages, NFT, analytics and last projects launched on Casper Network"
     >
+      <div className="relative flex flex-col items-center justify-between w-full mb-5 rounded shadow-lg md:h-20 md:pr-6 md:py-0 md:flex-row">
+        <img
+          src="/ipwe-banner.jpg"
+          className="absolute w-full h-full rounded-lg z-1"
+        />
+        <div className="flex items-center justify-between px-6 pt-4 my-2 md:pt-0 w-54 md:w-72">
+          <div className="z-10 flex justify-between w-72 item-center">
+            <img src="ipwe.svg" className="w-14" />
+            <AiOutlineClose className="w-6 h-full pt-2 text-white" />
+            <img src="casperlabs.svg" className="w-20" />
+          </div>
+        </div>
+        <p className="z-10 flex items-center my-6 font-mono text-sm text-center text-white md:text-xl">
+          Follow the largest enterprise blockchain NFT deployment in history
+        </p>
+        <Link
+          href="/ipwe?tab=deploys"
+          type="button"
+          className="z-10 flex items-center h-10 px-4 py-2 mb-4 text-base font-medium text-black bg-white border rounded md:mb-0 w-28 hover:bg-gray-100"
+        >
+          <GrDeploy className="mr-2 " />
+          Follow
+        </Link>
+      </div>
+
       {/* Blockchain DATA */}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12">
         {options.map(option => {

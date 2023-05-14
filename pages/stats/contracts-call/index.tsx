@@ -93,8 +93,8 @@ export const ContractsCall = () => {
   });
   return (
     <AppLayout
-      title="Scansper | Top active wallet by day / month"
-      desc="List of the top active accounts of the Casper Network"
+      title="Scansper | Activity"
+      desc="Get all informations about contract interactions on the Casper Network for a given date"
     >
       <Alert text="This feature is new and is in beta test, some errors can appears and data can be incorrect." />
 
