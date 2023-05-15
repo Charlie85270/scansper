@@ -91,7 +91,7 @@ export const IpwePage = () => {
 
   const options: IconCardProps[] = [
     {
-      title: "Total Patent minted",
+      title: "Total patents minted",
       value: formatNumber(nftCount),
       icon: BiImage,
       description: "/ 25 000 000",
