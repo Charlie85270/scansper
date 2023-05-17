@@ -4,7 +4,7 @@ import { DeploysPayload } from "../types/deploys";
 
 export const useGetDeploys = (page, contractPackage?: string) =>
   useQuery<DeploysPayload, Error>(
-    "deploys",
+    `deploys-${contractPackage}-${page}`,
     () => getDeploys(page, undefined, contractPackage),
     {
       refetchOnWindowFocus: false,
