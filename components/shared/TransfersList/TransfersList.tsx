@@ -1,10 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React, { useContext, useEffect } from "react";
-import { BiTransfer } from "react-icons/bi";
-import { FiLock, FiUnlock } from "react-icons/fi";
-import { GoFileCode } from "react-icons/go";
-import { GiWarPick } from "react-icons/gi";
 import {
   formatNumber,
   getPublicKeyName,
@@ -155,16 +151,6 @@ const DeployStatus = props => {
         "w-2 h-2 rounded-full"
       )}
     />
-  );
-};
-
-
-
-  return (
-    <div className="flex items-center space-x-2">
-      {Icon({ className: "text-gray-500" })}
-      <span className="text-gray-500">{method}</span>
-    </div>
   );
 };
 
