@@ -116,7 +116,7 @@ const Account = () => {
                   <div className="flex-col items-center justify-between px-2">
                     <div className="flex-col items-center justify-center space-x-4">
                       <img
-                        className="w-32 h-32 mx-auto rounded-lg"
+                        className="w-32 h-32 mx-auto rounded-full"
                         src={id ? getAvatarUrl(id.toString()) : ""}
                       />
                       {name !== id && (

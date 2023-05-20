@@ -158,26 +158,7 @@ const DeployStatus = props => {
   );
 };
 
-const getNodeFromMethod = method => {
-  let Icon = BiTransfer;
-  switch (method) {
-    case "transfer":
-      break;
-    case "delegate":
-      Icon = FiLock;
-      break;
-    case "undelegate":
-      Icon = FiUnlock;
-      break;
-    case "WASM deploy":
-      Icon = GoFileCode;
-      break;
-    case "mint":
-      Icon = GiWarPick;
-      break;
-    default:
-      break;
-  }
+
 
   return (
     <div className="flex items-center space-x-2">

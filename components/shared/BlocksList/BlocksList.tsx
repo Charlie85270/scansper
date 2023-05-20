@@ -63,7 +63,7 @@ const BlocksList = ({ pubicKey, isAccount }: DeployListProps) => {
         href={`/validator/${item.proposer}?tab=delegators`}
       >
         <img
-          className="w-6 h-6 rounded-lg"
+          className="w-6 h-6 rounded-full"
           src={getAvatarUrl(item.proposer, validators)}
         />
         <span>

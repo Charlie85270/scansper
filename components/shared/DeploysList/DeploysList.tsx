@@ -95,7 +95,7 @@ const DeploysList = ({
         href={`/account/${item.caller_public_key}?tab=deploys`}
       >
         <img
-          className="w-6 h-6 rounded-lg"
+          className="w-6 h-6 rounded-full"
           src={getAvatarUrl(item.caller_public_key, validators)}
         />
         <span>
@@ -192,6 +192,8 @@ export const getNodeFromMethod = method => {
     case "mint":
       Icon = GiWarPick;
       break;
+    case "mint_one":
+      Icon = GiWarPick;
     default:
       break;
   }

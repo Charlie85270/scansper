@@ -58,7 +58,7 @@ const ContractsList = () => {
         href={`/account/${item.owner_public_key}?tab=deploys`}
       >
         <img
-          className="w-6 h-6 rounded-lg"
+          className="w-6 h-6 rounded-full"
           src={getAvatarUrl(item.owner_public_key, validators)}
         />
         <span>

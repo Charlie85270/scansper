@@ -39,7 +39,7 @@ const RichList = () => {
         href={`/account/${item.public_key || item.account_hash}?tab=deploys`}
       >
         <img
-          className="w-6 h-6 rounded-lg"
+          className="w-6 h-6 rounded-full"
           src={getAvatarUrl(item.public_key || item.account_hash, validators)}
         />
         <span className="truncate">

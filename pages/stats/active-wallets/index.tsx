@@ -57,7 +57,7 @@ export const ActiveWallet = () => {
         href={`/account/${item.public_key}?tab=deploys`}
       >
         <img
-          className="w-6 h-6 rounded-lg"
+          className="w-6 h-6 rounded-full"
           src={getAvatarUrl(item.public_key, validators)}
         />
         <span className="md:hidden">
