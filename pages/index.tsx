@@ -12,7 +12,7 @@ import {
   AiOutlineLineChart,
 } from "react-icons/ai";
 import { formatNumber, MOTE_VALUE } from "../utils/Utils";
-import { FiDatabase, FiHeart, FiPercent } from "react-icons/fi";
+import { FiDatabase, FiHeart } from "react-icons/fi";
 import LinearNFTCollection from "../components/shared/NFTCollection/LinearNFTCollection";
 import { useGetCasperSupplyInfo } from "../hooks/useGetCasperSupplyInfo";
 import { useGetAuctionMetrics } from "../hooks/useGetAuctionMetrics";
@@ -30,10 +30,11 @@ import Link from "next/link";
 
 export const IndexPage = () => {
   // Queries
-  const querySupply = useGetCasperSupplyInfo();
-  const queryAuction = useGetAuctionMetrics();
-  const price = useGetHistoryCasperPrice(1);
-  const statusInfos = useGetStatusInfos();
+  const [intervalMs, setIntervalMs] = React.useState(15000);
+  const querySupply = useGetCasperSupplyInfo(intervalMs);
+  const queryAuction = useGetAuctionMetrics(intervalMs);
+  const price = useGetHistoryCasperPrice(1, intervalMs);
+  const statusInfos = useGetStatusInfos(intervalMs);
   const community = useGetCoinCommunityData();
   const [holders, setHolders] = useState(0);
   const [account, setAccounts] = useState(0);
@@ -128,6 +129,7 @@ export const IndexPage = () => {
     },
     {
       title: "Block height",
+      isAnimate: true,
       value: formatNumber(blockHeight),
       currency: "",
       icon: FiDatabase,
@@ -180,6 +182,7 @@ export const IndexPage = () => {
               <IconCard
                 currency={option.currency}
                 changes={option.changes}
+                isAnimate={option.isAnimate}
                 icon={option.icon}
                 value={option.value}
                 title={option.title}

@@ -9,6 +9,7 @@ export interface IconCardProps {
   currency?: string | any;
   changes?: number;
   description?: string;
+  isAnimate?: boolean;
 }
 
 const IconCard = ({
@@ -18,13 +19,17 @@ const IconCard = ({
   icon,
   currency,
   changes,
+  isAnimate,
 }: IconCardProps) => {
   const changesToCompare = changes || 0;
   const isNegative = changesToCompare < 0;
 
   return (
     <Card title={title}>
-      <div className="flex-col justify-between">
+      <div className="flex-col justify-between ">
+        {isAnimate && (
+          <span className="absolute inline-flex w-1 h-1 rounded-full opacity-75 bg-sky-400 bottom-4 right-4 animate-ping"></span>
+        )}
         <div className="absolute top-4 right-2">
           {icon({ className: "w-6 h-6 opacity-10" })}
         </div>

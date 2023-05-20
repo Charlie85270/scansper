@@ -62,7 +62,7 @@ const HomeCard = ({ title, value, percent, color }: Props) => {
 
   return (
     <Card title={title}>
-      <div className="flex-col justify-between space-y-2">
+      <div className="relative flex-col justify-between space-y-2">
         <div className="flex items-end justify-between space-x-12">
           <span className="text-2xl text-primary">{formatNumber(value)}</span>
           {percent && (
