@@ -14,7 +14,12 @@ import {
   FiImage,
   FiUserPlus,
 } from "react-icons/fi";
-import { MdTravelExplore, MdCompareArrows, MdQueryStats } from "react-icons/md";
+import {
+  MdTravelExplore,
+  MdCompareArrows,
+  MdQueryStats,
+  MdAttachMoney,
+} from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
 import { IoPodiumOutline } from "react-icons/io5";
 import { VscTools, VscSourceControl } from "react-icons/vsc";
@@ -26,6 +31,9 @@ import { IconType } from "react-icons/lib";
 import classNames from "classnames";
 import AppContext from "../../../AppContext";
 import Header from "../Header/Header";
+import { AiOutlineBarChart } from "react-icons/ai";
+import { FaMoneyCheck } from "react-icons/fa";
+import { BiMoney } from "react-icons/bi";
 
 interface ILink {
   label: string;
@@ -142,6 +150,21 @@ const NavBar = () => {
       ],
     },
     {
+      label: "Charts",
+      id: "charts",
+      isNew: true,
+      icon: AiOutlineBarChart,
+      childrens: [
+        {
+          label: "Price",
+          id: "chart-price",
+          link: "/charts/price",
+          icon: MdAttachMoney,
+        },
+      ],
+    },
+
+    {
       label: "Tools",
       id: "tools",
       icon: VscTools,
@@ -154,9 +177,9 @@ const NavBar = () => {
         },
         {
           label: "MaketCap comparison",
-          isSoon: true,
+
           id: "marketcap",
-          link: "/tools/marketcap",
+          link: "/tools/marketcap-compare",
           icon: MdCompareArrows,
         },
       ],
@@ -219,6 +242,11 @@ const NavBar = () => {
               <span>{link.label}</span>
             </div>
           </div>
+          {link.isNew && (
+            <p className="p-2 text-xs border rounded-lg text-secondary">
+              New !
+            </p>
+          )}
           {link.childrens ? (
             <FiChevronDown
               className={isOpen(link.id) ? "" : "transform -rotate-90"}
@@ -226,11 +254,7 @@ const NavBar = () => {
           ) : (
             ""
           )}
-          {link.isNew && (
-            <p className="p-2 text-xs border rounded-lg text-secondary">
-              New !
-            </p>
-          )}
+
           {link.isSoon && (
             <p className="p-2 text-xs border rounded-lg text-secondary">Soon</p>
           )}
