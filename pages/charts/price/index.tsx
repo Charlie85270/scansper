@@ -50,7 +50,7 @@ export const ChartPrice = () => {
         });
       }
     }
-  }, [size]);
+  }, [size, theme]);
   return (
     <AppLayout
       title="Scansper | Price chart"
