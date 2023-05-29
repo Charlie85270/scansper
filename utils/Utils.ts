@@ -57,6 +57,18 @@ export const KNOW_ADDRESSES = [
     name: "Huobi",
     img: "/huobi.png",
   },
+  {
+    public_key:
+      "01a0d23e084a95cdee9c2fb226d54033d645873a7c7c9739de2158725c7dfe672f",
+    name: "Uphold",
+    img: "/Uphold.png",
+  },
+  {
+    public_key:
+      "0203fd663354cab9127c7f30a1746f3d36984c467f7c4343bf1da5607f4239167beb",
+    name: "Uphold",
+    img: "/Uphold.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
