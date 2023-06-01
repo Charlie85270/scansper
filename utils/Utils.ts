@@ -69,6 +69,12 @@ export const KNOW_ADDRESSES = [
     name: "Uphold",
     img: "/Uphold.png",
   },
+  {
+    public_key:
+      "0202ed20f3a93b5386bc41b6945722b2bd4250c48f5fa0632adf546e2f3ff6f4ddee",
+    name: "Kucoin",
+    img: "/kucoin.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
