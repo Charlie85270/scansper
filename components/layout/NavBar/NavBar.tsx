@@ -273,10 +273,10 @@ const NavBar = () => {
           <Header />
         </div>
         <div className="flex items-center justify-between hidden px-4 pt-6 pb-4 border-b md:block lg:mb-0 lg:pb-0 lg:border-b-0 lg:pt-8">
-          <div className="flex items-center space-x-4 lg:mb-8">
+          <Link href="/" className="flex items-center space-x-4 lg:mb-8">
             <img src="/cspr.png" width="50" height="50" />
             <span className="text-2xl font-light text-primary">Scansper</span>
-          </div>
+          </Link>
           <button
             type="button"
             onClick={() => {
