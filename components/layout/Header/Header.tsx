@@ -7,6 +7,7 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
+
   const launchSearch = e => {
     e.preventDefault();
 
@@ -18,6 +19,7 @@ const Header = () => {
       }
     );
   };
+
   return (
     <header className="fixed relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 border-b dark:border-gray-900 background-card lg:h-24 lg:px-0">
       <div className="relative flex items-center justify-between h-24">

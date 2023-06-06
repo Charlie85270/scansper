@@ -75,6 +75,12 @@ export const KNOW_ADDRESSES = [
     name: "Kucoin",
     img: "/kucoin.png",
   },
+  {
+    public_key:
+      "020232ee968558c70952e472bd4ac47d5830f317e91a00a033b45fbab2f7b75e0158",
+    name: "Coinlist (cold wallet)",
+    img: "/coinlist.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
