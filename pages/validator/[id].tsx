@@ -31,7 +31,10 @@ import DelegatorsByValidatorsList from "../../components/shared/DelegatorsByVali
 import RewardsByValidatorsList from "../../components/shared/RewardsByValidatorsList/RewardsByValidatorsList";
 import BlocksByValidatorsList from "../../components/shared/BlocksByValidatorsList/BlocksByValidatorsList";
 import CopyButton from "../../components/shared/CopyButton/CopyButton";
+import StatsOfValidator from "../../components/shared/StatsOfValidator/StatsOfValidator";
+import { useTheme } from "next-themes";
 const Valiator = () => {
+  const { theme } = useTheme();
   const router = useRouter();
   const { id } = router.query;
   const { data, isFetching, error } = useGetValidator(id);
@@ -45,16 +48,18 @@ const Valiator = () => {
     { id: "delegators", title: "Delegators" },
     { id: "rewards", title: "Rewards" },
     { id: "blocks", title: "Block" },
+    { id: "stats", title: "Stats" },
   ];
   const tabsContent = [
     <DelegatorsByValidatorsList />,
     <RewardsByValidatorsList />,
     <BlocksByValidatorsList />,
+    <StatsOfValidator />,
   ];
   const validator = data?.data;
   const accountInfo = validator?.account_info;
   const percent = Number(
-    Number(validator?.average_performance.average_score || 0).toFixed(2)
+    Number(validator?.average_performance?.average_score || 0).toFixed(2)
   );
   const config: ApexCharts.ApexOptions = {
     series: [percent],
@@ -74,8 +79,30 @@ const Valiator = () => {
     },
     grid: {
       show: false,
+      borderColor: theme === "dark" ? "#111827" : "#f3f4f6",
     },
-
+    xaxis: {
+      type: "datetime",
+      labels: {
+        style: {
+          colors: theme === "dark" ? "#f3f4f6" : "#111827",
+        },
+      },
+    },
+    yaxis: {
+      labels: {
+        style: {
+          colors: theme === "dark" ? "#f3f4f6" : "#111827",
+        },
+      },
+      title: {
+        style: {
+          color: theme === "dark" ? "#f3f4f6" : "#111827",
+        },
+        text: "Patents minted",
+      },
+      min: 0,
+    },
     dataLabels: {
       enabled: false,
     },
@@ -116,8 +143,8 @@ const Valiator = () => {
             backLink="/validators"
           >
             <div className="p-2">
-              <div className="items-center justify-between md:space-x-8 lg:space-x-16 md:items-start md:flex">
-                <div className="w-full md:w-2/6">
+              <div className="items-center justify-between xl:space-x-8 lg:space-x-16 xl:items-start xl:flex">
+                <div className="w-full xl:w-2/6">
                   <div className="flex items-center justify-between px-2 space-x-4 md:justify-between">
                     <div className="flex items-center justify-between space-x-4">
                       <img
