@@ -52,7 +52,7 @@ const Footer = () => {
                 className="mx-auto rounded-full"
               />
 
-              <span className="">Casperhodlers</span>
+              <span className="">Casperholders</span>
             </a>
           </div>
 
