@@ -94,7 +94,7 @@ const DelegateUndelegateByDay = () => {
     delegateFinal.push(staked);
     undedelegateFinal.push(unstaked);
   }
-  console.log("charlie", delegateFinal);
+
   const config: ApexCharts.ApexOptions = {
     series: [
       {

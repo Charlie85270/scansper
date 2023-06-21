@@ -51,7 +51,7 @@ const RewardsByEra = () => {
   const { id } = router.query;
   const eraStart = eraEnd ? eraEnd - pagination_size : undefined;
   const { data, loading, error } = useQuery(TOTAL_REWARDS_ERAS, {
-    skip: !eraDefault,
+    skip: !eraDefault && !eraEnd,
     variables: {
       key: id,
       eraStart,
