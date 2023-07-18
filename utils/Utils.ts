@@ -47,7 +47,7 @@ export const KNOW_ADDRESSES = [
   },
   {
     public_key:
-      "02029d865f743f9a67c82c84d443cbd8187bc4a08ca7b4c985f0caca1a4ee98b1f4c",
+      "020268d1bfe476bc6a05e4db2e82d40c6f877c5a133817923784fc48563f2c77db8d",
     name: "Coinlist",
     img: "/coinlist.jpeg",
   },
@@ -78,6 +78,12 @@ export const KNOW_ADDRESSES = [
   {
     public_key:
       "020232ee968558c70952e472bd4ac47d5830f317e91a00a033b45fbab2f7b75e0158",
+    name: "Coinlist",
+    img: "/coinlist.jpeg",
+  },
+  {
+    public_key:
+      "020268d1bfe476bc6a05e4db2e82d40c6f877c5a133817923784fc48563f2c77db8d",
     name: "Coinlist",
     img: "/coinlist.jpeg",
   },
