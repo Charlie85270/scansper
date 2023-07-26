@@ -42,7 +42,7 @@ export const KNOW_ADDRESSES = [
   {
     public_key:
       "02035C47CCBEAA32040D6904B6DC163C3B546314C52B2A78583835F54A224AB365A4",
-    name: "Casper - AG",
+    name: "CasperLabs Holding AG",
     img: "/labs.png",
   },
   {
