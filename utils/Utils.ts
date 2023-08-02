@@ -87,6 +87,12 @@ export const KNOW_ADDRESSES = [
     name: "Coinlist",
     img: "/coinlist.jpeg",
   },
+  {
+    public_key:
+      "016470ae57b0a3ad5a679d2e0422909bfb9ded445e20cbe6b4c9806f844c94d401",
+    name: "Mexc",
+    img: "/mexc.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
