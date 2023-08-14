@@ -44,7 +44,7 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
     return [
       <Link
         className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
-        href={`/validator/${item.public_key}?tab=delegators`}
+        href={`/validator/${item.validator.public_key}?tab=delegators`}
       >
         <img
           className="w-8 h-8 rounded-lg"
