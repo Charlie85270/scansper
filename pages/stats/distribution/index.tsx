@@ -284,10 +284,10 @@ export const DistributionPage = () => {
           title="Adresses with > 0 CSPR"
         />
 
-        {items.map(item => {
+        {items.map((item, index) => {
           return (
             <HomeCard
-              key={item.label}
+              key={index}
               color={item.color}
               value={item.value || 0}
               percent={item.percent || 0}
