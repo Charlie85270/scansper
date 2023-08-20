@@ -12,13 +12,16 @@ import { useRouter } from "next/router";
 import AppContext from "../../../AppContext";
 import { useGetRichList } from "../../../hooks/useGetRichList";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
+import { useGetCasperSupplyInfo } from "../../../hooks/useGetCasperSupplyInfo";
 
 const RichList = () => {
   const { push, query } = useRouter();
   const { page } = query;
   const richQuery = useGetRichList(page);
+  const querySupply = useGetCasperSupplyInfo();
+  const totalSupply = querySupply.data?.data.total || 0;
   const items = richQuery.data;
-  const headers = ["Rank", "Public Key", "Balance"];
+  const headers = ["Rank", "Public Key", "Balance", "Percentage"];
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
 
@@ -30,6 +33,12 @@ const RichList = () => {
   if (richQuery.error || (!items && !richQuery.isFetching)) {
     return <ErrorMessage />;
   }
+
+  const totalStake = items?.slice(0, 20).reduce((a: any, b: any) => {
+    return a + Number(Number(b.total / MOTE_VALUE).toFixed(0));
+  }, 0);
+
+  console.log(totalStake);
 
   const rows = items?.map((item, index) => {
     return [
@@ -64,6 +73,13 @@ const RichList = () => {
           $
         </span>
       </div>,
+      <span className="">
+        {(
+          (Number(Number(item.total / MOTE_VALUE).toFixed(0)) * 100) /
+          totalSupply
+        ).toFixed(2)}
+        %
+      </span>,
     ];
   });
 

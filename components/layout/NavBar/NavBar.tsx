@@ -31,9 +31,7 @@ import { IconType } from "react-icons/lib";
 import classNames from "classnames";
 import AppContext from "../../../AppContext";
 import Header from "../Header/Header";
-import { AiOutlineBarChart } from "react-icons/ai";
-import { FaMoneyCheck } from "react-icons/fa";
-import { BiMoney } from "react-icons/bi";
+import { AiOutlineBarChart, AiOutlinePieChart } from "react-icons/ai";
 
 interface ILink {
   label: string;
@@ -109,7 +107,12 @@ const NavBar = () => {
           link: "/stats/richlist",
           icon: IoPodiumOutline,
         },
-
+        {
+          label: "Distribution",
+          id: "distribution",
+          link: "/stats/distribution",
+          icon: AiOutlinePieChart,
+        },
         {
           label: "Genesis accounts list",
           id: "genesis",
