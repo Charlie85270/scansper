@@ -130,7 +130,7 @@ export const DistributionPage = () => {
   const total500000 = data?.rich500000?.aggregate.count;
   const total1000000 = data?.rich1000000?.aggregate.count;
   const total10000000 = data?.rich10Million?.aggregate.count;
-  const total100000000 = data?.rich100Million?.aggregate.count + 1;
+  const total100000000 = data?.rich100Million?.aggregate.count;
 
   const sumHolder = data?.rich1000?.aggregate.sum.total;
   const sum10000 = data?.rich10000?.aggregate.sum.total;
