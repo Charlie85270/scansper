@@ -146,7 +146,7 @@ export const IndexPage = () => {
 
   return (
     <AppLayout
-      title="Scansper | Home"
+      title="Scansper | Casper Network explorer $CSPR"
       desc="Scansper is a Casper Network explorer where you can follow the network usages, NFT, analytics and last projects launched on Casper Network"
     >
       <div className="relative flex flex-col items-center justify-between w-full mb-5 rounded shadow-lg md:h-20 md:pr-6 md:py-0 md:flex-row">
