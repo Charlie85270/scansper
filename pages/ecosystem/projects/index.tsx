@@ -20,7 +20,9 @@ export const ProjectsPage = () => {
   const sortedProject =
     currentTag === "All"
       ? [...(projects || [])]
-      : [...(projects || [])].filter(pr => pr.Tag === currentTag);
+      : [...(projects || [])].filter(pr =>
+          pr.Tag.includes(currentTag.toString())
+        );
   return (
     <AppLayout
       title="Scansper | Ecosystem"
