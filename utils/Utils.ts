@@ -18,7 +18,7 @@ export const KNOW_ADDRESSES = [
   {
     public_key:
       "0203A5C03D9F7D6885276D0FAA25D412ECC1369F6573856C321D99CAFC0DAC2A8C12",
-    name: "Casper - Developer grants",
+    name: "Casper Association - Developer grants",
     img: "/labs.png",
   },
   {
