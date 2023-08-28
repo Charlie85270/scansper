@@ -266,7 +266,7 @@ export const DistributionPage = () => {
     return [
       <p>{item.title}</p>,
       <p>{item.balance}</p>,
-      <p>{formatNumber(item.count)}</p>,
+      <p>{formatNumber(item?.count || 0)}</p>,
       <p>{item.percentage}%</p>,
     ];
   });
