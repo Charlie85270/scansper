@@ -19,13 +19,13 @@ export const KNOW_ADDRESSES = [
     public_key:
       "0203A5C03D9F7D6885276D0FAA25D412ECC1369F6573856C321D99CAFC0DAC2A8C12",
     name: "Casper Association - Developer grants",
-    img: "/labs.png",
+    img: "/ca.png",
   },
   {
     public_key:
       "02024C5E3BA7B1DA49CDA950319AEC914CD3C720FBEC3DCF25AA4ADD631E28F70AA9",
     name: "Casper - Association",
-    img: "/labs.png",
+    img: "/ca.png",
   },
   {
     public_key:
