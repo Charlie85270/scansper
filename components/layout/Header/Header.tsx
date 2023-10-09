@@ -75,7 +75,7 @@ const Header = () => {
             </button>
           </form>
         </div>
-        <div className="flex items-center xs:hidden md:visible">
+        <div className=" items-center hidden lg:flex">
           <div className=" flex-wrap items-center justify-between">
             <div className="flex items-center flex-1">
               <div className="font-medium text-lg text-gray-700 truncate ">
