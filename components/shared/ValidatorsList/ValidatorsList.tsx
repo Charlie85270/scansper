@@ -53,8 +53,8 @@ const ValidatorsList = () => {
         <img
           className="w-8 h-8 rounded-lg"
           src={
-            item.account_info?.info.owner?.branding.logo.png_256 ||
-            item.account_info?.info.owner?.branding.logo.png_1024 ||
+            item.account_info?.info.owner?.branding?.logo?.png_256 ||
+            item.account_info?.info.owner?.branding?.logo?.png_1024 ||
             getAvatarUrl(item.public_key)
           }
         />

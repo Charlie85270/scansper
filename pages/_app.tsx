@@ -61,8 +61,8 @@ const ContextComp = ({ children }) => {
               fee: item.fee,
               name: item.account_info?.info.owner?.name,
               img:
-                item.account_info?.info.owner?.branding.logo.png_256 ||
-                item.account_info?.info.owner?.branding.logo.png_1024 ||
+                item.account_info?.info.owner?.branding?.logo?.png_256 ||
+                item.account_info?.info.owner?.branding?.logo?.png_1024 ||
                 getAvatarUrl(item.public_key),
             };
           }) || [],
