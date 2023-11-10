@@ -5,6 +5,7 @@ const Footer = () => {
   const casperhodlersLink = "https://casperholders.io/";
   const creditLink = "https://github.com/Charlie85270";
   const coingecko = "https://www.coingecko.com/";
+  const casperdash = "https://casperdash.io/";
   return (
     <footer className="px-3 py-8 text-gray-500 transition-colors duration-200 background-card text-2 dark:text-gray-200">
       <div className="flex flex-col">
@@ -25,7 +26,18 @@ const Footer = () => {
                 height="40"
                 className="mx-auto"
               />
-              cspr.cloud
+            </a>
+            <a
+              target="_blank"
+              className="flex-col items-center justify-center hover:text-underline hover:text-primary-gray-20"
+              href={casperdash}
+            >
+              <img
+                src="/dash.png"
+                width="160"
+                height="160"
+                className="mx-auto"
+              />
             </a>
             <a
               target="_blank"
@@ -38,7 +50,6 @@ const Footer = () => {
                 height="35"
                 className="mx-auto"
               />
-              <span className="">Coingecko</span>
             </a>
             <a
               target="_blank"
@@ -51,8 +62,6 @@ const Footer = () => {
                 height="30"
                 className="mx-auto rounded-full"
               />
-
-              <span className="">Casperholders</span>
             </a>
           </div>
 

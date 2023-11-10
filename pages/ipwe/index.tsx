@@ -247,7 +247,10 @@ export const IpwePage = () => {
         </div>
         {options.map(option => {
           return (
-            <div className="mb-4 sm:col-span-1 md:col-span-8 lg:col-span-4 xl:col-span-2 md:mb-0">
+            <div
+              key={option.value}
+              className="mb-4 sm:col-span-1 md:col-span-8 lg:col-span-4 xl:col-span-2 md:mb-0"
+            >
               <IconCard
                 currency={option.currency}
                 changes={option.changes}
