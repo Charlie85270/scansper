@@ -99,6 +99,12 @@ export const KNOW_ADDRESSES = [
     name: "CoinEx",
     img: "/coinex.png",
   },
+  {
+    public_key:
+      "020396133b3bbbfcf7d1961390f9449e2de5813523180376df361cb31a1ca965b576",
+    name: "Crypto.com",
+    img: "/cryptocom.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
