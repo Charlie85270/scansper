@@ -1,4 +1,3 @@
-import { CLValueBuilder, decodeBase16 } from "casper-js-sdk";
 import differenceInMonths from "date-fns/differenceInMonths";
 import differenceInWeeks from "date-fns/differenceInWeeks";
 import differenceInYears from "date-fns/differenceInYears";
@@ -104,6 +103,12 @@ export const KNOW_ADDRESSES = [
       "020396133b3bbbfcf7d1961390f9449e2de5813523180376df361cb31a1ca965b576",
     name: "Crypto.com",
     img: "/cryptocom.png",
+  },
+  {
+    public_key:
+      "02020e377ce7425130b4e40181be3b5b424fe802f294db2362ccbe0682dc8d8c93a7",
+    name: "Kucoin Cold Wallet",
+    img: "/kucoin.png",
   },
 ];
 
