@@ -116,6 +116,12 @@ export const KNOW_ADDRESSES = [
     name: "Kucoin Cold Wallet 2",
     img: "/kucoin.png",
   },
+  {
+    public_key:
+      "01d612c88c8cf783115e162183754ab807e74e7fe02308bf78f7847694cb87844a",
+    name: "Bitvavo",
+    img: "/bitvavo.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
