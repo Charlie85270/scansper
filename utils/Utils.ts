@@ -122,6 +122,12 @@ export const KNOW_ADDRESSES = [
     name: "Bitvavo",
     img: "/bitvavo.png",
   },
+  {
+    public_key:
+      "011c74ebfcc1b19bc3e578bec3ecfa2d484f2a00d7e9e8152c4c70f519f6a89f6a",
+    name: "Crypto.com",
+    img: "/cryptocom.png",
+  },
 ];
 
 export const formatNumber = (number: number) => {
