@@ -14,6 +14,25 @@ import { getAvatarUrl } from "../utils/Utils";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 
+import { ClickProvider } from "@make-software/csprclick-ui";
+import { CsprClickInitOptions } from "@make-software/csprclick-core-client";
+import { ThemeProvider as ThemeProviderStyled } from "styled-components";
+import { CsprClickThemes } from "@make-software/csprclick-ui";
+
+const clickOptions: CsprClickInitOptions = {
+  appName: "CSPR.playground",
+  contentMode: "iframe",
+  providers: [
+    "casper-wallet",
+    "ledger",
+    "casperdash",
+    "metamask-snap",
+    "torus-wallet",
+    "casper-signer",
+  ],
+  appId: "csprclick-template",
+};
+
 // Create a client
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
@@ -31,15 +50,19 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     };
   }, [router.events]);
   return (
-    <ApolloProvider client={client}>
-      <QueryClientProvider client={queryClient}>
-        <ContextComp>
-          <ThemeProvider enableSystem={false} attribute="class">
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </ContextComp>
-      </QueryClientProvider>
-    </ApolloProvider>
+    <ClickProvider options={clickOptions}>
+      <ThemeProviderStyled theme={CsprClickThemes.light}>
+        <ApolloProvider client={client}>
+          <QueryClientProvider client={queryClient}>
+            <ContextComp>
+              <ThemeProvider enableSystem={false} attribute="class">
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </ContextComp>
+          </QueryClientProvider>
+        </ApolloProvider>
+      </ThemeProviderStyled>
+    </ClickProvider>
   );
 };
 

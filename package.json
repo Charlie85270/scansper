@@ -25,6 +25,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.13",
+    "@make-software/csprclick-core-client": "^1.1.4",
+    "@make-software/csprclick-core-types": "^1.1.4",
+    "@make-software/csprclick-ui": "^1.1.4",
+    "@metamask/safe-event-emitter": "^2.0.0",
     "@netlify/next": "^1.4.4",
     "@netlify/plugin-nextjs": "^4.31.0",
     "@next/bundle-analyzer": "^10.0.4",
@@ -51,11 +55,13 @@
     "react-device-detect": "^1.15.0",
     "react-dom": "^18.2.0",
     "react-horizontal-scrolling-menu": "^4.0.1",
+    "react-i18next": "^13.5.0",
     "react-icons": "^4.8.0",
     "react-json-view": "^1.21.3",
     "react-map-gl": "^7.0.21",
     "react-query": "^3.39.3",
     "react-use": "^17.3.2",
+    "styled-components": "^5.3.9",
     "tailwindcss": "^3.0.23"
   }
 }

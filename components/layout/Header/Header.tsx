@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import CopyButton from "../../shared/CopyButton/CopyButton";
 import AppContext from "../../../AppContext";
-import Link from "next/link";
-import { BsInfoLg } from "react-icons/bs";
+import { ClickTopBar } from "@make-software/csprclick-ui";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
@@ -75,25 +73,8 @@ const Header = () => {
             </button>
           </form>
         </div>
-        <div className=" items-center hidden lg:flex">
-          <div className=" flex-wrap items-center justify-between">
-            <div className="flex items-center flex-1">
-              <div className="font-medium text-lg text-gray-700 truncate ">
-                <p className="text-sm text-italic">
-                  You like Scansper ? Help us and make a donation to
-                </p>
-                <p className="flex text-sm items-center gap-4 font-bold">
-                  0159ac42a6383573e9683b0d35d7b5999e6248800ad9364b4f77c999b96798ccfc{" "}
-                  <CopyButton textToCopy="0159ac42a6383573e9683b0d35d7b5999e6248800ad9364b4f77c999b96798ccfc" />
-                </p>
-              </div>
-            </div>
-            <div className="flex-shrink-0 mr-3 text-underline text-blue-700 hover:text-underline border-1 border-green-400 order-3 w-full mt-2 sm:order-2 sm:mt-0 sm:w-auto">
-              <Link href="/donation" className="z-10 underline">
-                More information
-              </Link>
-            </div>
-          </div>
+        <div className="items-center lg:flex">
+          <ClickTopBar />
         </div>
         <button
           type="button"
