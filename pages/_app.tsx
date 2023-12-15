@@ -1,3 +1,4 @@
+"use client";
 import { FC, useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
@@ -13,12 +14,23 @@ import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
 import { getAvatarUrl } from "../utils/Utils";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
-
-import { ClickProvider } from "@make-software/csprclick-ui";
 import { CsprClickInitOptions } from "@make-software/csprclick-core-client";
+import dynamic from "next/dynamic";
 import { ThemeProvider as ThemeProviderStyled } from "styled-components";
-import { CsprClickThemes } from "@make-software/csprclick-ui";
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { refetchOnWindowFocus: false } },
+});
 
+const ClickProvider = dynamic(
+  () =>
+    import("@make-software/csprclick-ui").then(mod => {
+      return mod.ClickProvider;
+    }),
+  {
+    ssr: false,
+  }
+);
 const clickOptions: CsprClickInitOptions = {
   appName: "CSPR.playground",
   contentMode: "iframe",
@@ -33,13 +45,23 @@ const clickOptions: CsprClickInitOptions = {
   appId: "csprclick-template",
 };
 
-// Create a client
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { refetchOnWindowFocus: false } },
-});
-
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
+  const [isLoading, setIsloading] = useState(true);
+  const [theme, setTheme] = useState();
+  useEffect(() => {
+    import("@make-software/csprclick-ui")
+      .then(mod => {
+        setTheme(mod.CsprClickThemes.light);
+      })
+      .finally(() => {
+        setIsloading(false);
+      }),
+      {
+        ssr: false,
+      };
+  }, []);
+
   useEffect(() => {
     const handleRouteChange = url => {
       gtag.pageview(url);
@@ -49,20 +71,26 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  if (isLoading || !theme) {
+    return <p>Loading</p>;
+  }
   return (
-    <ClickProvider options={clickOptions}>
-      <ThemeProviderStyled theme={CsprClickThemes.light}>
-        <ApolloProvider client={client}>
-          <QueryClientProvider client={queryClient}>
-            <ContextComp>
-              <ThemeProvider enableSystem={false} attribute="class">
-                <Component {...pageProps} />
-              </ThemeProvider>
-            </ContextComp>
-          </QueryClientProvider>
-        </ApolloProvider>
-      </ThemeProviderStyled>
-    </ClickProvider>
+    <div id="root">
+      <ClickProvider options={clickOptions}>
+        <ThemeProviderStyled theme={theme}>
+          <ApolloProvider client={client}>
+            <QueryClientProvider client={queryClient}>
+              <ContextComp>
+                <ThemeProvider enableSystem={false} attribute="class">
+                  <Component {...pageProps} />
+                </ThemeProvider>
+              </ContextComp>
+            </QueryClientProvider>
+          </ApolloProvider>
+        </ThemeProviderStyled>
+      </ClickProvider>
+    </div>
   );
 };
 

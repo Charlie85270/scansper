@@ -1,12 +1,24 @@
 import { useRouter } from "next/router";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import AppContext from "../../../AppContext";
-import { ClickTopBar } from "@make-software/csprclick-ui";
+
+import dynamic from "next/dynamic";
+
+const ClickTopBar = dynamic(
+  () =>
+    import("@make-software/csprclick-ui").then(mod => {
+      return mod.ClickTopBar;
+    }),
+  {
+    ssr: false,
+  }
+);
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
+
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
 
   const launchSearch = e => {
