@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CasperPriceChart from "../../shared/Chart/CasperPriceChart/CasperPriceChart";
 import {
   FiHome,
@@ -32,6 +32,9 @@ import classNames from "classnames";
 import AppContext from "../../../AppContext";
 import Header from "../Header/Header";
 import { AiOutlineBarChart, AiOutlinePieChart } from "react-icons/ai";
+
+import { CSPRClickSDK } from "@make-software/csprclick-core-client";
+import { getAvatarUrl } from "../../../utils/Utils";
 
 interface ILink {
   label: string;
@@ -199,8 +202,40 @@ const NavBar = () => {
     )?.id || "";
 
   const [openLinks, setOpenLinks] = useState<string[]>([defaultOpenSection]);
+  const [customHook, setCustomHook] = useState<CSPRClickSDK>();
+  const [showAccount, setShowAccount] = useState(false);
+
+  const loadCustomHook = async () => {
+    try {
+      const module = await import("@make-software/csprclick-ui");
+      const loadedHook = module.useClickRef;
+
+      setCustomHook(loadedHook);
+    } catch (error) {
+      console.error("Erreur lors de l'import du hook :", error);
+    }
+  };
+
+  useEffect(() => {
+    loadCustomHook();
+  }, []);
 
   const { theme, setTheme } = useTheme();
+  const activeAccount = customHook?.getActiveAccount();
+
+  useEffect(() => {
+    setShowAccount(!showAccount);
+    customHook?.on("csprclick:signed_in", async evt => {
+      setShowAccount(!showAccount);
+    });
+    customHook?.on("csprclick:switched_account", async evt => {
+      setShowAccount(!showAccount);
+      console.log(evt);
+    });
+    customHook?.on("csprclick:signed_out", async evt => {
+      setShowAccount(!showAccount);
+    });
+  }, [customHook?.on]);
 
   const isOpen = (id: string) => {
     return openLinks.includes(id);
@@ -297,8 +332,28 @@ const NavBar = () => {
         <div className="hidden px-6 md:block">
           <CasperPriceChart />
         </div>
-        <div className="relative mt-4 overflow-hidden">
+        <div
+          className="relative mt-4 overflow-hidden"
+          key={activeAccount?.public_key}
+        >
           <ul className="">
+            {activeAccount && (
+              <li className="text-secondary pl-10  text-base flex items-center justify-between pr-8 hover:background-app">
+                <Link
+                  href={`/account/${activeAccount.public_key}?tab=deploys`}
+                  className={classNames(
+                    "relative flex items-center justify-start py-4 w-full"
+                  )}
+                >
+                  <img
+                    key={activeAccount.public_key}
+                    className="w-6 h-6  mr-4 rounded-full"
+                    src={getAvatarUrl(activeAccount.public_key || "")}
+                  />
+                  My account
+                </Link>
+              </li>
+            )}
             {links.map(link => {
               return (
                 <li key={link.label}>

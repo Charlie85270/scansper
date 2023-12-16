@@ -46,11 +46,10 @@ const Header = () => {
           <p className="text-xl text-primary">Scansper</p>
           <p className="text-sm text-secondary">Casper Network explorer</p>
         </div>
-
-        <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-1/4 lg:relative">
+        <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-full lg:relative">
           <form
             onSubmit={launchSearch}
-            className="flex items-center justify-start w-full lg:ml-6 dark:text-white lg:justify-between "
+            className="flex items-center justify-start w-full lg:ml-6 dark:text-white lg:justify-between w-1/4"
           >
             <div className="relative flex items-center w-full h-full lg:w-96 group">
               <svg
@@ -84,17 +83,18 @@ const Header = () => {
               </span>
             </button>
           </form>
+          <div className="w-3/4">
+            <ClickTopBar />
+          </div>
         </div>
-        <div className="items-center lg:flex">
-          <ClickTopBar />
-        </div>
+
         <button
           type="button"
           onClick={() => {
             document.body.style.overflow = isOpenMenu ? "auto" : "hidden";
             setIsOpenMenu(!isOpenMenu);
           }}
-          className="p-2 border rounded text-primary dark:border-gray-100"
+          className="p-2 border lg:hidden rounded text-primary dark:border-gray-100"
         >
           {isOpenMenu ? (
             <FiX className="w-8 h-8" />

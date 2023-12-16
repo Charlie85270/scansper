@@ -52,7 +52,31 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     import("@make-software/csprclick-ui")
       .then(mod => {
-        setTheme(mod.CsprClickThemes.light);
+        setTheme({
+          ...mod.CsprClickThemes.light,
+          typography: {
+            ...mod.CsprClickThemes.typography,
+            fontWeight: {
+              bold: 700,
+              extraBold: 800,
+              light: 300,
+              medium: 500,
+              regular: 400,
+              semiBold: 600,
+            },
+            fontFamily: {
+              primary:
+                'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important',
+              mono: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important',
+            },
+          },
+          styleguideColors: {
+            ...mod.CsprClickThemes.light.styleguideColors,
+            backgroundTertiary: "white",
+            contentTertiary: "black",
+            contentOnFill: "gray",
+          },
+        });
       })
       .finally(() => {
         setIsloading(false);
