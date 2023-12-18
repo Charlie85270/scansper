@@ -1,4 +1,3 @@
-"use client";
 import { FC, useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
