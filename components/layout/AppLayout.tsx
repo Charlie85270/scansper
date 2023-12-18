@@ -21,7 +21,7 @@ const ClickProvider = dynamic(
 );
 
 const clickOptions: CsprClickInitOptions = {
-  appName: "CSPR.playground",
+  appName: "Scansper",
   contentMode: "iframe",
   providers: [
     "casper-wallet",
@@ -31,7 +31,7 @@ const clickOptions: CsprClickInitOptions = {
     "torus-wallet",
     "casper-signer",
   ],
-  appId: "csprclick-template",
+  appId: "scansper",
 };
 interface Props {
   title: string;
