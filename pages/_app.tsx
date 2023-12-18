@@ -78,8 +78,8 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
           },
           styleguideColors: {
             ...themeC.styleguideColors,
-            backgroundTertiary: theme === "light" ? "white" : "#1f2937",
-            contentTertiary: theme === "light" ? "black" : "white",
+            backgroundTertiary: theme === "light" ? "transparent" : "#1f2937",
+            contentTertiary: theme === "light" ? "gray" : "gray",
             contentOnFill: theme === "light" ? "gray" : "gray",
           },
         });
