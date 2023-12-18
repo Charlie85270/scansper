@@ -38,8 +38,6 @@ const RichList = () => {
     return a + Number(Number(b.total / MOTE_VALUE).toFixed(0));
   }, 0);
 
-  console.log(totalStake);
-
   const rows = items?.map((item, index) => {
     return [
       <p>{(Number(page || 1) - 1) * 25 + index + 1}</p>,

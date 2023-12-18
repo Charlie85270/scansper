@@ -1,3 +1,4 @@
+"use client";
 import { FC, useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import "../global.css";
@@ -13,14 +14,78 @@ import { useGetStatusInfos } from "../hooks/useGetStatusInfos";
 import { getAvatarUrl } from "../utils/Utils";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
-
+import { CsprClickInitOptions } from "@make-software/csprclick-core-client";
+import dynamic from "next/dynamic";
+import { ThemeProvider as ThemeProviderStyled } from "styled-components";
 // Create a client
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } },
 });
 
+const ClickProvider = dynamic(
+  () =>
+    import("@make-software/csprclick-ui").then(mod => {
+      return mod.ClickProvider;
+    }),
+  {
+    ssr: false,
+  }
+);
+const clickOptions: CsprClickInitOptions = {
+  appName: "CSPR.playground",
+  contentMode: "iframe",
+  providers: [
+    "casper-wallet",
+    "ledger",
+    "casperdash",
+    "metamask-snap",
+    "torus-wallet",
+    "casper-signer",
+  ],
+  appId: "csprclick-template",
+};
+
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
+  const [isLoading, setIsloading] = useState(true);
+  const [theme, setTheme] = useState();
+  useEffect(() => {
+    import("@make-software/csprclick-ui")
+      .then(mod => {
+        setTheme({
+          ...mod.CsprClickThemes.light,
+          typography: {
+            ...mod.CsprClickThemes.typography,
+            fontWeight: {
+              bold: 700,
+              extraBold: 800,
+              light: 300,
+              medium: 500,
+              regular: 400,
+              semiBold: 600,
+            },
+            fontFamily: {
+              primary:
+                'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important',
+              mono: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important',
+            },
+          },
+          styleguideColors: {
+            ...mod.CsprClickThemes.light.styleguideColors,
+            backgroundTertiary: "white",
+            contentTertiary: "black",
+            contentOnFill: "gray",
+          },
+        });
+      })
+      .finally(() => {
+        setIsloading(false);
+      }),
+      {
+        ssr: false,
+      };
+  }, []);
+
   useEffect(() => {
     const handleRouteChange = url => {
       gtag.pageview(url);
@@ -30,16 +95,26 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  if (isLoading || !theme) {
+    return <p>Loading</p>;
+  }
   return (
-    <ApolloProvider client={client}>
-      <QueryClientProvider client={queryClient}>
-        <ContextComp>
-          <ThemeProvider enableSystem={false} attribute="class">
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </ContextComp>
-      </QueryClientProvider>
-    </ApolloProvider>
+    <div id="root">
+      <ClickProvider options={clickOptions}>
+        <ThemeProviderStyled theme={theme}>
+          <ApolloProvider client={client}>
+            <QueryClientProvider client={queryClient}>
+              <ContextComp>
+                <ThemeProvider enableSystem={false} attribute="class">
+                  <Component {...pageProps} />
+                </ThemeProvider>
+              </ContextComp>
+            </QueryClientProvider>
+          </ApolloProvider>
+        </ThemeProviderStyled>
+      </ClickProvider>
+    </div>
   );
 };
 

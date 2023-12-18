@@ -1,10 +1,11 @@
 import Meta from "../shared/Meta";
 import Header from "./Header/Header";
 import React, { useContext } from "react";
-import NavBar from "./NavBar/NavBar";
+
 import Footer from "./Footer/Footer";
 import AppContext from "../../AppContext";
 import classNames from "classnames";
+import NavBar from "./NavBar/NavBar";
 
 interface Props {
   title: string;
@@ -24,8 +25,8 @@ const AppLayout = ({ title, desc, children }: Props) => {
           </nav>
         </div>
 
-        <div className="w-full lg:pl-72 xl:pl-80">
-          <div className="fixed top-0 z-50 w-full">
+        <div className="w-full ">
+          <div className="fixed lg:pl-72 xl:pl-80 top-0 z-50 w-full">
             <Header />
           </div>
           <main
@@ -34,7 +35,7 @@ const AppLayout = ({ title, desc, children }: Props) => {
                 "": isOpenMenu,
                 "overflow-x-hidden overflow-y-auto": !isOpenMenu,
               },
-              "w-full p-4  min-h-screen pt-24 mx-auto mt-24 lg:mt-4"
+              "w-full p-4 lg:pl-72 xl:pl-80 ml-4 min-h-screen pt-24 mx-auto mt-24 lg:mt-4"
             )}
           >
             {children}
