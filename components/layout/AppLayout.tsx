@@ -121,10 +121,10 @@ const AppLayout = ({ title, desc, children }: Props) => {
                     "": isOpenMenu,
                     "overflow-x-hidden overflow-y-auto": !isOpenMenu,
                   },
-                  "w-full p-4 lg:pl-72 xl:pl-80 ml-4 min-h-screen pt-24 mx-auto mt-24 lg:mt-4"
+                  "w-full p-4 lg:pl-72 xl:pl-80  min-h-screen pt-24 mx-auto mt-24 lg:mt-4"
                 )}
               >
-                {children}
+                <div className="lg:pl-4">{children}</div>
               </main>
               <Footer />
             </div>

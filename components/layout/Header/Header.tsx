@@ -59,7 +59,7 @@ const Header = () => {
         <div className="absolute  flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-full lg:relative">
           <form
             onSubmit={launchSearch}
-            className="flex items-center hidden lg:flex justify-start w-full lg:ml-6 dark:text-white lg:justify-between w-1/4"
+            className="flex items-center  lg:flex justify-start w-full lg:ml-6 dark:text-white lg:justify-between w-1/4"
           >
             <div className="relative flex items-center w-full h-full lg:w-full group">
               <svg
@@ -93,7 +93,7 @@ const Header = () => {
               </span>
             </button>
           </form>
-          <div className="w-full lg:w-3/4">
+          <div className="w-full hidden lg:block lg:w-3/4">
             <ClickTopBar accountMenuItems={[<BuyCSPRMenuItem />]} />
           </div>
         </div>
