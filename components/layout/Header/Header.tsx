@@ -15,6 +15,16 @@ const ClickTopBar = dynamic(
   }
 );
 
+const BuyCSPRMenuItem = dynamic(
+  () =>
+    import("@make-software/csprclick-ui").then(mod => {
+      return mod.BuyCSPRMenuItem;
+    }),
+  {
+    ssr: false,
+  }
+);
+
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
@@ -46,12 +56,12 @@ const Header = () => {
           <p className="text-xl text-primary">Scansper</p>
           <p className="text-sm text-secondary">Casper Network explorer</p>
         </div>
-        <div className="absolute flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-full lg:relative">
+        <div className="absolute  flex items-center w-full h-12 py-4 space-x-2 -bottom-10 lg:bottom-0 lg:w-full lg:relative">
           <form
             onSubmit={launchSearch}
-            className="flex items-center justify-start w-full lg:ml-6 dark:text-white lg:justify-between w-1/4"
+            className="flex items-center hidden lg:flex justify-start w-full lg:ml-6 dark:text-white lg:justify-between w-1/4"
           >
-            <div className="relative flex items-center w-full h-full lg:w-96 group">
+            <div className="relative flex items-center w-full h-full lg:w-full group">
               <svg
                 className="absolute left-0 z-20 w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-secondary"
                 viewBox="0 0 20 20"
@@ -83,8 +93,8 @@ const Header = () => {
               </span>
             </button>
           </form>
-          <div className="w-3/4">
-            <ClickTopBar />
+          <div className="w-full lg:w-3/4">
+            <ClickTopBar accountMenuItems={[<BuyCSPRMenuItem />]} />
           </div>
         </div>
 

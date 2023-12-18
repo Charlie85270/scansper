@@ -1,10 +1,11 @@
 import Meta from "../shared/Meta";
 import Header from "./Header/Header";
 import React, { useContext } from "react";
-import NavBar from "./NavBar/NavBar";
+
 import Footer from "./Footer/Footer";
 import AppContext from "../../AppContext";
 import classNames from "classnames";
+import NavBar from "./NavBar/NavBar";
 
 interface Props {
   title: string;
