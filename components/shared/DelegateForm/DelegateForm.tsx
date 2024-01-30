@@ -30,7 +30,7 @@ const config = {
   auction_manager_contract_hash:
     "ccb576d6ce6dec84a551e48f0d0b7af89ddba44c7390b690036257a04a3ae9ea",
   delegate_cost: "2500000000", // in motes
-  undelegate_cost: "10000", // in motes
+  undelegate_cost: "2500000000", // in motes
   redelegate_cost: "10000", // in motes
   transfer_cost: "100000000", // in motes
 };
@@ -54,7 +54,16 @@ const getAuctionManagerDeployCost = (entryPoint: AuctionManagerEntryPoint) => {
       throw Error("getAuctionManagerDeployCost: unknown entry point");
   }
 };
-
+/**
+ * Function call to prepare the deploy for delegate / undelegate
+ * @param contractEntryPoint
+ * @param delegatorPublicKeyHex
+ * @param validatorPublicKeyHex
+ * @param redelegateValidatorPublicKeyHex
+ * @param amountMotes
+ * @param chainName
+ * @returns
+ */
 export const makeAuctionManagerDeploy = (
   contractEntryPoint: AuctionManagerEntryPoint,
   delegatorPublicKeyHex: string,
@@ -90,20 +99,15 @@ export const makeAuctionManagerDeploy = (
   );
 
   const deployCost = getAuctionManagerDeployCost(contractEntryPoint);
-
   const payment = DeployUtil.standardPayment(deployCost);
-
   var deploy = DeployUtil.makeDeploy(deployParams, session, payment);
   var deployJson = DeployUtil.deployToJson(deploy);
 
   return JSON.stringify(deployJson.deploy);
 };
 
-const GAS_PAYMENT = "100000000"; // in motes
-
 const TransferForm = ({ useClickRef }) => {
   const clickRef = useClickRef();
-
   const router = useRouter();
   const query = router.query;
   const defaultAmount = query.amount;
@@ -114,16 +118,6 @@ const TransferForm = ({ useClickRef }) => {
   const activeAccount = clickRef?.getActiveAccount();
 
   const [selectedValidator, setSelectedValidator] = useState<Validator>();
-
-  useEffect(() => {
-    const defaultValidator = validators.find(
-      (val) => val.publicKey === defaultValidatorKey
-    );
-
-    if (defaultValidator) {
-      setSelectedValidator(defaultValidator);
-    }
-  }, [defaultValidatorKey, validators]);
 
   const statusInfos = useGetStatusInfos();
   const public_key = activeAccount?.public_key;
@@ -173,6 +167,16 @@ const TransferForm = ({ useClickRef }) => {
   const balanceValue = Number(
     Number(Number(dataBlance?.result.balance_value) / MOTE_VALUE).toFixed(0)
   );
+
+  useEffect(() => {
+    const defaultValidator = validators.find(
+      (val) => val.publicKey === defaultValidatorKey
+    );
+
+    if (defaultValidator) {
+      setSelectedValidator(defaultValidator);
+    }
+  }, [defaultValidatorKey, validators]);
 
   useEffect(() => {
     clickRef?.on("csprclick:signed_in", async (evt) => {
