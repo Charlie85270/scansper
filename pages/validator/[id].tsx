@@ -33,6 +33,7 @@ import BlocksByValidatorsList from "../../components/shared/BlocksByValidatorsLi
 import CopyButton from "../../components/shared/CopyButton/CopyButton";
 import StatsOfValidator from "../../components/shared/StatsOfValidator/StatsOfValidator";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 const Valiator = () => {
   const { theme } = useTheme();
   const router = useRouter();
@@ -259,6 +260,13 @@ const Valiator = () => {
                       <p className="text-xs text-gray-500">Fees</p>
                     </div>
                   </div>
+                  <Link
+                    href={`/delegate?delegate=true&validator=${validator?.public_key}`}
+                    type="button"
+                    className="py-2 mt-4 px-4 w-44 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  >
+                    Delegate
+                  </Link>
                 </div>
                 <div className="flex-col w-full md:w-4/6">
                   <div className="py-2 mt-4 border-b md:mt-0">
