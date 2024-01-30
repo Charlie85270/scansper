@@ -41,9 +41,10 @@ const ValidatorsList = () => {
     "% network",
     "Total stake",
     "Performance",
+    "Staking",
   ];
 
-  const rows = validators.data?.data?.map(item => {
+  const rows = validators.data?.data?.map((item) => {
     return [
       <span className="flex items-center space-x-2 text-sm">{item.rank}</span>,
       <Link
@@ -108,6 +109,13 @@ const ValidatorsList = () => {
           ></div>
         </div>
       </div>,
+      <Link
+        href={`/delegate?delegate=true&validator=${item.public_key}`}
+        type="button"
+        className="py-2 px-4 w-44 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+      >
+        Delegate
+      </Link>,
     ];
   });
 
@@ -136,13 +144,13 @@ const ValidatorsList = () => {
   };
 
   const pins = validators.data?.data
-    .filter(t => getLocation(t))
-    .map(val => {
+    .filter((t) => getLocation(t))
+    .map((val) => {
       return (
         <Marker
           longitude={getLocation(val)?.long}
           latitude={getLocation(val)?.lat}
-          onClick={e => {
+          onClick={(e) => {
             console.log(getLocation(val)?.long);
             console.log(getLocation(val)?.lat);
             // If we let the click event propagates to the map, it will immediately close the popup

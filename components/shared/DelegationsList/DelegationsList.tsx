@@ -14,19 +14,29 @@ import { pageSize } from "../../../services/httpReq";
 import AppContext from "../../../AppContext";
 import { useGetDelegationsByAccount } from "../../../hooks/useGetDelegationsByAccount";
 import { useGetHistoryCasperPrice } from "../../../hooks/useGetHistoryCasperPrice";
+import { withDynamicHook } from "../../layout/NavBar/Account";
 
 interface DeployListProps {
   accountHash?: string;
   isAccount?: boolean;
+  balance?: number;
+  useClickRef: any;
 }
 
-const DelegationsList = ({ accountHash }: DeployListProps) => {
+const DelegationsList = ({
+  accountHash,
+  useClickRef,
+  balance,
+}: DeployListProps) => {
   const { push, query } = useRouter();
+  const clickRef = useClickRef();
+  const activeAccount = clickRef?.getActiveAccount();
   const { validators } = useContext(AppContext);
   const { page } = query;
   const price = useGetHistoryCasperPrice(1);
   const casperPrice = price.data?.prices[price.data?.prices.length - 1][1] || 0;
 
+  const isSameAccount = accountHash === activeAccount?.public_key;
   const delegationsQuery = useGetDelegationsByAccount(accountHash, page);
 
   const items = delegationsQuery.data?.data;
@@ -39,8 +49,11 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
   }
 
   const headers = ["Validator", "Fees", "Amount"];
+  if (isSameAccount) {
+    headers.push("Actions");
+  }
 
-  const rows = items?.map(item => {
+  const rows = items?.map((item) => {
     return [
       <Link
         className="flex items-center space-x-2 text-blue-500 hover:text-blue-900"
@@ -67,7 +80,7 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
             alt="cspr"
           />
         </span>
-        <span className="text-xs text-secondary">
+        <span className="text-xs w-full text-secondary">
           {formatNumber(
             Number(
               Number((Number(item?.stake) / MOTE_VALUE) * casperPrice).toFixed(
@@ -75,7 +88,32 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
               )
             )
           )}
+          $
         </span>
+      </div>,
+      <div className="flex w-96 items-center space-x-4">
+        {isSameAccount && (
+          <>
+            <Link
+              href={`/delegate?delegate=false&validator=${
+                item.validator.public_key
+              }&amount=${Number(item.stake) / MOTE_VALUE}`}
+              type="button"
+              className="py-2 px-4 w-44 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+            >
+              Undelegate
+            </Link>
+            {balance && (
+              <Link
+                href={`/delegate?delegate=true&validator=${item.validator.public_key}`}
+                type="button"
+                className="py-2 px-4 w-44 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              >
+                Delegate
+              </Link>
+            )}
+          </>
+        )}
       </div>,
     ];
   });
@@ -87,7 +125,7 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
         showPagination
         pageSize={pageSize}
         currentPage={Number(page) || 1}
-        onPageChange={page => {
+        onPageChange={(page) => {
           push({ query: { ...query, page } }, undefined, {
             shallow: true,
           });
@@ -100,4 +138,8 @@ const DelegationsList = ({ accountHash }: DeployListProps) => {
   );
 };
 
-export default DelegationsList;
+export default withDynamicHook(
+  "useClickRef",
+  () => import("@make-software/csprclick-ui"),
+  DelegationsList
+);

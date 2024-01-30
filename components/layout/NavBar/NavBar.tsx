@@ -19,6 +19,7 @@ import {
   MdCompareArrows,
   MdQueryStats,
   MdAttachMoney,
+  MdSyncAlt,
 } from "react-icons/md";
 import { IoIosApps } from "react-icons/io";
 import { IoPodiumOutline } from "react-icons/io5";
@@ -35,7 +36,6 @@ import { AiOutlineBarChart, AiOutlinePieChart } from "react-icons/ai";
 
 import { CSPRClickSDK } from "@make-software/csprclick-core-client";
 import { getAvatarUrl } from "../../../utils/Utils";
-import { useClickRef } from "@make-software/csprclick-ui/dist/cjs/lib/index";
 import Account from "./Account";
 
 interface ILink {
@@ -191,6 +191,12 @@ const links: ILink[] = [
       },
     ],
   },
+  {
+    label: "Transfer CSPR",
+    link: "/transfer",
+    id: "transfer",
+    icon: MdSyncAlt,
+  },
 ];
 
 const NavBar = () => {
@@ -200,8 +206,8 @@ const NavBar = () => {
   };
 
   const defaultOpenSection =
-    links.find(link =>
-      link.childrens?.find(child => isActive(child.link || ""))
+    links.find((link) =>
+      link.childrens?.find((child) => isActive(child.link || ""))
     )?.id || "";
   const [openLinks, setOpenLinks] = useState<string[]>([defaultOpenSection]);
   const { theme, setTheme } = useTheme();
@@ -214,7 +220,7 @@ const NavBar = () => {
 
   const toggleSection = (id: string) => {
     if (openLinks.includes(id)) {
-      const newList = [...openLinks].filter(i => i !== id);
+      const newList = [...openLinks].filter((i) => i !== id);
       setOpenLinks(newList);
     } else {
       const newList = [...openLinks];
@@ -307,7 +313,7 @@ const NavBar = () => {
           <ul className="">
             <Account />
 
-            {links.map(link => {
+            {links.map((link) => {
               return (
                 <li key={link.label}>
                   {link.childrens ? (
@@ -335,7 +341,7 @@ const NavBar = () => {
 
                   {isOpen(link.id) && (
                     <ul>
-                      {link?.childrens?.map(sublink => {
+                      {link?.childrens?.map((sublink) => {
                         return (
                           <li key={sublink.link}>
                             {sublink.isSoon ? (
@@ -390,7 +396,7 @@ const NavBar = () => {
             type="checkbox"
             name="toggle"
             id="Gray"
-            onChange={_ => setTheme(theme === "dark" ? "light" : "dark")}
+            onChange={(_) => setTheme(theme === "dark" ? "light" : "dark")}
             checked={theme === "dark"}
             className="absolute block w-6 h-6 duration-200 ease-in border-4 rounded-full outline-none appearance-none cursor-pointer background-card checked:bg-gray-500 focus:outline-none right-4 checked:right-0"
           />

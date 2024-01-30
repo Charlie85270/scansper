@@ -69,18 +69,27 @@ const Account = () => {
   const tabsTitle = [
     { id: "deploys", title: "Deploys" },
     { id: "transfers", title: "Transfers" },
-    { id: "staking", title: "StakingRewards" },
+    { id: "staking", title: "Staking Rewards" },
     { id: "nft", title: "NFT (Friendly Market)" },
     { id: "nftlive", title: "NFT (Cspr.live)" },
     { id: "delegations", title: "Delegations" },
   ];
+  const { data: dataBlance } = useGetBalanceFromUref(stateRootHash, uref);
+  const balanceValue = Number(
+    Number(Number(dataBlance?.result.balance_value) / MOTE_VALUE).toFixed(0)
+  );
+
   const tabsContent = [
     <DeploysList isAccount pubicKey={id?.toString()} />,
     <TransfersList accountHash={accountHash?.toString()} />,
     <RewardsList publicKey={id?.toString()} />,
     <NFTList accountHash={accountHash?.toString()} />,
     <NFTCasperLiveList accountHash={accountHash?.toString()} />,
-    <DelegationsList isAccount accountHash={id?.toString()} />,
+    <DelegationsList
+      isAccount
+      balance={balanceValue}
+      accountHash={id?.toString()}
+    />,
   ];
   const delegationDetails = data?.data;
   const totalRewards = dataTotalRewards?.data;
@@ -88,11 +97,6 @@ const Account = () => {
   const totalStake = delegationDetails?.reduce((a: any, b: any) => {
     return a + Number(b["stake"]);
   }, 0);
-
-  const { data: dataBlance } = useGetBalanceFromUref(stateRootHash, uref);
-  const balanceValue = Number(
-    Number(Number(dataBlance?.result.balance_value) / MOTE_VALUE).toFixed(0)
-  );
 
   const totalStakeNumber = Number(
     Number(Number(totalStake) / MOTE_VALUE).toFixed(0)
