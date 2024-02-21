@@ -11,3 +11,19 @@ export const ACTIVE_WALLETS_BY_DAY_QUERY = gql`
     }
   }
 `;
+
+export const RICH_LIST = gql`
+  query SearchRichlist($page: Int, $size: Int) {
+    searchRichlist(page: $page, size: $size) {
+      pages
+      total
+      items {
+        address {
+          publicKey
+        }
+        balance
+        totalStakedAsDelegator
+      }
+    }
+  }
+`;
