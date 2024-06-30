@@ -18,9 +18,13 @@ const ProjectCard = ({ project }: IProjectCardProps) => {
   const chaine =
     desc?.[0].replace("<!--lang:en-->", "").replace("<!--lang:es--]", "") || "";
 
+  const website = project.Website.includes("https://")
+    ? project.Website
+    : `https://${project.Website}`;
+
   return (
     <a
-      href={project.Website}
+      href={website}
       target="_blank"
       className={classNames(
         "px-4 relative background-card hover:shadow-lg py-2 mt-2 border dark:border-gray-900 relative rounded-lg"
