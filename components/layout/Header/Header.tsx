@@ -7,8 +7,8 @@ import dynamic from "next/dynamic";
 
 const ClickTopBar = dynamic(
   () =>
-    import("@make-software/csprclick-ui").then(mod => {
-      return mod.ClickTopBar;
+    import("@make-software/csprclick-ui").then((mod) => {
+      return mod.ClickUI;
     }),
   {
     ssr: false,
@@ -17,7 +17,7 @@ const ClickTopBar = dynamic(
 
 const BuyCSPRMenuItem = dynamic(
   () =>
-    import("@make-software/csprclick-ui").then(mod => {
+    import("@make-software/csprclick-ui").then((mod) => {
       return mod.BuyCSPRMenuItem;
     }),
   {
@@ -31,7 +31,7 @@ const Header = () => {
 
   const { isOpenMenu, setIsOpenMenu } = useContext(AppContext);
 
-  const launchSearch = e => {
+  const launchSearch = (e) => {
     e.preventDefault();
 
     router.push(
@@ -43,8 +43,11 @@ const Header = () => {
     );
   };
 
+  const accountMenuItems = [<BuyCSPRMenuItem key={"buy-cspr"} />];
+  const topBarSettings = { accountMenuItems };
+
   return (
-    <header className="fixed relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 border-b dark:border-gray-900 background-card lg:h-24 lg:px-0">
+    <header className="relative top-0 z-50 flex-none w-full h-40 px-4 mx-auto text-sm text-gray-700 border-b dark:border-gray-900 background-card lg:h-24 lg:px-0">
       <div className="relative flex items-center justify-between h-24">
         <div
           className="flex items-center space-x-4 lg:hidden"
@@ -70,7 +73,7 @@ const Header = () => {
               </svg>
               <input
                 value={searchText}
-                onChange={e => setSearchText(e.target.value)}
+                onChange={(e) => setSearchText(e.target.value)}
                 type="text"
                 className="block w-full h-12 py-1.5 pl-10 pr-4 leading-normal rounded-md focus:border-transparent focus:outline-none ring-opacity-90 bg-gray-100 dark:bg-gray-900 text-secondary aa-input"
                 placeholder="Search"
@@ -94,7 +97,7 @@ const Header = () => {
             </button>
           </form>
           <div className="w-full hidden lg:block lg:w-3/4">
-            <ClickTopBar accountMenuItems={[<BuyCSPRMenuItem />]} />
+            <ClickTopBar topBarSettings={topBarSettings} />
           </div>
         </div>
 
